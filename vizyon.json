@@ -41,34 +41,28 @@
   ],
   "yorumlar": {
     "Vanilla Sky": [
-      {
-        "zamanDamgas": "2025-07-22T08:33:31.897Z",
-        "isminiz": "Eyyüphan ÇAKIR",
-        "puan": 7,
-        "yorumunuz": "Güzel idi."
-      },
-      {
-        "zamanDamgas": "2025-07-22T08:33:31.897Z",
-        "isminiz": "Ravzanur Karacan",
-        "puan": "7.5",
-        "yorumunuz": "tartışılması aşırı zevkli başlangıç filmi"
-      },
-      {
-        "zamanDamgas": "2025-07-22T08:33:31.897Z",
-        "isminiz": "Arda Keskinsoy",
-        "puan": 8,
-        "yorumunuz": "konuştukça senaryosunu ve karakterlerini derinleştirdiğimiz güzel bir beyin yakan film"
-      }
+        {
+            "zamanDamgas": "2025-07-22T08:33:31.897Z",
+            "isminiz": "Ravzanur Karacan",
+            "puan": "2025-05-06T21:00:00.000Z",
+            "yorumunuz": "tartışılması aşırı zevkli başlangıç filmi"
+        },
+        {
+            "zamanDamgas": "2025-07-22T08:33:31.897Z",
+            "isminiz": "Arda Keskinsoy",
+            "puan": 8,
+            "yorumunuz": "konuştukça senaryosunu ve karakterlerini derinleştirdiğimiz güzel bir beyin yakan film"
+        }
     ],
     "Mona Lisa Smile": [
-      {
-        "zamanDamgas": "2025-07-22T09:03:54.179Z",
-        "isminiz": "Eyyüphan ÇAKIR",
-        "puan": 7,
-        "yorumunuz": "Muhtemelen iyidir."
-      }
+        {
+            "zamanDamgas": "2025-07-22T09:03:54.179Z",
+            "isminiz": "Eyyüphan ÇAKIR",
+            "puan": 7,
+            "yorumunuz": "Muhtemelen iyidir."
+        }
     ]
-  },
+},
   "kitap": {
     "isim": "Bir Çift Yürek",
     "kapak_gorseli": "https://cdn.dsmcdn.com/ty1543/prod/QC/20240914/09/04efd167-47c8-31a1-862c-b3bf01a61e0c/1_org_zoom.jpg",
