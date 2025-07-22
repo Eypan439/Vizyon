@@ -1,0 +1,52 @@
+{
+  "kaynaklar": {
+    "excel_link": "https://docs.google.com/spreadsheets/d/1TVnX-vcp4r56l3Y01idIbHeirFXqbuDRb52PSBqM_HQ/edit?usp=sharing"
+  },
+  "filmler": [
+    {
+      "tarih_araligi": "14–18 Temmuz",
+      "film": "Vanilla Sky",
+      "poster": "https://yastatic.net/naydex/yandex-search/wtek74W69/7a8e0cyJ/-hqdWhJSXDR4PyJajl_3okc83FaA7MonU0tF9kwxzaLieHrjjJmHoyIFrCar7vORi7O3D3uRvrMjZybnCz49-Cn-3MihsW8Sux2QTP29daN2HCxX8K1ul3Ke4RbsBGxygBhw",
+      "katilimcilar": [
+        { "isim": "Güneş İlhaner", "yorum": "", "puan": "" },
+        { "isim": "Zeynep Karataş", "yorum": "", "puan": "" },
+        { "isim": "Ravzanur Karacan", "yorum": "", "puan": "" },
+        { "isim": "Beyza Erdemir", "yorum": "", "puan": "" },
+        { "isim": "Dilbeste Erdoğan", "yorum": "", "puan": "" },
+        { "isim": "Berfin Naz Zengin", "yorum": "", "puan": "" },
+        { "isim": "Arda Keskinsoy", "yorum": "", "puan": "" },
+        { "isim": "Emir Batuhan Bütün", "yorum": "", "puan": "" },
+        { "isim": "Meryem Rana Gürbener", "yorum": "", "puan": "" },
+        { "isim": "Eyyüphan ÇAKIR", "yorum": "İzlemedim henüz, deneme yorumu.", "puan": "7" },
+        { "isim": "Beyza Uysal", "yorum": "", "puan": "" }
+      ]
+    },
+    {
+      "tarih_araligi": "21–25 Temmuz",
+      "film": "Mona Lisa Smile",
+      "poster": "https://yastatic.net/naydex/yandex-search/wtek73W59/7a8e0cyJ/-hqdWhJSXDR4PyJajl_3okc83FaA7MonU0tF9kwxzaLieHrjjJmHoyIF3Bbb_pLwa8PXH0uBjpOyAOaF366tXv8qfrigUW8jahxB_B1dBjN2GbkmcF3Ohqf6MdbIMcwQUB",
+      "katilimcilar": [
+        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "", "yorum": "", "puan": "" }
+      ]
+    }
+  ],
+  "kitap": {
+    "isim": "Bir Çift Yürek",
+    "kapak_gorseli": "https://cdn.dsmcdn.com/ty1543/prod/QC/20240914/09/04efd167-47c8-31a1-862c-b3bf01a61e0c/1_org_zoom.jpg",
+    "bitirme_tarihi": "Temmuz son haftası",
+    "toplanti": "Temmuz son haftası Cumartesi veya Pazar",
+    "pdf_link": "https://drive.google.com/drive/u/0/folders/1dVVRS7S1Ds_qGuJJqP-8JF5na2hNnZMK",
+    "not": "Kitabı okuduğun ortamın fotoğrafını çekip gruba atarsan çok sevinirim. Böylece bir kolaj oluştururuz."
+  },
+  "muzik": {
+    "aciklama": "Vizyon rengarenk insanlardan oluşan bir topluluk ve neden bu rengarenk zevklerden oluşan bir playlistimiz olmasın? Sen de bir renk katmayı unutma!",
+    "spotify_playlist": "https://open.spotify.com/playlist/1tGeLgECLa3lDx3X1DYzlN?si=5kI9UGfaRLu7GE0lcPcM9Q"
+  }
+}
