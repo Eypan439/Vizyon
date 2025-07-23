@@ -42,6 +42,12 @@
   "yorumlar": {
     "Vanilla Sky": [
         {
+            "zamanDamgas": "2025-07-22T20:23:48.306Z",
+            "isminiz": "Eyyüphan ÇAKIR",
+            "puan": 2,
+            "yorumunuz": "Emek var ama tarzıma uymadı."
+        },
+        {
             "zamanDamgas": "2025-07-22T11:55:10.852Z",
             "isminiz": "Musa KARAMAN",
             "puan": 7,
@@ -54,6 +60,12 @@
             "isminiz": "Eyyüphan ÇAKIR",
             "puan": 7,
             "yorumunuz": "Muhtemelen iyidir."
+        },
+        {
+            "zamanDamgas": "2025-07-22T18:25:21.718Z",
+            "isminiz": "Kübra Torun",
+            "puan": 7,
+            "yorumunuz": "Muhtemelen iyiydi"
         }
     ]
 },
