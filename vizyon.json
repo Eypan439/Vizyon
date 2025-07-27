@@ -28,10 +28,10 @@
       "poster": "https://yastatic.net/naydex/yandex-search/wtek73W59/7a8e0cyJ/-hqdWhJSXDR4PyJajl_3okc83FaA7MonU0tF9kwxzaLieHrjjJmHoyIF3Bbb_pLwa8PXH0uBjpOyAOaF366tXv8qfrigUW8jahxB_B1dBjN2GbkmcF3Ohqf6MdbIMcwQUB",
       "form_link": "https://forms.gle/bawHTcC2zL5eHxbH8",
       "katilimcilar": [
-        { "isim": "", "yorum": "", "puan": "" },
-        { "isim": "", "yorum": "", "puan": "" },
-        { "isim": "", "yorum": "", "puan": "" },
-        { "isim": "", "yorum": "", "puan": "" },
+        { "isim": "Eyyüphan ÇAKIR", "yorum": "Film Vanilla Sky a nazaran çok daha güzel idi lakin film sektörünün olmaz ise olmazı bazı fikirleri empoze etmek konusunda çalışmalar yapıldığı da inkar edilemez. İşin sonunda herşeyin sanat olabileceği gibi diğer fikirlerin de yanlış olması gerekmediği işlenmiş film de. Ben Joan Brandwyn'ın konuşmasını beğendim, kendin gibi düşünmedikleri için bazılarına ruhlarını satmış gibi bakılmaması gerektiğini çok güzel söyledi.", "puan": "8" },
+        { "isim": "Nida Aksüt", "yorum": "Film toplum tarafından kadının hayattaki başarısının iyi bir evlilik yapıp yapmaması ile sınırlandırıldığını göstermesi açısından bence çok gerçekciydi.Birde ana karakterin aslında çevresindeki insanları değiştirmesi gerektiğine inanıp geldiği bu yerde aslında kendininde değişmesi gerektiğini anlaması anlamlı bir mesajdı. ", "puan": "7" },
+        { "isim": "Arda Keskinsoy", "yorum": "Film verdiği mesajlar dolayısıyla etkili bir filmdi. Hayatımız da kendimizi belli kalıplara sığdırmamalıyız. Bazen de o kalıpta olan insanlar gerçekten de mutluysa neden onları o kalıptan çıkaralım ki diye de düşünmeliyiz. Film bana dead poet society andırdı. Tam bir daimicilik felsefesi ile yönetilen bir okula yeniden kurmacılık felsefesini benimseyen bir hoca gelirse ne olur :) ", "puan": "8" },
+        { "isim": "Zeynep Karataş", "yorum": "Filmin vermek istediği mesaj çok kıymetliydi. Fakat devam etmekte ve bitirmekte çok zorlandım. Akıcı bir film değildi. Olaydan ziyade durum odaklı bir film. Günümüzde de hala bu durumu yaşıyoruz. Film, sözü edilen bu durumu ve gerçeği bizlere aktarırken bunu daha dikkat çekici bir şekilde yapabilirdi. Film akmıyor, düşüncesi kıymetli.", "puan": "4" },
         { "isim": "", "yorum": "", "puan": "" },
         { "isim": "", "yorum": "", "puan": "" },
         { "isim": "", "yorum": "", "puan": "" },
@@ -62,34 +62,10 @@
     ],
     "Mona Lisa Smile": [
         {
-            "zamanDamgas": "2025-07-22T09:03:54.179Z",
-            "isminiz": "Eyyüphan ÇAKIR",
-            "puan": 8,
-            "yorumunuz": "Film Vanilla Sky a nazaran çok daha güzel idi lakin film sektörünün olmaz ise olmazı bazı fikirleri empoze etmek konusunda çalışmalar yapıldığı da inkar edilemez. İşin sonunda herşeyin sanat olabileceği gibi diğer fikirlerin de yanlış olması gerekmediği işlenmiş film de. Ben Joan Brandwyn'ın konuşmasını beğendim, kendin gibi düşünmedikleri için bazılarına ruhlarını satmış gibi bakılmaması gerektiğini çok güzel söyledi."
-        },
-        {
             "zamanDamgas": "2025-07-22T18:25:21.718Z",
             "isminiz": "Kübra Torun",
             "puan": 7,
             "yorumunuz": "Kadının hayattaki rolünü konu alan bir filmdi. Kadınların daha iyi bi aile kurabilmeleri için eğitim almaları güzeldi. Ancak eğitim bu şekilde kısıtlanmamalı, meslek seçimleriyle genişletilmeli. Bireye seçim hakkı sunulmalı, baskı olmadan özgür bir şekilde hayatımızı şekillendirmeliyiz. Son olarak kadın aile kurabilmeli ve buna karşı çıkılmaması gerektiğini düşünüyorum"
-        },
-        {
-            "zamanDamgas": "2025-07-24T20:28:01.643Z",
-            "isminiz": "Zeynep Karataş",
-            "puan": 4,
-            "yorumunuz": "Filmin vermek istediği mesaj çok kıymetliydi. Fakat devam etmekte ve bitirmekte çok zorlandım. Akıcı bir film değildi. Olaydan ziyade durum odaklı bir film. Günümüzde de hala bu durumu yaşıyoruz. Film, sözü edilen bu durumu ve gerçeği bizlere aktarırken bunu daha dikkat çekici bir şekilde yapabilirdi. Film akmıyor, düşüncesi kıymetli."
-        },
-        {
-            "zamanDamgas": "2025-07-27T10:06:43.183Z",
-            "isminiz": "Nida Aksüt",
-            "puan": 7,
-            "yorumunuz": "Film toplum tarafından kadının hayattaki başarısının iyi bir evlilik yapıp yapmaması ile sınırlandırıldığını göstermesi açısından bence çok gerçekciydi.Birde ana karakterin aslında çevresindeki insanları değiştirmesi gerektiğine inanıp geldiği bu yerde aslında kendininde değişmesi gerektiğini anlaması anlamlı bir mesajdı. "
-        },
-        {
-            "zamanDamgas": "2025-07-27T11:16:42.746Z",
-            "isminiz": "Arda Keskinsoy",
-            "puan": 8,
-            "yorumunuz": "Film verdiği mesajlar dolayısıyla etkili bir filmdi. Hayatımız da kendimizi belli kalıplara sığdırmamalıyız. Bazen de o kalıpta olan insanlar gerçekten de mutluysa neden onları o kalıptan çıkaralım ki diye de düşünmeliyiz. Film bana dead poet society andırdı. Tam bir daimicilik felsefesi ile yönetilen bir okula yeniden kurmacılık felsefesini benimseyen bir hoca gelirse ne olur :) "
         }
     ]
 },
