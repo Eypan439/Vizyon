@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizyon Kitap ve Film Kulübü 📖🎬</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f5ff;
+        }
+        .movie-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .tab-active {
+            border-bottom: 3px solid #6d28d9;
+            color: #6d28d9;
+            font-weight: 600;
+        }
+        .rating-star {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .rating-star:hover {
+            transform: scale(1.2);
+        }
+        .book-image {
+            transition: transform 0.5s ease;
+        }
+        .book-image:hover {
+            transform: scale(1.05);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+        }
+        .film-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .film-details.active {
+            max-height: 2000px; /* Large enough to show all content */
+        }
+        .loader {
+            border-top-color: #6d28d9;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+        }
+        @-webkit-keyframes spinner {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .update-btn {
+            transition: all 0.3s ease;
+        }
+        .update-btn:hover {
+            transform: translateY(-2px);
+        }
+        .verified-badge {
+            width: 20px;
+            height: 20px;
+            margin-left: 4px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .featured-comment {
+            border-left: 4px solid #8b5cf6;
+            background-color: #f3f0ff;
+        }
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-active {
+            overflow-x: hidden;
+            overflow-y: visible !important;
+        }
+        .rating-input label {
+            cursor: pointer;
+        }
+        .rating-input input {
+            display: none;
+        }
+        .rating-input label svg {
+            width: 25px;
+            height: 25px;
+            transition: all 0.2s ease;
+        }
+        .rating-input label svg.filled {
+            fill: #fbbf24;
+        }
+        .rating-input label svg.empty {
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="gradient-bg text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="text-3xl font-bold flex items-center">
+                            <span>Vizyon Kitap ve Film Kulübü</span>
+                            <span class="ml-2 text-2xl">📖🎬</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex space-x-4">
+                            <button id="btn-films" class="px-4 py-2 rounded-lg bg-white text-purple-700 font-medium hover:bg-purple-100 transition">Filmler</button>
+                            <button id="btn-books" class="px-4 py-2 rounded-lg bg-white text-purple-700 font-medium hover:bg-purple-100 transition">Kitaplar</button>
+                            <button id="btn-music" class="px-4 py-2 rounded-lg bg-white text-purple-700 font-medium hover:bg-purple-100 transition">Müzik</button>
+                        </div>
+                        <!-- User Menu (Logged out state) -->
+                        <div id="user-logged-out" class="flex space-x-2">
+                            <button id="btn-login" class="px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition">Giriş Yap</button>
+                            <button id="btn-register" class="px-4 py-2 rounded-lg bg-white text-purple-700 border border-purple-700 font-medium hover:bg-purple-50 transition">Kayıt Ol</button>
+                        </div>
+                        <!-- User Menu (Logged in state) -->
+                        <div id="user-logged-in" class="hidden relative">
+                            <button id="user-menu-button" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-700 text-white font-medium hover:bg-purple-800 transition">
+                                <span id="user-name-display">Kullanıcı</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                                <a href="#" id="btn-profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-100">Profilim</a>
+                                <a href="#" id="btn-admin-panel" class="hidden block px-4 py-2 text-sm text-gray-700 hover:bg-purple-100">Admin Paneli</a>
+                                <a href="#" id="btn-logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-100">Çıkış Yap</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+            <div class="bg-white p-5 rounded-lg flex flex-col items-center">
+                <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                <h2 class="text-center text-gray-800 text-xl font-semibold">Yükleniyor...</h2>
+                <p class="w-full text-center text-gray-600">Veriler getiriliyor, lütfen bekleyin.</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <!-- Films Section -->
+            <section id="films-section" class="mb-12">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Film Kulübü</h2>
+                    <div class="flex space-x-2">
+                        <button id="add-film-btn" class="admin-only hidden px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                            Film Ekle
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Film Tabs -->
+                <div class="mb-6 border-b border-gray-200">
+                    <div class="flex overflow-x-auto" id="film-tabs">
+                        <button class="film-tab tab-active px-6 py-3 text-gray-700 whitespace-nowrap" data-tab="all">Tüm Filmler</button>
+                        <!-- Film tabs will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Film Cards -->
+                <div class="space-y-8" id="film-cards">
+                    <!-- Film cards will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Books Section (Hidden by default) -->
+            <section id="books-section" class="mb-12 hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Kitap Kulübü</h2>
+                    <button id="add-book-btn" class="admin-only hidden px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Kitap Ekle
+                    </button>
+                </div>
+
+                <!-- Book Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="book-cards">
+                    <!-- Book cards will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Music Section (Hidden by default) -->
+            <section id="music-section" class="mb-12 hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Müzik Köşesi</h2>
+                </div>
+
+                <div class="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl shadow-lg overflow-hidden text-white">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">Vizyon Playlist</h3>
+                        <p class="mb-6">Vizyon rengarenk insanlardan oluşan bir topluluk ve neden bu rengarenk zevklerden oluşan bir playlistimiz olmasın? Sen de bir renk katmayı unutma!</p>
+                        <a href="https://open.spotify.com/playlist/1tGeLgECLa3lDx3X1DYzlN?si=5kI9UGfaRLu7GE0lcPcM9Q" target="_blank" class="inline-flex items-center px-6 py-3 bg-white text-purple-700 rounded-lg font-medium hover:bg-gray-100 transition">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                            Spotify Playlist'e Git
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section (Hidden by default) -->
+            <section id="profile-section" class="mb-12 hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Profilim</h2>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:flex-shrink-0">
+                            <div class="h-64 w-full md:w-48 bg-purple-100 flex items-center justify-center overflow-hidden">
+                                <img id="profile-image" class="h-full w-full object-cover" src="" alt="Profil Resmi">
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="uppercase tracking-wide text-sm text-purple-600 font-semibold">Kullanıcı Bilgileri</div>
+                            <h3 id="profile-name" class="mt-1 text-xl font-semibold text-gray-900"></h3>
+                            <p id="profile-email" class="mt-2 text-gray-600"></p>
+                            <p id="profile-gender" class="mt-2 text-gray-600"></p>
+                            <p id="profile-age" class="mt-2 text-gray-600"></p>
+                            <p id="profile-date" class="mt-2 text-gray-600"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Yorumlarım</h3>
+                    <div class="space-y-4" id="user-comments">
+                        <!-- User comments will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Panel Section (Hidden by default) -->
+            <section id="admin-section" class="mb-12 hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Admin Paneli</h2>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Kullanıcılar</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ad Soyad</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cinsiyet</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Yaş</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rol</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-users-table" class="bg-white divide-y divide-gray-200">
+                                    <!-- Users will be dynamically inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Tüm Yorumlar</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kullanıcı</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İçerik</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Puan</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Yorum</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarih</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mavi Tik</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-comments-table" class="bg-white divide-y divide-gray-200">
+                                    <!-- Comments will be dynamically inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Comment Section -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mt-8">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Kullanıcı Adına Yorum Ekle</h3>
+                        <form id="admin-comment-form" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="admin-comment-user">
+                                        Kullanıcı
+                                    </label>
+                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="admin-comment-user" required>
+                                        <option value="">Kullanıcı Seçin</option>
+                                        <!-- Users will be dynamically inserted here -->
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="admin-comment-content">
+                                        İçerik
+                                    </label>
+                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="admin-comment-content" required>
+                                        <option value="">İçerik Seçin</option>
+                                        <!-- Contents will be dynamically inserted here -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-2">
+                                    Puan
+                                </label>
+                                <div class="flex space-x-2">
+                                    <input type="number" id="admin-comment-rating" min="1" max="10" value="5" class="shadow appearance-none border rounded w-20 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <span class="py-2">/10</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="admin-comment-text">
+                                    Yorum
+                                </label>
+                                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="admin-comment-text" rows="4" placeholder="Yorumu buraya yazın" required></textarea>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="admin-comment-verified" class="mr-2">
+                                    <span class="text-sm text-gray-700">Mavi Tik Ver</span>
+                                </label>
+                            </div>
+                            <div>
+                                <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                                    Yorum Ekle
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-6">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p>© 2023 Vizyon Kitap ve Film Kulübü</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-purple-400 transition">Hakkımızda</a>
+                        <a href="#" class="hover:text-purple-400 transition">İletişim</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Giriş Yap</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <form id="login-form">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="login-email">
+                            Email
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="login-email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="login-password">
+                            Şifre
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="login-password" type="password" placeholder="******************" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Giriş Yap
+                        </button>
+                        <a class="inline-block align-baseline font-bold text-sm text-purple-600 hover:text-purple-800" href="#" id="forgot-password-link">
+                            Şifremi Unuttum
+                        </a>
+                    </div>
+                    <div id="login-error" class="text-red-500 text-sm mt-4 hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Kayıt Ol</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <form id="register-form">
+                    <div class="mb-4 flex space-x-4">
+                        <div class="w-1/2">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="register-firstname">
+                                Ad
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-firstname" type="text" placeholder="Ad" required>
+                        </div>
+                        <div class="w-1/2">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="register-lastname">
+                                Soyad
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-lastname" type="text" placeholder="Soyad" required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-email">
+                            Email
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-password">
+                            Şifre
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-password" type="password" placeholder="******************" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-age">
+                            Yaş
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-age" type="number" min="13" max="120" placeholder="Yaş" required>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="register-gender">
+                            Cinsiyet
+                        </label>
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-gender" required>
+                            <option value="">Seçiniz</option>
+                            <option value="Erkek">Erkek</option>
+                            <option value="Kadın">Kadın</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Kayıt Ol
+                        </button>
+                    </div>
+                    <div id="register-error" class="text-red-500 text-sm mt-4 hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Content Modal -->
+    <div id="add-content-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold" id="add-content-title">İçerik Ekle</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <form id="add-content-form">
+                    <input type="hidden" id="content-type" value="">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-name">
+                            İsim
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-name" type="text" placeholder="İsim" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-id">
+                            ID
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-id" type="text" placeholder="ID" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-year">
+                            Yıl
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-year" type="text" placeholder="Yıl" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-date-range">
+                            Tarih Aralığı
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-date-range" type="text" placeholder="Örn: 14-18 Temmuz">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-image">
+                            Görsel URL
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-image" type="text" placeholder="Görsel URL">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Ekle
+                        </button>
+                    </div>
+                    <div id="add-content-error" class="text-red-500 text-sm mt-4 hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div id="comment-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold" id="comment-modal-title">Yorum Ekle</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <form id="comment-form">
+                    <input type="hidden" id="comment-content-id" value="">
+                    <input type="hidden" id="comment-content-title" value="">
+                    <input type="hidden" id="comment-content-type" value="">
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            İzlediniz mi / Okudunuz mu?
+                        </label>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="comment-watched" class="mr-2">
+                            <label for="comment-watched">Evet</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            Puanınız
+                        </label>
+                        <div class="rating-input flex space-x-1">
+                            <input type="radio" name="rating" id="rating-1" value="1">
+                            <label for="rating-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-2" value="2">
+                            <label for="rating-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-3" value="3">
+                            <label for="rating-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-4" value="4">
+                            <label for="rating-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-5" value="5" checked>
+                            <label for="rating-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-6" value="6">
+                            <label for="rating-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-7" value="7">
+                            <label for="rating-7">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-8" value="8">
+                            <label for="rating-8">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-9" value="9">
+                            <label for="rating-9">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" name="rating" id="rating-10" value="10">
+                            <label for="rating-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star empty">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="comment-text">
+                            Yorumunuz
+                        </label>
+                        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment-text" rows="4" placeholder="Yorumunuzu buraya yazın"></textarea>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Gönder
+                        </button>
+                    </div>
+                    <div id="comment-error" class="text-red-500 text-sm mt-4 hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, getDoc, getDocs, addDoc, query, where, orderBy, deleteDoc, updateDoc, Timestamp, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD3i3UYYvAiGiEpM14SXbVTd9U9jk1BO58",
+            authDomain: "vizyon-da2dd.firebaseapp.com",
+            projectId: "vizyon-da2dd",
+            storageBucket: "vizyon-da2dd.firebaseapp.com",
+            messagingSenderId: "801926636810",
+            appId: "1:801926636810:web:f0789b9ef104c7338e86f3",
+            measurementId: "G-M97R718RT1"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Global variables
+        let currentUser = null;
+        let isAdmin = false;
+        let contents = [];
+        let comments = [];
+        let users = [];
+        let verifiedComments = [];
+
+        // DOM Elements
+        const loadingIndicator = document.getElementById('loading');
+        const userLoggedOut = document.getElementById('user-logged-out');
+        const userLoggedIn = document.getElementById('user-logged-in');
+        const userNameDisplay = document.getElementById('user-name-display');
+        const userDropdown = document.getElementById('user-dropdown');
+        const btnAdminPanel = document.getElementById('btn-admin-panel');
+        const adminElements = document.querySelectorAll('.admin-only');
+        
+        const btnFilms = document.getElementById('btn-films');
+        const btnBooks = document.getElementById('btn-books');
+        const btnMusic = document.getElementById('btn-music');
+        const btnProfile = document.getElementById('btn-profile');
+        const btnLogin = document.getElementById('btn-login');
+        const btnRegister = document.getElementById('btn-register');
+        const btnLogout = document.getElementById('btn-logout');
+        const addFilmBtn = document.getElementById('add-film-btn');
+        const addBookBtn = document.getElementById('add-book-btn');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        
+        const filmsSection = document.getElementById('films-section');
+        const booksSection = document.getElementById('books-section');
+        const musicSection = document.getElementById('music-section');
+        const profileSection = document.getElementById('profile-section');
+        const adminSection = document.getElementById('admin-section');
+        
+        const filmTabsContainer = document.getElementById('film-tabs');
+        const filmCardsContainer = document.getElementById('film-cards');
+        const bookCardsContainer = document.getElementById('book-cards');
+        const userCommentsContainer = document.getElementById('user-comments');
+        const adminUsersTable = document.getElementById('admin-users-table');
+        const adminCommentsTable = document.getElementById('admin-comments-table');
+        const adminCommentUserSelect = document.getElementById('admin-comment-user');
+        const adminCommentContentSelect = document.getElementById('admin-comment-content');
+
+        // Modal elements
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const addContentModal = document.getElementById('add-content-modal');
+        const commentModal = document.getElementById('comment-modal');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const addContentForm = document.getElementById('add-content-form');
+        const commentForm = document.getElementById('comment-form');
+        const adminCommentForm = document.getElementById('admin-comment-form');
+
+        // Default profile images
+        const defaultMaleImage = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
+        const defaultFemaleImage = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
+        const verifiedBadgeUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Twitter_Verified_Badge.svg/2048px-Twitter_Verified_Badge.svg.png";
+
+        // Sample data from JSON
+        const sampleFilms = [
+            {
+                id: "inception",
+                name: "Inception",
+                year: "2010",
+                image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+                tur: "film",
+                tarih_araligi: "14–18 Temmuz"
+            },
+            {
+                id: "theshawshankredemption",
+                name: "The Shawshank Redemption",
+                year: "1994",
+                image: "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+                tur: "film",
+                tarih_araligi: "10–15 Eylül"
+            },
+            {
+                id: "thegodfather",
+                name: "The Godfather",
+                year: "1972",
+                image: "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+                tur: "film",
+                tarih_araligi: "20–25 Mart"
+            },
+            {
+                id: "pulpfiction",
+                name: "Pulp Fiction",
+                year: "1994",
+                image: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+                tur: "film",
+                tarih_araligi: "5–10 Ekim"
+            },
+            {
+                id: "monalisasmile",
+                name: "Mona Lisa Smile",
+                year: "2003",
+                image: "https://m.media-amazon.com/images/M/MV5BMTY4MTI4NjY1N15BMl5BanBnXkFtZTYwMDk2MDE3._V1_.jpg",
+                tur: "film",
+                tarih_araligi: "1–5 Aralık"
+            }
+        ];
+
+        const sampleBooks = [
+            {
+                id: "1984",
+                name: "1984",
+                year: "1949",
+                image: "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg",
+                tur: "kitap"
+            },
+            {
+                id: "tokillamockingbird",
+                name: "To Kill a Mockingbird",
+                year: "1960",
+                image: "https://m.media-amazon.com/images/I/71FxgtFKcQL._AC_UF1000,1000_QL80_.jpg",
+                tur: "kitap"
+            },
+            {
+                id: "thegreatgatsby",
+                name: "The Great Gatsby",
+                year: "1925",
+                image: "https://m.media-amazon.com/images/I/71FTb9X6wsL._AC_UF1000,1000_QL80_.jpg",
+                tur: "kitap"
+            }
+        ];
+
+        const sampleComments = [
+            {
+                icerikId: "film_inception",
+                icerikBasligi: "Inception",
+                icerikTuru: "film",
+                puan: 9,
+                yorum: "Harika bir film, Christopher Nolan'ın en iyi eserlerinden biri.",
+                watched: true,
+                userId: "sample1",
+                userEmail: "ornek@gmail.com",
+                userName: "Örnek Kullanıcı",
+                verified: true,
+                timestamp: new Date()
+            },
+            {
+                icerikId: "film_theshawshankredemption",
+                icerikBasligi: "The Shawshank Redemption",
+                icerikTuru: "film",
+                puan: 10,
+                yorum: "Tüm zamanların en iyi filmi olduğunu düşünüyorum.",
+                watched: true,
+                userId: "sample2",
+                userEmail: "ornek2@gmail.com",
+                userName: "Başka Kullanıcı",
+                verified: false,
+                timestamp: new Date()
+            },
+            {
+                icerikId: "kitap_1984",
+                icerikBasligi: "1984",
+                icerikTuru: "kitap",
+                puan: 8,
+                yorum: "Distopik edebiyatın temel taşlarından biri.",
+                watched: true,
+                userId: "sample1",
+                userEmail: "ornek@gmail.com",
+                userName: "Örnek Kullanıcı",
+                verified: false,
+                timestamp: new Date()
+            }
+        ];
+
+        // Initialize the app
+        async function init() {
+            try {
+                setupEventListeners();
+                setupAuthStateListener();
+                await seedSampleData();
+                await fetchData();
+                hideLoading();
+            } catch (error) {
+                console.error('Initialization error:', error);
+                alert('Veriler yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.');
+                hideLoading();
+            }
+        }
+
+        // Seed sample data to Firebase if it doesn't exist
+        async function seedSampleData() {
+            try {
+                // Check if we already have content
+                const contentsSnapshot = await getDocs(collection(db, "icerikler"));
+                if (contentsSnapshot.size === 0) {
+                    // Add sample films
+                    for (const film of sampleFilms) {
+                        await setDoc(doc(db, "icerikler", `film_${film.id}`), {
+                            ...film,
+                            createdAt: serverTimestamp()
+                        });
+                    }
+                    
+                    // Add sample books
+                    for (const book of sampleBooks) {
+                        await setDoc(doc(db, "icerikler", `kitap_${book.id}`), {
+                            ...book,
+                            createdAt: serverTimestamp()
+                        });
+                    }
+                    
+                    console.log("Sample content added to Firestore");
+                }
+                
+                // Check if we already have comments
+                const commentsSnapshot = await getDocs(collection(db, "yorumlar"));
+                if (commentsSnapshot.size === 0) {
+                    // Add sample comments
+                    for (const comment of sampleComments) {
+                        await addDoc(collection(db, "yorumlar"), {
+                            ...comment,
+                            timestamp: serverTimestamp()
+                        });
+                    }
+                    
+                    console.log("Sample comments added to Firestore");
+                }
+                
+                // Create admin user if it doesn't exist
+                try {
+                    const adminEmail = "admin@vizyon.com";
+                    const adminPassword = "admin123";
+                    
+                    // Try to sign in with admin credentials
+                    try {
+                        await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
+                        // If successful, sign out immediately
+                        await signOut(auth);
+                    } catch (error) {
+                        // If admin doesn't exist, create it
+                        if (error.code === 'auth/user-not-found') {
+                            const userCredential = await createUserWithEmailAndPassword(auth, adminEmail, adminPassword);
+                            const user = userCredential.user;
+                            
+                            // Add admin data to Firestore
+                            await setDoc(doc(db, "users", user.uid), {
+                                ad: "Admin",
+                                soyad: "User",
+                                email: adminEmail,
+                                yas: 30,
+                                cinsiyet: "Erkek",
+                                role: "admin",
+                                profilOlusturmaTarihi: serverTimestamp()
+                            });
+                            
+                            console.log("Admin user created");
+                            
+                            // Sign out the admin
+                            await signOut(auth);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error creating admin user:", error);
+                }
+                
+            } catch (error) {
+                console.error("Error seeding sample data:", error);
+            }
+        }
+
+        // Setup auth state listener
+        function setupAuthStateListener() {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    // User is signed in
+                    currentUser = user;
+                    
+                    // Get user data from Firestore
+                    try {
+                        const userDoc = await getDoc(doc(db, "users", user.uid));
+                        if (userDoc.exists()) {
+                            const userData = userDoc.data();
+                            isAdmin = userData.role === "admin";
+                            
+                            // Update UI for logged in user
+                            userNameDisplay.textContent = `${userData.ad} ${userData.soyad}`;
+                            userLoggedOut.classList.add('hidden');
+                            userLoggedIn.classList.remove('hidden');
+                            
+                            // Show admin panel button if user is admin
+                            if (isAdmin) {
+                                btnAdminPanel.classList.remove('hidden');
+                                adminElements.forEach(el => el.classList.remove('hidden'));
+                            } else {
+                                btnAdminPanel.classList.add('hidden');
+                                adminElements.forEach(el => el.classList.add('hidden'));
+                            }
+                        }
+                    } catch (error) {
+                        console.error("Error getting user data:", error);
+                    }
+                } else {
+                    // User is signed out
+                    currentUser = null;
+                    isAdmin = false;
+                    userLoggedOut.classList.remove('hidden');
+                    userLoggedIn.classList.add('hidden');
+                    btnAdminPanel.classList.add('hidden');
+                    adminElements.forEach(el => el.classList.add('hidden'));
+                    
+                    // If on admin or profile page, redirect to films
+                    if (profileSection.classList.contains('active') || adminSection.classList.contains('active')) {
+                        switchSection('films');
+                    }
+                }
+            });
+        }
+
+        // Fetch all data from Firestore
+        async function fetchData() {
+            showLoading();
+            
+            try {
+                // Fetch contents (films and books)
+                const contentsSnapshot = await getDocs(collection(db, "icerikler"));
+                contents = contentsSnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                
+                // Fetch comments
+                const commentsSnapshot = await getDocs(collection(db, "yorumlar"));
+                comments = commentsSnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                
+                // Fetch users if admin
+                if (isAdmin) {
+                    const usersSnapshot = await getDocs(collection(db, "users"));
+                    users = usersSnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }));
+                }
+                
+                // Render UI
+                renderFilmTabs();
+                renderFilms();
+                renderBooks();
+                
+                if (currentUser) {
+                    renderUserProfile();
+                }
+                
+                if (isAdmin) {
+                    renderAdminPanel();
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Render film tabs
+        function renderFilmTabs() {
+            // Clear existing tabs except the first one (All Films)
+            const allFilmsTab = filmTabsContainer.querySelector('[data-tab="all"]');
+            filmTabsContainer.innerHTML = '';
+            filmTabsContainer.appendChild(allFilmsTab);
+            
+            // Get unique film titles
+            const films = contents.filter(content => content.tur === "film");
+            
+            // Add a tab for each film
+            films.forEach(film => {
+                const tab = document.createElement('button');
+                tab.className = 'film-tab px-6 py-3 text-gray-700 whitespace-nowrap';
+                tab.textContent = film.name;
+                tab.dataset.film = film.id.replace('film_', '');
+                filmTabsContainer.appendChild(tab);
+            });
+        }
+
+        // Render all films
+        function renderFilms(filterId = null) {
+            filmCardsContainer.innerHTML = '';
+            
+            let filmsToRender = contents.filter(content => content.tur === "film");
+            if (filterId) {
+                filmsToRender = filmsToRender.filter(film => film.id.includes(filterId));
+            }
+            
+            filmsToRender.forEach(film => {
+                // Get comments for this film
+                const filmComments = comments.filter(comment => 
+                    comment.icerikId === film.id || 
+                    comment.icerikId === film.id.replace('film_', '')
+                );
+                
+                // Calculate average rating
+                const avgRating = calculateAverageRating(filmComments);
+                
+                const card = createContentCard(film, avgRating, filmComments, "film");
+                filmCardsContainer.appendChild(card);
+            });
+        }
+
+        // Render all books
+        function renderBooks() {
+            bookCardsContainer.innerHTML = '';
+            
+            const books = contents.filter(content => content.tur === "kitap");
+            
+            books.forEach(book => {
+                // Get comments for this book
+                const bookComments = comments.filter(comment => 
+                    comment.icerikId === book.id || 
+                    comment.icerikId === book.id.replace('kitap_', '')
+                );
+                
+                // Calculate average rating
+                const avgRating = calculateAverageRating(bookComments);
+                
+                const card = createContentCard(book, avgRating, bookComments, "kitap");
+                bookCardsContainer.appendChild(card);
+            });
+        }
+
+        // Create a content card (film or book)
+        function createContentCard(content, avgRating, contentComments, type) {
+            const container = document.createElement('div');
+            container.className = 'bg-white rounded-xl shadow-md overflow-hidden';
+            
+            // Extract ID without prefix
+            const contentId = content.id.replace(`${type}_`, '');
+            
+            // Default image if none provided
+            const imageUrl = content.image && content.image.trim() !== '' ? 
+                content.image : 
+                'https://via.placeholder.com/300x450?text=No+Image';
+            
+            // Main card content
+            const cardContent = `
+                <div class="md:flex">
+                    <div class="md:flex-shrink-0">
+                        <div class="h-64 md:w-48 bg-purple-100 relative">
+                            <img src="${imageUrl}" alt="${content.name}" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 bg-purple-600 text-white rounded-full px-2 py-1 text-sm font-semibold">
+                                ${avgRating > 0 ? avgRating.toFixed(1) : 'N/A'}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-800">${content.name}</h3>
+                            <p class="text-gray-600 mt-1">${content.year || ''}</p>
+                            ${content.tarih_araligi ? `<p class="text-purple-600 mt-1 font-medium">${content.tarih_araligi}</p>` : ''}
+                        </div>
+                        <div class="mt-6 flex justify-between items-center">
+                            <span class="text-sm text-gray-500 md:mr-8">${contentComments.length} yorum</span>
+                            <div class="flex space-x-2">
+                                ${currentUser ? 
+                                    `<button class="add-comment-btn px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition" 
+                                        data-id="${contentId}" 
+                                        data-title="${content.name}" 
+                                        data-type="${type}">
+                                        Yorum Ekle
+                                    </button>` : 
+                                    `<button class="px-4 py-2 bg-gray-400 text-white rounded-lg cursor-not-allowed">
+                                        Yorum için Giriş Yapın
+                                    </button>`
+                                }
+                                <button class="toggle-details px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition" data-id="${contentId}">
+                                    Yorumları Göster
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Details Section (Hidden by default) -->
+                <div class="film-details border-t border-gray-200 p-6" id="details-${contentId}">
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-gray-700 mb-4">Yorumlar ve Puanlar</h4>
+                        <div class="space-y-4" id="all-comments-${contentId}">
+                            ${renderCommentsHTML(contentComments)}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = cardContent;
+            return container;
+        }
+
+        // Generate HTML for comments
+        function renderCommentsHTML(contentComments) {
+            if (!contentComments || contentComments.length === 0) {
+                return '<p class="text-gray-500">Henüz yorum yapılmamış.</p>';
+            }
+            
+            // Sort comments by timestamp (newest first)
+            const sortedComments = [...contentComments].sort((a, b) => {
+                if (a.timestamp && b.timestamp) {
+                    return b.timestamp.toDate ? b.timestamp.toDate() - a.timestamp.toDate() : 0;
+                }
+                return 0;
+            });
+            
+            return sortedComments.map(comment => {
+                const isVerified = comment.verified === true;
+                const commentClass = isVerified ? 'featured-comment rounded-lg p-4' : 'bg-gray-50 rounded-lg p-4';
+                const verifiedBadge = isVerified ? 
+                    `<img src="${verifiedBadgeUrl}" alt="Verified" class="verified-badge ml-1">` : '';
+                
+                const formattedDate = comment.timestamp ? 
+                    (comment.timestamp.toDate ? 
+                        new Date(comment.timestamp.toDate()).toLocaleDateString('tr-TR', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        }) : '') : '';
+                
+                return `
+                    <div class="${commentClass}" data-comment-id="${comment.id}">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h5 class="font-semibold text-gray-800 flex items-center">
+                                    ${comment.userName || 'Anonim'}
+                                    ${verifiedBadge}
+                                </h5>
+                                ${formattedDate ? `<span class="text-xs text-gray-500">${formattedDate}</span>` : ''}
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="ml-1 text-gray-700">${comment.puan}/10</span>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-gray-600">${comment.yorum || ''}</p>
+                        ${isAdmin ? 
+                            `<div class="mt-3 flex justify-end space-x-2">
+                                ${!isVerified ? 
+                                    `<button class="verify-comment-btn text-xs px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" data-comment-id="${comment.id}">
+                                        Mavi Tik Ver
+                                    </button>` : 
+                                    `<button class="unverify-comment-btn text-xs px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600" data-comment-id="${comment.id}">
+                                        Mavi Tik Kaldır
+                                    </button>`
+                                }
+                                <button class="delete-comment-btn text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-comment-id="${comment.id}">
+                                    Sil
+                                </button>
+                            </div>` : 
+                            (currentUser && comment.userId === currentUser.uid ? 
+                                `<div class="mt-3 flex justify-end">
+                                    <button class="delete-my-comment-btn text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-comment-id="${comment.id}">
+                                        Sil
+                                    </button>
+                                </div>` : '')
+                        }
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Calculate average rating
+        function calculateAverageRating(comments) {
+            if (!comments || comments.length === 0) return 0;
+            
+            const validRatings = comments.filter(comment => comment.puan && !isNaN(comment.puan));
+            if (validRatings.length === 0) return 0;
+            
+            const sum = validRatings.reduce((total, comment) => total + comment.puan, 0);
+            return sum / validRatings.length;
+        }
+
+        // Render user profile
+        async function renderUserProfile() {
+            if (!currentUser) return;
+            
+            try {
+                // Get user data
+                const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    
+                    // Set profile image based on gender
+                    let profileImage = defaultMaleImage;
+                    if (userData.cinsiyet === "Kadın") {
+                        profileImage = defaultFemaleImage;
+                    }
+                    
+                    document.getElementById('profile-image').src = profileImage;
+                    document.getElementById('profile-name').textContent = `${userData.ad} ${userData.soyad}`;
+                    document.getElementById('profile-email').textContent = `Email: ${userData.email}`;
+                    document.getElementById('profile-gender').textContent = `Cinsiyet: ${userData.cinsiyet}`;
+                    document.getElementById('profile-age').textContent = `Yaş: ${userData.yas}`;
+                    
+                    // Format registration date
+                    if (userData.profilOlusturmaTarihi) {
+                        const date = userData.profilOlusturmaTarihi.toDate ? 
+                            userData.profilOlusturmaTarihi.toDate() : new Date();
+                        document.getElementById('profile-date').textContent = `Kayıt Tarihi: ${date.toLocaleDateString('tr-TR')}`;
+                    }
+                    
+                    // Get user comments
+                    const userComments = comments.filter(comment => comment.userId === currentUser.uid);
+                    
+                    // Render user comments
+                    userCommentsContainer.innerHTML = '';
+                    if (userComments.length === 0) {
+                        userCommentsContainer.innerHTML = '<p class="text-gray-500">Henüz yorum yapmadınız.</p>';
+                    } else {
+                        userComments.forEach(async comment => {
+                            // Get content details
+                            const contentId = comment.icerikId.replace(/^(film|kitap)_/, '');
+                            const content = contents.find(c => c.id.includes(contentId));
+                            
+                            const commentElement = document.createElement('div');
+                            commentElement.className = 'bg-white rounded-lg shadow p-4';
+                            
+                            const contentName = content ? content.name : 'Bilinmeyen İçerik';
+                            const contentType = comment.icerikTuru === 'film' ? 'Film' : 'Kitap';
+                            const formattedDate = comment.timestamp ? 
+                                (comment.timestamp.toDate ? 
+                                    new Date(comment.timestamp.toDate()).toLocaleDateString('tr-TR') : '') : '';
+                            
+                            commentElement.innerHTML = `
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">${contentName}</h5>
+                                        <span class="text-xs text-purple-600">${contentType}</span>
+                                        ${formattedDate ? `<span class="text-xs text-gray-500 ml-2">${formattedDate}</span>` : ''}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                        <span class="ml-1 text-gray-700">${comment.puan}/10</span>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-gray-600">${comment.yorum || ''}</p>
+                                <div class="mt-3 flex justify-end">
+                                    <button class="delete-my-comment-btn text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-comment-id="${comment.id}">
+                                        Sil
+                                    </button>
+                                </div>
+                            `;
+                            
+                            userCommentsContainer.appendChild(commentElement);
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error("Error rendering profile:", error);
+            }
+        }
+
+        // Render admin panel
+        function renderAdminPanel() {
+            if (!isAdmin) return;
+            
+            // Render users table
+            adminUsersTable.innerHTML = '';
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                
+                const formattedDate = user.profilOlusturmaTarihi ? 
+                    (user.profilOlusturmaTarihi.toDate ? 
+                        new Date(user.profilOlusturmaTarihi.toDate()).toLocaleDateString('tr-TR') : '') : '';
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${user.ad} ${user.soyad}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">${user.email}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">${user.cinsiyet}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">${user.yas}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${user.role === 'admin' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}">
+                            ${user.role}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button class="text-indigo-600 hover:text-indigo-900 mr-2 make-admin-btn ${user.role === 'admin' ? 'hidden' : ''}" data-user-id="${user.id}">Admin Yap</button>
+                        <button class="text-red-600 hover:text-red-900 delete-user-btn" data-user-id="${user.id}">Sil</button>
+                    </td>
+                `;
+                
+                adminUsersTable.appendChild(row);
+            });
+            
+            // Render comments table
+            adminCommentsTable.innerHTML = '';
+            comments.forEach(comment => {
+                const row = document.createElement('tr');
+                
+                const contentId = comment.icerikId.replace(/^(film|kitap)_/, '');
+                const content = contents.find(c => c.id.includes(contentId));
+                const contentName = content ? content.name : 'Bilinmeyen İçerik';
+                
+                const formattedDate = comment.timestamp ? 
+                    (comment.timestamp.toDate ? 
+                        new Date(comment.timestamp.toDate()).toLocaleDateString('tr-TR') : '') : '';
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${comment.userName || 'Anonim'}</div>
+                        <div class="text-xs text-gray-500">${comment.userEmail || ''}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${contentName}</div>
+                        <div class="text-xs text-gray-500">${comment.icerikTuru === 'film' ? 'Film' : 'Kitap'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${comment.puan}/10</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900 max-w-xs truncate">${comment.yorum || ''}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">${formattedDate}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <input type="checkbox" class="toggle-verified-checkbox" data-comment-id="${comment.id}" ${comment.verified ? 'checked' : ''}>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button class="text-red-600 hover:text-red-900 delete-comment-btn" data-comment-id="${comment.id}">Sil</button>
+                    </td>
+                `;
+                
+                adminCommentsTable.appendChild(row);
+            });
+
+            // Populate user dropdown for admin comment form
+            adminCommentUserSelect.innerHTML = '<option value="">Kullanıcı Seçin</option>';
+            users.forEach(user => {
+                const option = document.createElement('option');
+                option.value = user.id;
+                option.textContent = `${user.ad} ${user.soyad} (${user.email})`;
+                adminCommentUserSelect.appendChild(option);
+            });
+
+            // Populate content dropdown for admin comment form
+            adminCommentContentSelect.innerHTML = '<option value="">İçerik Seçin</option>';
+            contents.forEach(content => {
+                const option = document.createElement('option');
+                option.value = content.id;
+                option.textContent = `${content.name} (${content.tur === 'film' ? 'Film' : 'Kitap'})`;
+                adminCommentContentSelect.appendChild(option);
+            });
+        }
+
+        // Toggle film details
+        function toggleContentDetails(contentId) {
+            const detailsSection = document.getElementById(`details-${contentId}`);
+            const toggleButton = document.querySelector(`.toggle-details[data-id="${contentId}"]`);
+            
+            if (detailsSection.classList.contains('active')) {
+                detailsSection.classList.remove('active');
+                toggleButton.textContent = 'Yorumları Göster';
+            } else {
+                detailsSection.classList.add('active');
+                toggleButton.textContent = 'Yorumları Gizle';
+            }
+        }
+
+        // Switch between sections
+        function switchSection(section) {
+            filmsSection.classList.add('hidden');
+            booksSection.classList.add('hidden');
+            musicSection.classList.add('hidden');
+            profileSection.classList.add('hidden');
+            adminSection.classList.add('hidden');
+            
+            if (section === 'films') {
+                filmsSection.classList.remove('hidden');
+            } else if (section === 'books') {
+                booksSection.classList.remove('hidden');
+            } else if (section === 'music') {
+                musicSection.classList.remove('hidden');
+            } else if (section === 'profile') {
+                profileSection.classList.remove('hidden');
+            } else if (section === 'admin') {
+                adminSection.classList.remove('hidden');
+            }
+        }
+
+        // Filter films by tab
+        function filterFilms(tab) {
+            // Update active tab
+            document.querySelectorAll('.film-tab').forEach(t => {
+                t.classList.remove('tab-active');
+            });
+            tab.classList.add('tab-active');
+            
+            if (tab.dataset.tab === 'all') {
+                renderFilms();
+            } else {
+                renderFilms(tab.dataset.film);
+            }
+        }
+
+        // Show modal
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.classList.add('modal-active');
+        }
+
+        // Hide modal
+        function hideModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('modal-active');
+            
+            // Clear form errors
+            const errorElement = modal.querySelector('[id$="-error"]');
+            if (errorElement) {
+                errorElement.classList.add('hidden');
+                errorElement.textContent = '';
+            }
+            
+            // Reset forms
+            const form = modal.querySelector('form');
+            if (form) form.reset();
+        }
+
+        // Show loading indicator
+        function showLoading() {
+            loadingIndicator.classList.remove('hidden');
+        }
+
+        // Hide loading indicator
+        function hideLoading() {
+            loadingIndicator.classList.add('hidden');
+        }
+
+        // Show error message
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+
+        // Register a new user
+        async function registerUser(email, password, firstName, lastName, age, gender) {
+            try {
+                showLoading();
+                
+                // Create user in Firebase Auth
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                // Add user data to Firestore
+                await setDoc(doc(db, "users", user.uid), {
+                    ad: firstName,
+                    soyad: lastName,
+                    email: email,
+                    yas: parseInt(age),
+                    cinsiyet: gender,
+                    role: "user",
+                    profilOlusturmaTarihi: serverTimestamp()
+                });
+                
+                hideModal('register-modal');
+                return user;
+            } catch (error) {
+                console.error("Error registering user:", error);
+                let errorMessage = "Kayıt olurken bir hata oluştu.";
+                
+                if (error.code === 'auth/email-already-in-use') {
+                    errorMessage = "Bu email adresi zaten kullanılıyor.";
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = "Geçersiz email adresi.";
+                } else if (error.code === 'auth/weak-password') {
+                    errorMessage = "Şifre çok zayıf. En az 6 karakter olmalıdır.";
+                }
+                
+                showError('register-error', errorMessage);
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Login user
+        async function loginUser(email, password) {
+            try {
+                showLoading();
+                
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                hideModal('login-modal');
+                return userCredential.user;
+            } catch (error) {
+                console.error("Error logging in:", error);
+                let errorMessage = "Giriş yaparken bir hata oluştu.";
+                
+                if (error.code === 'auth/user-not-found') {
+                    errorMessage = "Bu email adresi ile kayıtlı kullanıcı bulunamadı.";
+                } else if (error.code === 'auth/wrong-password') {
+                    errorMessage = "Hatalı şifre.";
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = "Geçersiz email adresi.";
+                } else if (error.code === 'auth/invalid-credential') {
+                    errorMessage = "Geçersiz kimlik bilgileri. Email ve şifrenizi kontrol edin.";
+                }
+                
+                showError('login-error', errorMessage);
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Send password reset email
+        async function sendPasswordReset(email) {
+            try {
+                showLoading();
+                
+                await sendPasswordResetEmail(auth, email);
+                alert("Şifre sıfırlama bağlantısı email adresinize gönderildi.");
+                hideModal('login-modal');
+            } catch (error) {
+                console.error("Error sending password reset:", error);
+                let errorMessage = "Şifre sıfırlama bağlantısı gönderilirken bir hata oluştu.";
+                
+                if (error.code === 'auth/user-not-found') {
+                    errorMessage = "Bu email adresi ile kayıtlı kullanıcı bulunamadı.";
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = "Geçersiz email adresi.";
+                }
+                
+                showError('login-error', errorMessage);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Logout user
+        async function logoutUser() {
+            try {
+                await signOut(auth);
+                switchSection('films');
+            } catch (error) {
+                console.error("Error signing out:", error);
+                alert("Çıkış yaparken bir hata oluştu.");
+            }
+        }
+
+        // Add content (film or book)
+        async function addContent(name, id, year, dateRange, image, type) {
+            try {
+                showLoading();
+                
+                await setDoc(doc(db, "icerikler", `${type}_${id}`), {
+                    name: name,
+                    id: id,
+                    year: year,
+                    tarih_araligi: dateRange,
+                    image: image,
+                    tur: type,
+                    createdAt: serverTimestamp()
+                });
+                
+                hideModal('add-content-modal');
+                await fetchData();
+            } catch (error) {
+                console.error("Error adding content:", error);
+                showError('add-content-error', "İçerik eklenirken bir hata oluştu.");
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Add comment
+        async function addComment(contentId, contentTitle, contentType, rating, comment, watched) {
+            if (!currentUser) {
+                alert("Yorum yapmak için giriş yapmalısınız.");
+                return;
+            }
+            
+            try {
+                showLoading();
+                
+                // Get user data
+                const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+                if (!userDoc.exists()) {
+                    throw new Error("Kullanıcı bilgileri bulunamadı.");
+                }
+                
+                const userData = userDoc.data();
+                const userName = `${userData.ad} ${userData.soyad}`;
+                
+                // Add comment to Firestore
+                await addDoc(collection(db, "yorumlar"), {
+                    icerikId: contentId,
+                    icerikBasligi: contentTitle,
+                    icerikTuru: contentType,
+                    puan: parseInt(rating),
+                    yorum: comment,
+                    watched: watched,
+                    userId: currentUser.uid,
+                    userEmail: currentUser.email,
+                    userName: userName,
+                    timestamp: serverTimestamp(),
+                    verified: false
+                });
+                
+                hideModal('comment-modal');
+                await fetchData();
+            } catch (error) {
+                console.error("Error adding comment:", error);
+                showError('comment-error', "Yorum eklenirken bir hata oluştu.");
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Add comment as admin for a user
+        async function addCommentAsAdmin(userId, contentId, rating, comment, verified) {
+            try {
+                showLoading();
+                
+                // Get user data
+                const userDoc = await getDoc(doc(db, "users", userId));
+                if (!userDoc.exists()) {
+                    throw new Error("Kullanıcı bilgileri bulunamadı.");
+                }
+                
+                const userData = userDoc.data();
+                const userName = `${userData.ad} ${userData.soyad}`;
+                
+                // Get content data
+                const contentDoc = await getDoc(doc(db, "icerikler", contentId));
+                if (!contentDoc.exists()) {
+                    throw new Error("İçerik bilgileri bulunamadı.");
+                }
+                
+                const contentData = contentDoc.data();
+                const contentType = contentData.tur;
+                const contentTitle = contentData.name;
+                
+                // Add comment to Firestore
+                await addDoc(collection(db, "yorumlar"), {
+                    icerikId: contentId,
+                    icerikBasligi: contentTitle,
+                    icerikTuru: contentType,
+                    puan: parseInt(rating),
+                    yorum: comment,
+                    watched: true,
+                    userId: userId,
+                    userEmail: userData.email,
+                    userName: userName,
+                    timestamp: serverTimestamp(),
+                    verified: verified
+                });
+                
+                alert("Yorum başarıyla eklendi.");
+                await fetchData();
+            } catch (error) {
+                console.error("Error adding comment as admin:", error);
+                alert("Yorum eklenirken bir hata oluştu: " + error.message);
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Delete comment
+        async function deleteComment(commentId) {
+            if (!confirm("Bu yorumu silmek istediğinize emin misiniz?")) {
+                return;
+            }
+            
+            try {
+                showLoading();
+                
+                await deleteDoc(doc(db, "yorumlar", commentId));
+                await fetchData();
+            } catch (error) {
+                console.error("Error deleting comment:", error);
+                alert("Yorum silinirken bir hata oluştu.");
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Toggle verified status of comment
+        async function toggleVerifiedComment(commentId, verified) {
+            try {
+                showLoading();
+                
+                await updateDoc(doc(db, "yorumlar", commentId), {
+                    verified: verified
+                });
+                
+                await fetchData();
+            } catch (error) {
+                console.error("Error updating comment:", error);
+                alert("Yorum güncellenirken bir hata oluştu.");
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Make user admin
+        async function makeUserAdmin(userId) {
+            if (!confirm("Bu kullanıcıyı admin yapmak istediğinize emin misiniz?")) {
+                return;
+            }
+            
+            try {
+                showLoading();
+                
+                await updateDoc(doc(db, "users", userId), {
+                    role: "admin"
+                });
+                
+                await fetchData();
+            } catch (error) {
+                console.error("Error updating user:", error);
+                alert("Kullanıcı güncellenirken bir hata oluştu.");
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Delete user
+        async function deleteUser(userId) {
+            if (!confirm("Bu kullanıcıyı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.")) {
+                return;
+            }
+            
+            try {
+                showLoading();
+                
+                // Delete user from Firestore
+                await deleteDoc(doc(db, "users", userId));
+                
+                // Note: This doesn't delete the user from Firebase Auth
+                // For security reasons, deleting users from Auth requires admin SDK or custom auth tokens
+                
+                await fetchData();
+            } catch (error) {
+                console.error("Error deleting user:", error);
+                alert("Kullanıcı silinirken bir hata oluştu.");
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Update star rating display
+        function updateStarRating() {
+            const ratingInputs = document.querySelectorAll('.rating-input input');
+            const ratingLabels = document.querySelectorAll('.rating-input label svg');
+            
+            // Reset all stars to empty
+            ratingLabels.forEach(star => {
+                star.classList.add('empty');
+                star.classList.remove('filled');
+            });
+            
+            // Find the checked rating
+            const checkedRating = document.querySelector('.rating-input input:checked');
+            if (checkedRating) {
+                const rating = parseInt(checkedRating.value);
+                
+                // Fill stars up to the selected rating
+                for (let i = 0; i < rating; i++) {
+                    const star = document.querySelector(`.rating-input label[for="rating-${i+1}"] svg`);
+                    if (star) {
+                        star.classList.remove('empty');
+                        star.classList.add('filled');
+                        star.style.fill = '#fbbf24';
+                    }
+                }
+            }
+        }
+
+        // Setup all event listeners
+        function setupEventListeners() {
+            // Navigation buttons
+            btnFilms.addEventListener('click', () => switchSection('films'));
+            btnBooks.addEventListener('click', () => switchSection('books'));
+            btnMusic.addEventListener('click', () => switchSection('music'));
+            btnProfile.addEventListener('click', () => {
+                switchSection('profile');
+                renderUserProfile();
+            });
+            btnAdminPanel.addEventListener('click', () => {
+                switchSection('admin');
+                renderAdminPanel();
+            });
+            
+            // User menu dropdown
+            document.getElementById('user-menu-button').addEventListener('click', () => {
+                userDropdown.classList.toggle('hidden');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#user-menu-button') && !e.target.closest('#user-dropdown')) {
+                    userDropdown.classList.add('hidden');
+                }
+            });
+            
+            // Auth buttons
+            btnLogin.addEventListener('click', () => showModal('login-modal'));
+            btnRegister.addEventListener('click', () => showModal('register-modal'));
+            btnLogout.addEventListener('click', logoutUser);
+            
+            // Forgot password
+            forgotPasswordLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                if (!email) {
+                    showError('login-error', "Lütfen şifresini sıfırlamak istediğiniz hesabın email adresini girin.");
+                    return;
+                }
+                sendPasswordReset(email);
+            });
+            
+            // Admin buttons
+            addFilmBtn.addEventListener('click', () => {
+                document.getElementById('add-content-title').textContent = 'Film Ekle';
+                document.getElementById('content-type').value = 'film';
+                showModal('add-content-modal');
+            });
+            
+            addBookBtn.addEventListener('click', () => {
+                document.getElementById('add-content-title').textContent = 'Kitap Ekle';
+                document.getElementById('content-type').value = 'kitap';
+                showModal('add-content-modal');
+            });
+            
+            // Film tabs
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('film-tab')) {
+                    filterFilms(e.target);
+                }
+            });
+            
+            // Modal close buttons
+            document.querySelectorAll('.modal-close').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    hideModal(modal.id);
+                });
+            });
+            
+            // Modal overlay close
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', () => {
+                    const modal = overlay.closest('.modal');
+                    hideModal(modal.id);
+                });
+            });
+            
+            // Rating stars
+            document.querySelectorAll('.rating-input input').forEach(input => {
+                input.addEventListener('change', updateStarRating);
+            });
+            
+            // Form submissions
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                try {
+                    await loginUser(email, password);
+                } catch (error) {
+                    // Error is handled in loginUser function
+                }
+            });
+            
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const firstName = document.getElementById('register-firstname').value;
+                const lastName = document.getElementById('register-lastname').value;
+                const age = document.getElementById('register-age').value;
+                const gender = document.getElementById('register-gender').value;
+                
+                try {
+                    await registerUser(email, password, firstName, lastName, age, gender);
+                } catch (error) {
+                    // Error is handled in registerUser function
+                }
+            });
+            
+            addContentForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const name = document.getElementById('content-name').value;
+                const id = document.getElementById('content-id').value;
+                const year = document.getElementById('content-year').value;
+                const dateRange = document.getElementById('content-date-range').value;
+                const image = document.getElementById('content-image').value;
+                const type = document.getElementById('content-type').value;
+                
+                try {
+                    await addContent(name, id, year, dateRange, image, type);
+                } catch (error) {
+                    // Error is handled in addContent function
+                }
+            });
+            
+            commentForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const contentId = document.getElementById('comment-content-id').value;
+                const contentTitle = document.getElementById('comment-content-title').value;
+                const contentType = document.getElementById('comment-content-type').value;
+                const watched = document.getElementById('comment-watched').checked;
+                const rating = document.querySelector('input[name="rating"]:checked')?.value || 5;
+                const comment = document.getElementById('comment-text').value;
+                
+                try {
+                    await addComment(contentId, contentTitle, contentType, rating, comment, watched);
+                } catch (error) {
+                    // Error is handled in addComment function
+                }
+            });
+            
+            adminCommentForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const userId = document.getElementById('admin-comment-user').value;
+                const contentId = document.getElementById('admin-comment-content').value;
+                const rating = document.getElementById('admin-comment-rating').value;
+                const comment = document.getElementById('admin-comment-text').value;
+                const verified = document.getElementById('admin-comment-verified').checked;
+                
+                if (!userId || !contentId) {
+                    alert("Lütfen kullanıcı ve içerik seçin.");
+                    return;
+                }
+                
+                try {
+                    await addCommentAsAdmin(userId, contentId, rating, comment, verified);
+                    adminCommentForm.reset();
+                } catch (error) {
+                    // Error is handled in addCommentAsAdmin function
+                }
+            });
+            
+            // Dynamic event listeners
+            document.addEventListener('click', async (e) => {
+                // Toggle content details
+                if (e.target.closest('.toggle-details')) {
+                    const contentId = e.target.closest('.toggle-details').dataset.id;
+                    toggleContentDetails(contentId);
+                }
+                
+                // Add comment button
+                if (e.target.closest('.add-comment-btn')) {
+                    const btn = e.target.closest('.add-comment-btn');
+                    const contentId = btn.dataset.id;
+                    const contentTitle = btn.dataset.title;
+                    const contentType = btn.dataset.type;
+                    
+                    document.getElementById('comment-modal-title').textContent = `${contentTitle} için Yorum Ekle`;
+                    document.getElementById('comment-content-id').value = `${contentType}_${contentId}`;
+                    document.getElementById('comment-content-title').value = contentTitle;
+                    document.getElementById('comment-content-type').value = contentType;
+                    
+                    // Reset rating stars
+                    document.querySelectorAll('.rating-input input').forEach(input => {
+                        input.checked = input.id === 'rating-5';
+                    });
+                    updateStarRating();
+                    
+                    showModal('comment-modal');
+                }
+                
+                // Delete comment button
+                if (e.target.closest('.delete-comment-btn') || e.target.closest('.delete-my-comment-btn')) {
+                    const commentId = e.target.closest('[data-comment-id]').dataset.commentId;
+                    await deleteComment(commentId);
+                }
+                
+                // Verify comment button
+                if (e.target.closest('.verify-comment-btn')) {
+                    const commentId = e.target.closest('[data-comment-id]').dataset.commentId;
+                    await toggleVerifiedComment(commentId, true);
+                }
+                
+                // Unverify comment button
+                if (e.target.closest('.unverify-comment-btn')) {
+                    const commentId = e.target.closest('[data-comment-id]').dataset.commentId;
+                    await toggleVerifiedComment(commentId, false);
+                }
+                
+                // Make admin button
+                if (e.target.closest('.make-admin-btn')) {
+                    const userId = e.target.closest('[data-user-id]').dataset.userId;
+                    await makeUserAdmin(userId);
+                }
+                
+                // Delete user button
+                if (e.target.closest('.delete-user-btn')) {
+                    const userId = e.target.closest('[data-user-id]').dataset.userId;
+                    await deleteUser(userId);
+                }
+                
+                // Rating stars in comment modal
+                if (e.target.closest('.rating-input label')) {
+                    const label = e.target.closest('.rating-input label');
+                    const input = document.getElementById(label.getAttribute('for'));
+                    if (input) {
+                        input.checked = true;
+                        updateStarRating();
+                    }
+                }
+            });
+            
+            // Verified checkbox in admin panel
+            document.addEventListener('change', async (e) => {
+                if (e.target.classList.contains('toggle-verified-checkbox')) {
+                    const commentId = e.target.dataset.commentId;
+                    const isChecked = e.target.checked;
+                    await toggleVerifiedComment(commentId, isChecked);
+                }
+            });
+            
+            // Initialize star rating display
+            document.addEventListener('DOMContentLoaded', () => {
+                updateStarRating();
+            });
+        }
+
+        // Initialize the app
+        init();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965e7d8271dfe343',t:'MTc1MzY0Mzk4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
