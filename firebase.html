@@ -11,10 +11,10 @@
             font-family: 'Poppins', sans-serif;
             background-color: #f8f5ff;
         }
-        .movie-card {
+        .movie-card, .book-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .movie-card:hover {
+        .movie-card:hover, .book-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
@@ -32,6 +32,8 @@
         }
         .book-image {
             transition: transform 0.5s ease;
+            height: 280px;
+            object-fit: cover;
         }
         .book-image:hover {
             transform: scale(1.05);
@@ -39,12 +41,12 @@
         .gradient-bg {
             background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
         }
-        .film-details {
+        .film-details, .book-details {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
         }
-        .film-details.active {
+        .film-details.active, .book-details.active {
             max-height: 2000px; /* Large enough to show all content */
         }
         .loader {
@@ -101,10 +103,73 @@
         .rating-input label svg.empty {
             fill: none;
         }
+        .welcome-screen {
+            background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+            min-height: 100vh;
+        }
+        .welcome-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+        }
+        .welcome-card img {
+            max-width: 150px;
+        }
+        .welcome-btn {
+            transition: all 0.3s ease;
+        }
+        .welcome-btn:hover {
+            transform: translateY(-3px);
+        }
+        .book-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .book-card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .book-actions {
+            margin-top: auto;
+        }
+        .pdf-download-btn {
+            transition: all 0.3s ease;
+        }
+        .pdf-download-btn:hover {
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
-    <div class="min-h-screen flex flex-col">
+    <!-- Welcome Screen (Shown first) -->
+    <div id="welcome-screen" class="welcome-screen flex items-center justify-center">
+        <div class="welcome-card p-8 flex flex-col items-center">
+            <div class="mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h18M3 16h18" />
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">Vizyon Kitap ve Film Kulübü</h1>
+            <p class="text-gray-600 text-center mb-8">Kitap ve film tutkunları için özel bir platform</p>
+            <div class="flex flex-col w-full space-y-4">
+                <button id="welcome-login-btn" class="welcome-btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-md">
+                    Giriş Yap
+                </button>
+                <button id="welcome-register-btn" class="welcome-btn bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-lg border border-purple-600 shadow-md">
+                    Kayıt Ol
+                </button>
+                <button id="welcome-guest-btn" class="text-gray-500 hover:text-gray-700 font-medium py-2">
+                    Misafir olarak devam et
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-app" class="min-h-screen flex flex-col hidden">
         <!-- Header -->
         <header class="gradient-bg text-white shadow-lg">
             <div class="container mx-auto px-4 py-6">
@@ -146,7 +211,7 @@
         </header>
 
         <!-- Loading Indicator -->
-        <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
             <div class="bg-white p-5 rounded-lg flex flex-col items-center">
                 <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
                 <h2 class="text-center text-gray-800 text-xl font-semibold">Yükleniyor...</h2>
@@ -306,61 +371,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Admin Comment Section -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden mt-8">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Kullanıcı Adına Yorum Ekle</h3>
-                        <form id="admin-comment-form" class="space-y-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="admin-comment-user">
-                                        Kullanıcı
-                                    </label>
-                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="admin-comment-user" required>
-                                        <option value="">Kullanıcı Seçin</option>
-                                        <!-- Users will be dynamically inserted here -->
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="admin-comment-content">
-                                        İçerik
-                                    </label>
-                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="admin-comment-content" required>
-                                        <option value="">İçerik Seçin</option>
-                                        <!-- Contents will be dynamically inserted here -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">
-                                    Puan
-                                </label>
-                                <div class="flex space-x-2">
-                                    <input type="number" id="admin-comment-rating" min="1" max="10" value="5" class="shadow appearance-none border rounded w-20 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                    <span class="py-2">/10</span>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="admin-comment-text">
-                                    Yorum
-                                </label>
-                                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="admin-comment-text" rows="4" placeholder="Yorumu buraya yazın" required></textarea>
-                            </div>
-                            <div>
-                                <label class="flex items-center">
-                                    <input type="checkbox" id="admin-comment-verified" class="mr-2">
-                                    <span class="text-sm text-gray-700">Mavi Tik Ver</span>
-                                </label>
-                            </div>
-                            <div>
-                                <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
-                                    Yorum Ekle
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </section>
         </main>
 
@@ -491,64 +501,6 @@
         </div>
     </div>
 
-    <!-- Add Content Modal -->
-    <div id="add-content-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-        
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold" id="add-content-title">İçerik Ekle</p>
-                    <div class="modal-close cursor-pointer z-50">
-                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-                        </svg>
-                    </div>
-                </div>
-
-                <form id="add-content-form">
-                    <input type="hidden" id="content-type" value="">
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-name">
-                            İsim
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-name" type="text" placeholder="İsim" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-id">
-                            ID
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-id" type="text" placeholder="ID" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-year">
-                            Yıl
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-year" type="text" placeholder="Yıl" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-date-range">
-                            Tarih Aralığı
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-date-range" type="text" placeholder="Örn: 14-18 Temmuz">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="content-image">
-                            Görsel URL
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="content-image" type="text" placeholder="Görsel URL">
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Ekle
-                        </button>
-                    </div>
-                    <div id="add-content-error" class="text-red-500 text-sm mt-4 hidden"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- Comment Modal -->
     <div id="comment-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
@@ -665,40 +617,139 @@
         </div>
     </div>
 
-    <!-- Firebase Scripts -->
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, collection, doc, setDoc, getDoc, getDocs, addDoc, query, where, orderBy, deleteDoc, updateDoc, Timestamp, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    <!-- Add Film Modal -->
+    <div id="add-film-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Film Ekle</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
 
-        // Your web app's Firebase configuration
+                <form id="add-film-form">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="film-name">
+                            Film Adı
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="film-name" type="text" placeholder="Film Adı" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="film-year">
+                            Yayın Yılı
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="film-year" type="text" placeholder="Yayın Yılı">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="film-image">
+                            Resim URL
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="film-image" type="text" placeholder="Resim URL">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="film-date-range">
+                            Tarih Aralığı
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="film-date-range" type="text" placeholder="Örn: 21–25 Temmuz">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Ekle
+                        </button>
+                    </div>
+                    <div id="add-film-error" class="text-red-500 text-sm mt-4 hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Book Modal -->
+    <div id="add-book-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Kitap Ekle</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <form id="add-book-form">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="book-name">
+                            Kitap Adı
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="book-name" type="text" placeholder="Kitap Adı" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="book-author">
+                            Yazar
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="book-author" type="text" placeholder="Yazar">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="book-image">
+                            Resim URL
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="book-image" type="text" placeholder="Resim URL">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="book-pdf">
+                            PDF URL (İsteğe bağlı)
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="book-pdf" type="text" placeholder="PDF URL">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="book-date-range">
+                            Tarih Aralığı
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="book-date-range" type="text" placeholder="Örn: Temmuzun son haftası">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Ekle
+                        </button>
+                    </div>
+                    <div id="add-book-error" class="text-red-500 text-sm mt-4 hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        // Firebase yapılandırması
         const firebaseConfig = {
             apiKey: "AIzaSyD3i3UYYvAiGiEpM14SXbVTd9U9jk1BO58",
             authDomain: "vizyon-da2dd.firebaseapp.com",
             projectId: "vizyon-da2dd",
-            storageBucket: "vizyon-da2dd.firebaseapp.com",
+            storageBucket: "vizyon-da2dd.firebasestorage.app",
             messagingSenderId: "801926636810",
             appId: "1:801926636810:web:f0789b9ef104c7338e86f3",
             measurementId: "G-M97R718RT1"
         };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth();
-        const db = getFirestore();
+        // Firebase'i başlat
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-        // Global variables
-        let currentUser = null;
-        let isAdmin = false;
-        let contents = [];
-        let comments = [];
-        let users = [];
-        let verifiedComments = [];
-
-        // DOM Elements
+        // DOM elementleri
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const mainApp = document.getElementById('main-app');
         const loadingIndicator = document.getElementById('loading');
         const userLoggedOut = document.getElementById('user-logged-out');
         const userLoggedIn = document.getElementById('user-logged-in');
@@ -714,9 +765,12 @@
         const btnLogin = document.getElementById('btn-login');
         const btnRegister = document.getElementById('btn-register');
         const btnLogout = document.getElementById('btn-logout');
-        const addFilmBtn = document.getElementById('add-film-btn');
-        const addBookBtn = document.getElementById('add-book-btn');
-        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const btnAddFilm = document.getElementById('add-film-btn');
+        const btnAddBook = document.getElementById('add-book-btn');
+        
+        const welcomeLoginBtn = document.getElementById('welcome-login-btn');
+        const welcomeRegisterBtn = document.getElementById('welcome-register-btn');
+        const welcomeGuestBtn = document.getElementById('welcome-guest-btn');
         
         const filmsSection = document.getElementById('films-section');
         const booksSection = document.getElementById('books-section');
@@ -727,409 +781,512 @@
         const filmTabsContainer = document.getElementById('film-tabs');
         const filmCardsContainer = document.getElementById('film-cards');
         const bookCardsContainer = document.getElementById('book-cards');
-        const userCommentsContainer = document.getElementById('user-comments');
-        const adminUsersTable = document.getElementById('admin-users-table');
-        const adminCommentsTable = document.getElementById('admin-comments-table');
-        const adminCommentUserSelect = document.getElementById('admin-comment-user');
-        const adminCommentContentSelect = document.getElementById('admin-comment-content');
-
-        // Modal elements
+        
+        // Modal elementleri
         const loginModal = document.getElementById('login-modal');
         const registerModal = document.getElementById('register-modal');
-        const addContentModal = document.getElementById('add-content-modal');
         const commentModal = document.getElementById('comment-modal');
+        const addFilmModal = document.getElementById('add-film-modal');
+        const addBookModal = document.getElementById('add-book-modal');
+        
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
-        const addContentForm = document.getElementById('add-content-form');
         const commentForm = document.getElementById('comment-form');
-        const adminCommentForm = document.getElementById('admin-comment-form');
+        const addFilmForm = document.getElementById('add-film-form');
+        const addBookForm = document.getElementById('add-book-form');
 
-        // Default profile images
+        // Global değişkenler
+        let currentUser = null;
+        let isAdmin = false;
+        let dataLoaded = false;
+        let contents = [];
+        let comments = [];
+        let users = [];
+
+        // Default profil resimleri
         const defaultMaleImage = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
         const defaultFemaleImage = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
         const verifiedBadgeUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Twitter_Verified_Badge.svg/2048px-Twitter_Verified_Badge.svg.png";
 
-        // Sample data from JSON
-        const sampleFilms = [
-            {
-                id: "inception",
-                name: "Inception",
-                year: "2010",
-                image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
-                tur: "film",
-                tarih_araligi: "14–18 Temmuz"
-            },
-            {
-                id: "theshawshankredemption",
-                name: "The Shawshank Redemption",
-                year: "1994",
-                image: "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
-                tur: "film",
-                tarih_araligi: "10–15 Eylül"
-            },
-            {
-                id: "thegodfather",
-                name: "The Godfather",
-                year: "1972",
-                image: "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
-                tur: "film",
-                tarih_araligi: "20–25 Mart"
-            },
-            {
-                id: "pulpfiction",
-                name: "Pulp Fiction",
-                year: "1994",
-                image: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
-                tur: "film",
-                tarih_araligi: "5–10 Ekim"
-            },
-            {
-                id: "monalisasmile",
-                name: "Mona Lisa Smile",
-                year: "2003",
-                image: "https://m.media-amazon.com/images/M/MV5BMTY4MTI4NjY1N15BMl5BanBnXkFtZTYwMDk2MDE3._V1_.jpg",
-                tur: "film",
-                tarih_araligi: "1–5 Aralık"
-            }
-        ];
-
-        const sampleBooks = [
-            {
-                id: "1984",
-                name: "1984",
-                year: "1949",
-                image: "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg",
-                tur: "kitap"
-            },
-            {
-                id: "tokillamockingbird",
-                name: "To Kill a Mockingbird",
-                year: "1960",
-                image: "https://m.media-amazon.com/images/I/71FxgtFKcQL._AC_UF1000,1000_QL80_.jpg",
-                tur: "kitap"
-            },
-            {
-                id: "thegreatgatsby",
-                name: "The Great Gatsby",
-                year: "1925",
-                image: "https://m.media-amazon.com/images/I/71FTb9X6wsL._AC_UF1000,1000_QL80_.jpg",
-                tur: "kitap"
-            }
-        ];
-
-        const sampleComments = [
-            {
-                icerikId: "film_inception",
-                icerikBasligi: "Inception",
-                icerikTuru: "film",
-                puan: 9,
-                yorum: "Harika bir film, Christopher Nolan'ın en iyi eserlerinden biri.",
-                watched: true,
-                userId: "sample1",
-                userEmail: "ornek@gmail.com",
-                userName: "Örnek Kullanıcı",
-                verified: true,
-                timestamp: new Date()
-            },
-            {
-                icerikId: "film_theshawshankredemption",
-                icerikBasligi: "The Shawshank Redemption",
-                icerikTuru: "film",
-                puan: 10,
-                yorum: "Tüm zamanların en iyi filmi olduğunu düşünüyorum.",
-                watched: true,
-                userId: "sample2",
-                userEmail: "ornek2@gmail.com",
-                userName: "Başka Kullanıcı",
-                verified: false,
-                timestamp: new Date()
-            },
-            {
-                icerikId: "kitap_1984",
-                icerikBasligi: "1984",
-                icerikTuru: "kitap",
-                puan: 8,
-                yorum: "Distopik edebiyatın temel taşlarından biri.",
-                watched: true,
-                userId: "sample1",
-                userEmail: "ornek@gmail.com",
-                userName: "Örnek Kullanıcı",
-                verified: false,
-                timestamp: new Date()
-            }
-        ];
-
-        // Initialize the app
-        async function init() {
-            try {
-                setupEventListeners();
-                setupAuthStateListener();
-                await seedSampleData();
-                await fetchData();
-                hideLoading();
-            } catch (error) {
-                console.error('Initialization error:', error);
-                alert('Veriler yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.');
-                hideLoading();
-            }
-        }
-
-        // Seed sample data to Firebase if it doesn't exist
-        async function seedSampleData() {
-            try {
-                // Check if we already have content
-                const contentsSnapshot = await getDocs(collection(db, "icerikler"));
-                if (contentsSnapshot.size === 0) {
-                    // Add sample films
-                    for (const film of sampleFilms) {
-                        await setDoc(doc(db, "icerikler", `film_${film.id}`), {
-                            ...film,
-                            createdAt: serverTimestamp()
-                        });
-                    }
-                    
-                    // Add sample books
-                    for (const book of sampleBooks) {
-                        await setDoc(doc(db, "icerikler", `kitap_${book.id}`), {
-                            ...book,
-                            createdAt: serverTimestamp()
-                        });
-                    }
-                    
-                    console.log("Sample content added to Firestore");
-                }
-                
-                // Check if we already have comments
-                const commentsSnapshot = await getDocs(collection(db, "yorumlar"));
-                if (commentsSnapshot.size === 0) {
-                    // Add sample comments
-                    for (const comment of sampleComments) {
-                        await addDoc(collection(db, "yorumlar"), {
-                            ...comment,
-                            timestamp: serverTimestamp()
-                        });
-                    }
-                    
-                    console.log("Sample comments added to Firestore");
-                }
-                
-                // Create admin user if it doesn't exist
-                try {
-                    const adminEmail = "admin@vizyon.com";
-                    const adminPassword = "admin123";
-                    
-                    // Try to sign in with admin credentials
-                    try {
-                        await signInWithEmailAndPassword(auth, adminEmail, adminPassword);
-                        // If successful, sign out immediately
-                        await signOut(auth);
-                    } catch (error) {
-                        // If admin doesn't exist, create it
-                        if (error.code === 'auth/user-not-found') {
-                            const userCredential = await createUserWithEmailAndPassword(auth, adminEmail, adminPassword);
-                            const user = userCredential.user;
-                            
-                            // Add admin data to Firestore
-                            await setDoc(doc(db, "users", user.uid), {
-                                ad: "Admin",
-                                soyad: "User",
-                                email: adminEmail,
-                                yas: 30,
-                                cinsiyet: "Erkek",
-                                role: "admin",
-                                profilOlusturmaTarihi: serverTimestamp()
-                            });
-                            
-                            console.log("Admin user created");
-                            
-                            // Sign out the admin
-                            await signOut(auth);
-                        }
-                    }
-                } catch (error) {
-                    console.error("Error creating admin user:", error);
-                }
-                
-            } catch (error) {
-                console.error("Error seeding sample data:", error);
-            }
-        }
-
-        // Setup auth state listener
-        function setupAuthStateListener() {
-            onAuthStateChanged(auth, async (user) => {
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', () => {
+            setupEventListeners();
+            
+            // Firebase Auth durumunu dinle
+            auth.onAuthStateChanged(user => {
                 if (user) {
-                    // User is signed in
-                    currentUser = user;
-                    
-                    // Get user data from Firestore
-                    try {
-                        const userDoc = await getDoc(doc(db, "users", user.uid));
-                        if (userDoc.exists()) {
-                            const userData = userDoc.data();
-                            isAdmin = userData.role === "admin";
-                            
-                            // Update UI for logged in user
-                            userNameDisplay.textContent = `${userData.ad} ${userData.soyad}`;
-                            userLoggedOut.classList.add('hidden');
-                            userLoggedIn.classList.remove('hidden');
-                            
-                            // Show admin panel button if user is admin
-                            if (isAdmin) {
-                                btnAdminPanel.classList.remove('hidden');
-                                adminElements.forEach(el => el.classList.remove('hidden'));
-                            } else {
-                                btnAdminPanel.classList.add('hidden');
-                                adminElements.forEach(el => el.classList.add('hidden'));
-                            }
-                        }
-                    } catch (error) {
-                        console.error("Error getting user data:", error);
-                    }
+                    // Kullanıcı giriş yapmış
+                    fetchUserData(user.uid);
                 } else {
-                    // User is signed out
+                    // Kullanıcı çıkış yapmış
                     currentUser = null;
                     isAdmin = false;
-                    userLoggedOut.classList.remove('hidden');
-                    userLoggedIn.classList.add('hidden');
-                    btnAdminPanel.classList.add('hidden');
-                    adminElements.forEach(el => el.classList.add('hidden'));
                     
-                    // If on admin or profile page, redirect to films
-                    if (profileSection.classList.contains('active') || adminSection.classList.contains('active')) {
-                        switchSection('films');
-                    }
+                    // Welcome screen'i göster
+                    welcomeScreen.classList.remove('hidden');
+                    mainApp.classList.add('hidden');
+                    
+                    // Kullanıcı menüsünü güncelle
+                    userLoggedIn.classList.add('hidden');
+                    userLoggedOut.classList.remove('hidden');
+                    userDropdown.classList.add('hidden');
                 }
+            });
+        });
+
+        // Kullanıcı verilerini getir
+        function fetchUserData(userId) {
+            showLoading();
+            
+            db.collection('users').doc(userId).get()
+                .then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        
+                        currentUser = {
+                            id: userId,
+                            name: `${userData.ad} ${userData.soyad}`,
+                            email: userData.email,
+                            role: userData.role || 'user',
+                            gender: userData.cinsiyet,
+                            age: userData.yas,
+                            createdAt: userData.createdAt
+                        };
+                        
+                        isAdmin = currentUser.role === 'admin';
+                        
+                        showMainApp();
+                    } else {
+                        console.error("Kullanıcı verisi bulunamadı");
+                        auth.signOut(); // Kullanıcı verisi yoksa çıkış yap
+                    }
+                    
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error("Kullanıcı verisi getirme hatası:", error);
+                    hideLoading();
+                });
+        }
+
+        // Event listener'ları ayarla
+        function setupEventListeners() {
+            // Welcome screen butonları
+            welcomeLoginBtn.addEventListener('click', () => {
+                showModal('login-modal');
+            });
+            
+            welcomeRegisterBtn.addEventListener('click', () => {
+                showModal('register-modal');
+            });
+            
+            welcomeGuestBtn.addEventListener('click', () => {
+                loginAsGuest();
+            });
+            
+            // Header butonları
+            btnFilms.addEventListener('click', () => {
+                switchSection('films');
+            });
+            
+            btnBooks.addEventListener('click', () => {
+                switchSection('books');
+            });
+            
+            btnMusic.addEventListener('click', () => {
+                switchSection('music');
+            });
+            
+            btnProfile.addEventListener('click', () => {
+                switchSection('profile');
+                renderUserProfile();
+            });
+            
+            btnAdminPanel.addEventListener('click', () => {
+                switchSection('admin');
+                renderAdminPanel();
+            });
+            
+            btnLogin.addEventListener('click', () => {
+                showModal('login-modal');
+            });
+            
+            btnRegister.addEventListener('click', () => {
+                showModal('register-modal');
+            });
+            
+            btnLogout.addEventListener('click', () => {
+                logout();
+            });
+            
+            // Film ve kitap ekleme butonları
+            btnAddFilm.addEventListener('click', () => {
+                showModal('add-film-modal');
+            });
+            
+            btnAddBook.addEventListener('click', () => {
+                showModal('add-book-modal');
+            });
+            
+            // User menu dropdown
+            document.getElementById('user-menu-button').addEventListener('click', () => {
+                userDropdown.classList.toggle('hidden');
+            });
+            
+            // Modal close butonları
+            document.querySelectorAll('.modal-close').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    hideModal(modal.id);
+                });
+            });
+            
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', () => {
+                    const modal = overlay.closest('.modal');
+                    hideModal(modal.id);
+                });
+            });
+            
+            // Form submit olayları
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                login(email, password);
+            });
+            
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const firstName = document.getElementById('register-firstname').value;
+                const lastName = document.getElementById('register-lastname').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const age = document.getElementById('register-age').value;
+                const gender = document.getElementById('register-gender').value;
+                
+                register(firstName, lastName, email, password, age, gender);
+            });
+            
+            commentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const contentId = document.getElementById('comment-content-id').value;
+                const contentTitle = document.getElementById('comment-content-title').value;
+                const contentType = document.getElementById('comment-content-type').value;
+                const rating = document.querySelector('input[name="rating"]:checked').value;
+                const comment = document.getElementById('comment-text').value;
+                const watched = document.getElementById('comment-watched').checked;
+                
+                addComment(contentId, contentTitle, contentType, rating, comment, watched);
+            });
+            
+            // Film ekleme formu
+            addFilmForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('film-name').value;
+                const year = document.getElementById('film-year').value;
+                const image = document.getElementById('film-image').value;
+                const dateRange = document.getElementById('film-date-range').value;
+                
+                addFilm(name, year, image, dateRange);
+            });
+            
+            // Kitap ekleme formu
+            addBookForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('book-name').value;
+                const author = document.getElementById('book-author').value;
+                const image = document.getElementById('book-image').value;
+                const pdfUrl = document.getElementById('book-pdf').value;
+                const dateRange = document.getElementById('book-date-range').value;
+                
+                addBook(name, author, image, dateRange, pdfUrl);
+            });
+            
+            // Film tabs event listener
+            filmTabsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('film-tab')) {
+                    filterFilms(e.target);
+                }
+            });
+            
+            // Yıldız derecelendirme sistemi
+            document.querySelectorAll('.rating-input label').forEach(label => {
+                label.addEventListener('click', () => {
+                    const rating = label.getAttribute('for').split('-')[1];
+                    updateStarRating(rating);
+                });
             });
         }
 
-        // Fetch all data from Firestore
-        async function fetchData() {
+        // Giriş yap
+        function login(email, password) {
             showLoading();
             
-            try {
-                // Fetch contents (films and books)
-                const contentsSnapshot = await getDocs(collection(db, "icerikler"));
-                contents = contentsSnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    hideModal('login-modal');
+                })
+                .catch(error => {
+                    document.getElementById('login-error').textContent = error.message;
+                    document.getElementById('login-error').classList.remove('hidden');
+                    hideLoading();
+                });
+        }
+
+        // Kayıt ol
+        function register(firstName, lastName, email, password, age, gender) {
+            showLoading();
+            
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(userCredential => {
+                    const user = userCredential.user;
+                    
+                    // Kullanıcı verilerini Firestore'a kaydet
+                    return db.collection('users').doc(user.uid).set({
+                        ad: firstName,
+                        soyad: lastName,
+                        email: email,
+                        yas: parseInt(age),
+                        cinsiyet: gender,
+                        role: 'user',
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                })
+                .then(() => {
+                    hideModal('register-modal');
+                })
+                .catch(error => {
+                    document.getElementById('register-error').textContent = error.message;
+                    document.getElementById('register-error').classList.remove('hidden');
+                    hideLoading();
+                });
+        }
+
+        // Misafir girişi
+        function loginAsGuest() {
+            showLoading();
+            
+            auth.signInAnonymously()
+                .then(() => {
+                    // Anonim kullanıcı için Firestore'da veri oluştur
+                    const user = auth.currentUser;
+                    
+                    return db.collection('users').doc(user.uid).set({
+                        ad: 'Misafir',
+                        soyad: 'Kullanıcı',
+                        email: 'misafir@example.com',
+                        role: 'guest',
+                        isGuest: true,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                })
+                .catch(error => {
+                    console.error("Misafir girişi hatası:", error);
+                    hideLoading();
+                });
+        }
+
+        // Çıkış yap
+        function logout() {
+            auth.signOut()
+                .catch(error => {
+                    console.error("Çıkış yapma hatası:", error);
+                });
+        }
+
+        // Ana uygulamayı göster
+        function showMainApp() {
+            welcomeScreen.classList.add('hidden');
+            mainApp.classList.remove('hidden');
+            
+            // Kullanıcı menüsünü güncelle
+            if (currentUser) {
+                userNameDisplay.textContent = currentUser.name;
+                userLoggedOut.classList.add('hidden');
+                userLoggedIn.classList.remove('hidden');
                 
-                // Fetch comments
-                const commentsSnapshot = await getDocs(collection(db, "yorumlar"));
-                comments = commentsSnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-                
-                // Fetch users if admin
+                // Admin paneli butonunu göster/gizle
                 if (isAdmin) {
-                    const usersSnapshot = await getDocs(collection(db, "users"));
-                    users = usersSnapshot.docs.map(doc => ({
+                    btnAdminPanel.classList.remove('hidden');
+                    adminElements.forEach(el => el.classList.remove('hidden'));
+                } else {
+                    btnAdminPanel.classList.add('hidden');
+                    adminElements.forEach(el => el.classList.add('hidden'));
+                }
+            }
+            
+            // Verileri yükle
+            loadData();
+        }
+
+        // Verileri yükle
+        function loadData() {
+            showLoading();
+            
+            // İçerikleri yükle
+            Promise.all([
+                db.collection('icerikler').where('tur', '==', 'film').get(),
+                db.collection('icerikler').where('tur', '==', 'kitap').get(),
+                db.collection('yorumlar').get(),
+                db.collection('users').get()
+            ])
+            .then(([filmsSnapshot, booksSnapshot, commentsSnapshot, usersSnapshot]) => {
+                // Filmleri yükle
+                contents = [];
+                filmsSnapshot.forEach(doc => {
+                    contents.push({
                         id: doc.id,
                         ...doc.data()
-                    }));
-                }
+                    });
+                });
                 
-                // Render UI
+                // Kitapları yükle
+                booksSnapshot.forEach(doc => {
+                    contents.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                // Yorumları yükle
+                comments = [];
+                commentsSnapshot.forEach(doc => {
+                    // Timestamp'i Date nesnesine dönüştür
+                    const data = doc.data();
+                    if (data.timestamp) {
+                        data.timestamp = data.timestamp.toDate();
+                    }
+                    
+                    comments.push({
+                        id: doc.id,
+                        ...data
+                    });
+                });
+                
+                // Kullanıcıları yükle
+                users = [];
+                usersSnapshot.forEach(doc => {
+                    // Timestamp'i Date nesnesine dönüştür
+                    const data = doc.data();
+                    if (data.createdAt) {
+                        data.createdAt = data.createdAt.toDate();
+                    }
+                    
+                    users.push({
+                        id: doc.id,
+                        ...data
+                    });
+                });
+                
+                console.log("Yüklenen içerikler:", contents);
+                console.log("Yüklenen yorumlar:", comments);
+                console.log("Yüklenen kullanıcılar:", users);
+                
                 renderFilmTabs();
                 renderFilms();
                 renderBooks();
                 
-                if (currentUser) {
-                    renderUserProfile();
-                }
-                
-                if (isAdmin) {
-                    renderAdminPanel();
-                }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                throw error;
-            } finally {
+                dataLoaded = true;
                 hideLoading();
-            }
+            })
+            .catch(error => {
+                console.error("Veri yükleme hatası:", error);
+                hideLoading();
+            });
         }
 
-        // Render film tabs
+        // Film sekmelerini render et
         function renderFilmTabs() {
-            // Clear existing tabs except the first one (All Films)
+            // İlk sekme (Tüm Filmler) dışındaki sekmeleri temizle
             const allFilmsTab = filmTabsContainer.querySelector('[data-tab="all"]');
             filmTabsContainer.innerHTML = '';
             filmTabsContainer.appendChild(allFilmsTab);
             
-            // Get unique film titles
+            // Film türlerine göre sekme oluştur
             const films = contents.filter(content => content.tur === "film");
             
-            // Add a tab for each film
-            films.forEach(film => {
-                const tab = document.createElement('button');
-                tab.className = 'film-tab px-6 py-3 text-gray-700 whitespace-nowrap';
-                tab.textContent = film.name;
-                tab.dataset.film = film.id.replace('film_', '');
-                filmTabsContainer.appendChild(tab);
+            // Her film için bir sekme oluşturmak yerine, benzersiz film adlarını kullan
+            const uniqueFilmNames = [...new Set(films.map(film => film.name))];
+            
+            uniqueFilmNames.forEach(filmName => {
+                const film = films.find(f => f.name === filmName);
+                if (film) {
+                    const tab = document.createElement('button');
+                    tab.className = 'film-tab px-6 py-3 text-gray-700 whitespace-nowrap';
+                    tab.textContent = film.name;
+                    tab.dataset.tab = film.id;
+                    filmTabsContainer.appendChild(tab);
+                }
             });
         }
 
-        // Render all films
+        // Filmleri render et
         function renderFilms(filterId = null) {
             filmCardsContainer.innerHTML = '';
             
             let filmsToRender = contents.filter(content => content.tur === "film");
             if (filterId) {
-                filmsToRender = filmsToRender.filter(film => film.id.includes(filterId));
+                filmsToRender = filmsToRender.filter(film => film.id === filterId);
+            }
+            
+            if (filmsToRender.length === 0) {
+                filmCardsContainer.innerHTML = '<p class="text-gray-500 text-center py-8">Henüz film eklenmemiş.</p>';
+                return;
             }
             
             filmsToRender.forEach(film => {
-                // Get comments for this film
-                const filmComments = comments.filter(comment => 
-                    comment.icerikId === film.id || 
-                    comment.icerikId === film.id.replace('film_', '')
-                );
+                // Film yorumlarını bul
+                const filmComments = comments.filter(comment => comment.icerikId === film.id);
                 
-                // Calculate average rating
-                const avgRating = calculateAverageRating(filmComments);
+                // Ortalama puanı hesapla
+                let avgRating = 0;
+                if (filmComments.length > 0) {
+                    avgRating = filmComments.reduce((sum, comment) => sum + comment.puan, 0) / filmComments.length;
+                }
                 
                 const card = createContentCard(film, avgRating, filmComments, "film");
                 filmCardsContainer.appendChild(card);
             });
         }
 
-        // Render all books
+        // Kitapları render et
         function renderBooks() {
             bookCardsContainer.innerHTML = '';
             
             const books = contents.filter(content => content.tur === "kitap");
             
+            if (books.length === 0) {
+                bookCardsContainer.innerHTML = '<p class="text-gray-500 text-center py-8">Henüz kitap eklenmemiş.</p>';
+                return;
+            }
+            
             books.forEach(book => {
-                // Get comments for this book
-                const bookComments = comments.filter(comment => 
-                    comment.icerikId === book.id || 
-                    comment.icerikId === book.id.replace('kitap_', '')
-                );
+                // Kitap yorumlarını bul
+                const bookComments = comments.filter(comment => comment.icerikId === book.id);
                 
-                // Calculate average rating
-                const avgRating = calculateAverageRating(bookComments);
+                // Ortalama puanı hesapla
+                let avgRating = 0;
+                if (bookComments.length > 0) {
+                    avgRating = bookComments.reduce((sum, comment) => sum + comment.puan, 0) / bookComments.length;
+                }
                 
-                const card = createContentCard(book, avgRating, bookComments, "kitap");
+                const card = createBookCard(book, avgRating, bookComments);
                 bookCardsContainer.appendChild(card);
             });
         }
 
-        // Create a content card (film or book)
+        // İçerik kartı oluştur (film)
         function createContentCard(content, avgRating, contentComments, type) {
             const container = document.createElement('div');
-            container.className = 'bg-white rounded-xl shadow-md overflow-hidden';
+            container.className = 'bg-white rounded-xl shadow-md overflow-hidden movie-card';
             
-            // Extract ID without prefix
-            const contentId = content.id.replace(`${type}_`, '');
-            
-            // Default image if none provided
+            // Varsayılan resim
             const imageUrl = content.image && content.image.trim() !== '' ? 
                 content.image : 
                 'https://via.placeholder.com/300x450?text=No+Image';
             
-            // Main card content
+            // Kart içeriği
             const cardContent = `
                 <div class="md:flex">
                     <div class="md:flex-shrink-0">
@@ -1144,6 +1301,7 @@
                         <div>
                             <h3 class="text-2xl font-semibold text-gray-800">${content.name}</h3>
                             <p class="text-gray-600 mt-1">${content.year || ''}</p>
+                            ${content.author ? `<p class="text-purple-600 mt-1 font-medium">Yazar: ${content.author}</p>` : ''}
                             ${content.tarih_araligi ? `<p class="text-purple-600 mt-1 font-medium">${content.tarih_araligi}</p>` : ''}
                         </div>
                         <div class="mt-6 flex justify-between items-center">
@@ -1151,7 +1309,7 @@
                             <div class="flex space-x-2">
                                 ${currentUser ? 
                                     `<button class="add-comment-btn px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition" 
-                                        data-id="${contentId}" 
+                                        data-id="${content.id}" 
                                         data-title="${content.name}" 
                                         data-type="${type}">
                                         Yorum Ekle
@@ -1160,7 +1318,7 @@
                                         Yorum için Giriş Yapın
                                     </button>`
                                 }
-                                <button class="toggle-details px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition" data-id="${contentId}">
+                                <button class="toggle-details px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition" data-id="${content.id}">
                                     Yorumları Göster
                                 </button>
                             </div>
@@ -1169,10 +1327,10 @@
                 </div>
                 
                 <!-- Content Details Section (Hidden by default) -->
-                <div class="film-details border-t border-gray-200 p-6" id="details-${contentId}">
+                <div class="film-details border-t border-gray-200 p-6" id="details-${content.id}">
                     <div class="mb-6">
                         <h4 class="text-lg font-semibold text-gray-700 mb-4">Yorumlar ve Puanlar</h4>
-                        <div class="space-y-4" id="all-comments-${contentId}">
+                        <div class="space-y-4" id="all-comments-${content.id}">
                             ${renderCommentsHTML(contentComments)}
                         </div>
                     </div>
@@ -1180,21 +1338,125 @@
             `;
             
             container.innerHTML = cardContent;
+            
+            // Event listener'ları ekle
+            container.querySelector('.toggle-details').addEventListener('click', (e) => {
+                const contentId = e.target.dataset.id;
+                toggleContentDetails(contentId);
+            });
+            
+            const commentBtn = container.querySelector('.add-comment-btn');
+            if (commentBtn) {
+                commentBtn.addEventListener('click', (e) => {
+                    const contentId = e.target.dataset.id;
+                    const contentTitle = e.target.dataset.title;
+                    const contentType = e.target.dataset.type;
+                    showCommentModal(contentId, contentTitle, contentType);
+                });
+            }
+            
             return container;
         }
 
-        // Generate HTML for comments
+        // Kitap kartı oluştur
+        function createBookCard(book, avgRating, bookComments) {
+            const container = document.createElement('div');
+            container.className = 'bg-white rounded-xl shadow-md overflow-hidden book-card';
+            
+            // Varsayılan resim
+            const imageUrl = book.image && book.image.trim() !== '' ? 
+                book.image : 
+                'https://via.placeholder.com/300x450?text=No+Image';
+            
+            // PDF linki kontrolü
+            const hasPdf = book.pdfUrl && book.pdfUrl.trim() !== '';
+            
+            // Kart içeriği
+            const cardContent = `
+                <div class="book-card-content">
+                    <div class="relative">
+                        <img src="${imageUrl}" alt="${book.name}" class="w-full book-image">
+                        <div class="absolute top-2 right-2 bg-purple-600 text-white rounded-full px-2 py-1 text-sm font-semibold">
+                            ${avgRating > 0 ? avgRating.toFixed(1) : 'N/A'}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">${book.name}</h3>
+                        ${book.author ? `<p class="text-purple-600 font-medium mb-2">Yazar: ${book.author}</p>` : ''}
+                        ${book.tarih_araligi ? `<p class="text-gray-600 mb-4">${book.tarih_araligi}</p>` : ''}
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">${bookComments.length} yorum</span>
+                            ${hasPdf ? `
+                                <a href="${book.pdfUrl}" target="_blank" class="pdf-download-btn inline-flex items-center text-sm text-purple-600 hover:text-purple-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    PDF İndir
+                                </a>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="book-actions flex flex-col space-y-2">
+                            ${currentUser ? 
+                                `<button class="add-comment-btn w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition" 
+                                    data-id="${book.id}" 
+                                    data-title="${book.name}" 
+                                    data-type="kitap">
+                                    Yorum Ekle
+                                </button>` : 
+                                `<button class="w-full px-4 py-2 bg-gray-400 text-white rounded-lg cursor-not-allowed">
+                                    Yorum için Giriş Yapın
+                                </button>`
+                            }
+                            <button class="toggle-details w-full px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition" data-id="${book.id}">
+                                Yorumları Göster
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book Details Section (Hidden by default) -->
+                <div class="book-details border-t border-gray-200 p-6" id="details-${book.id}">
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-gray-700 mb-4">Yorumlar ve Puanlar</h4>
+                        <div class="space-y-4" id="all-comments-${book.id}">
+                            ${renderCommentsHTML(bookComments)}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = cardContent;
+            
+            // Event listener'ları ekle
+            container.querySelector('.toggle-details').addEventListener('click', (e) => {
+                const contentId = e.target.dataset.id;
+                toggleContentDetails(contentId);
+            });
+            
+            const commentBtn = container.querySelector('.add-comment-btn');
+            if (commentBtn) {
+                commentBtn.addEventListener('click', (e) => {
+                    const contentId = e.target.dataset.id;
+                    const contentTitle = e.target.dataset.title;
+                    const contentType = e.target.dataset.type;
+                    showCommentModal(contentId, contentTitle, contentType);
+                });
+            }
+            
+            return container;
+        }
+
+        // Yorumları HTML olarak render et
         function renderCommentsHTML(contentComments) {
             if (!contentComments || contentComments.length === 0) {
                 return '<p class="text-gray-500">Henüz yorum yapılmamış.</p>';
             }
             
-            // Sort comments by timestamp (newest first)
+            // Yorumları tarihe göre sırala (en yeniden en eskiye)
             const sortedComments = [...contentComments].sort((a, b) => {
-                if (a.timestamp && b.timestamp) {
-                    return b.timestamp.toDate ? b.timestamp.toDate() - a.timestamp.toDate() : 0;
-                }
-                return 0;
+                return new Date(b.timestamp) - new Date(a.timestamp);
             });
             
             return sortedComments.map(comment => {
@@ -1203,13 +1465,9 @@
                 const verifiedBadge = isVerified ? 
                     `<img src="${verifiedBadgeUrl}" alt="Verified" class="verified-badge ml-1">` : '';
                 
-                const formattedDate = comment.timestamp ? 
-                    (comment.timestamp.toDate ? 
-                        new Date(comment.timestamp.toDate()).toLocaleDateString('tr-TR', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        }) : '') : '';
+                const formattedDate = comment.timestamp instanceof Date ? 
+                    comment.timestamp.toLocaleDateString('tr-TR') : 
+                    new Date(comment.timestamp).toLocaleDateString('tr-TR');
                 
                 return `
                     <div class="${commentClass}" data-comment-id="${comment.id}">
@@ -1219,7 +1477,7 @@
                                     ${comment.userName || 'Anonim'}
                                     ${verifiedBadge}
                                 </h5>
-                                ${formattedDate ? `<span class="text-xs text-gray-500">${formattedDate}</span>` : ''}
+                                <span class="text-xs text-gray-500">${formattedDate}</span>
                             </div>
                             <div class="flex items-center">
                                 <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -1229,154 +1487,120 @@
                             </div>
                         </div>
                         <p class="mt-2 text-gray-600">${comment.yorum || ''}</p>
-                        ${isAdmin ? 
-                            `<div class="mt-3 flex justify-end space-x-2">
-                                ${!isVerified ? 
-                                    `<button class="verify-comment-btn text-xs px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" data-comment-id="${comment.id}">
-                                        Mavi Tik Ver
-                                    </button>` : 
-                                    `<button class="unverify-comment-btn text-xs px-2 py-1 bg-gray-500 text-white rounded hover:bg-gray-600" data-comment-id="${comment.id}">
-                                        Mavi Tik Kaldır
-                                    </button>`
-                                }
-                                <button class="delete-comment-btn text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-comment-id="${comment.id}">
-                                    Sil
-                                </button>
-                            </div>` : 
-                            (currentUser && comment.userId === currentUser.uid ? 
-                                `<div class="mt-3 flex justify-end">
-                                    <button class="delete-my-comment-btn text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-comment-id="${comment.id}">
-                                        Sil
-                                    </button>
-                                </div>` : '')
-                        }
                     </div>
                 `;
             }).join('');
         }
 
-        // Calculate average rating
-        function calculateAverageRating(comments) {
-            if (!comments || comments.length === 0) return 0;
+        // İçerik detaylarını göster/gizle
+        function toggleContentDetails(contentId) {
+            const detailsSection = document.getElementById(`details-${contentId}`);
+            const toggleButton = document.querySelector(`.toggle-details[data-id="${contentId}"]`);
             
-            const validRatings = comments.filter(comment => comment.puan && !isNaN(comment.puan));
-            if (validRatings.length === 0) return 0;
-            
-            const sum = validRatings.reduce((total, comment) => total + comment.puan, 0);
-            return sum / validRatings.length;
-        }
-
-        // Render user profile
-        async function renderUserProfile() {
-            if (!currentUser) return;
-            
-            try {
-                // Get user data
-                const userDoc = await getDoc(doc(db, "users", currentUser.uid));
-                if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    
-                    // Set profile image based on gender
-                    let profileImage = defaultMaleImage;
-                    if (userData.cinsiyet === "Kadın") {
-                        profileImage = defaultFemaleImage;
-                    }
-                    
-                    document.getElementById('profile-image').src = profileImage;
-                    document.getElementById('profile-name').textContent = `${userData.ad} ${userData.soyad}`;
-                    document.getElementById('profile-email').textContent = `Email: ${userData.email}`;
-                    document.getElementById('profile-gender').textContent = `Cinsiyet: ${userData.cinsiyet}`;
-                    document.getElementById('profile-age').textContent = `Yaş: ${userData.yas}`;
-                    
-                    // Format registration date
-                    if (userData.profilOlusturmaTarihi) {
-                        const date = userData.profilOlusturmaTarihi.toDate ? 
-                            userData.profilOlusturmaTarihi.toDate() : new Date();
-                        document.getElementById('profile-date').textContent = `Kayıt Tarihi: ${date.toLocaleDateString('tr-TR')}`;
-                    }
-                    
-                    // Get user comments
-                    const userComments = comments.filter(comment => comment.userId === currentUser.uid);
-                    
-                    // Render user comments
-                    userCommentsContainer.innerHTML = '';
-                    if (userComments.length === 0) {
-                        userCommentsContainer.innerHTML = '<p class="text-gray-500">Henüz yorum yapmadınız.</p>';
-                    } else {
-                        userComments.forEach(async comment => {
-                            // Get content details
-                            const contentId = comment.icerikId.replace(/^(film|kitap)_/, '');
-                            const content = contents.find(c => c.id.includes(contentId));
-                            
-                            const commentElement = document.createElement('div');
-                            commentElement.className = 'bg-white rounded-lg shadow p-4';
-                            
-                            const contentName = content ? content.name : 'Bilinmeyen İçerik';
-                            const contentType = comment.icerikTuru === 'film' ? 'Film' : 'Kitap';
-                            const formattedDate = comment.timestamp ? 
-                                (comment.timestamp.toDate ? 
-                                    new Date(comment.timestamp.toDate()).toLocaleDateString('tr-TR') : '') : '';
-                            
-                            commentElement.innerHTML = `
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h5 class="font-semibold text-gray-800">${contentName}</h5>
-                                        <span class="text-xs text-purple-600">${contentType}</span>
-                                        ${formattedDate ? `<span class="text-xs text-gray-500 ml-2">${formattedDate}</span>` : ''}
-                                    </div>
-                                    <div class="flex items-center">
-                                        <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                                        </svg>
-                                        <span class="ml-1 text-gray-700">${comment.puan}/10</span>
-                                    </div>
-                                </div>
-                                <p class="mt-2 text-gray-600">${comment.yorum || ''}</p>
-                                <div class="mt-3 flex justify-end">
-                                    <button class="delete-my-comment-btn text-xs px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600" data-comment-id="${comment.id}">
-                                        Sil
-                                    </button>
-                                </div>
-                            `;
-                            
-                            userCommentsContainer.appendChild(commentElement);
-                        });
-                    }
-                }
-            } catch (error) {
-                console.error("Error rendering profile:", error);
+            if (detailsSection.classList.contains('active')) {
+                detailsSection.classList.remove('active');
+                toggleButton.textContent = 'Yorumları Göster';
+            } else {
+                detailsSection.classList.add('active');
+                toggleButton.textContent = 'Yorumları Gizle';
             }
         }
 
-        // Render admin panel
+        // Kullanıcı profilini render et
+        function renderUserProfile() {
+            if (!currentUser) return;
+            
+            // Profil resmi
+            let profileImage = defaultMaleImage;
+            if (currentUser.gender === "Kadın") {
+                profileImage = defaultFemaleImage;
+            }
+            
+            document.getElementById('profile-image').src = profileImage;
+            document.getElementById('profile-name').textContent = currentUser.name;
+            document.getElementById('profile-email').textContent = `Email: ${currentUser.email}`;
+            document.getElementById('profile-gender').textContent = `Cinsiyet: ${currentUser.gender || 'Belirtilmemiş'}`;
+            document.getElementById('profile-age').textContent = `Yaş: ${currentUser.age || 'Belirtilmemiş'}`;
+            
+            const createdDate = currentUser.createdAt instanceof Date ? 
+                currentUser.createdAt.toLocaleDateString('tr-TR') : 
+                new Date().toLocaleDateString('tr-TR');
+            
+            document.getElementById('profile-date').textContent = `Kayıt Tarihi: ${createdDate}`;
+            
+            // Kullanıcı yorumlarını göster
+            const userCommentsContainer = document.getElementById('user-comments');
+            userCommentsContainer.innerHTML = '';
+            
+            const userComments = comments.filter(comment => comment.userId === currentUser.id);
+            
+            if (userComments.length === 0) {
+                userCommentsContainer.innerHTML = '<p class="text-gray-500">Henüz yorum yapmadınız.</p>';
+            } else {
+                userComments.forEach(comment => {
+                    const content = contents.find(c => c.id === comment.icerikId);
+                    const contentName = content ? content.name : 'Bilinmeyen İçerik';
+                    const contentType = comment.icerikTuru === 'film' ? 'Film' : 'Kitap';
+                    
+                    const formattedDate = comment.timestamp instanceof Date ? 
+                        comment.timestamp.toLocaleDateString('tr-TR') : 
+                        new Date(comment.timestamp).toLocaleDateString('tr-TR');
+                    
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'bg-white rounded-lg shadow p-4';
+                    commentElement.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h5 class="font-semibold text-gray-800">${contentName}</h5>
+                                <span class="text-xs text-purple-600">${contentType}</span>
+                                <span class="text-xs text-gray-500 ml-2">${formattedDate}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="ml-1 text-gray-700">${comment.puan}/10</span>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-gray-600">${comment.yorum || ''}</p>
+                    `;
+                    
+                    userCommentsContainer.appendChild(commentElement);
+                });
+            }
+        }
+
+        // Admin panelini render et
         function renderAdminPanel() {
             if (!isAdmin) return;
             
-            // Render users table
+            // Kullanıcılar tablosunu doldur
+            const adminUsersTable = document.getElementById('admin-users-table');
             adminUsersTable.innerHTML = '';
+            
             users.forEach(user => {
                 const row = document.createElement('tr');
                 
-                const formattedDate = user.profilOlusturmaTarihi ? 
-                    (user.profilOlusturmaTarihi.toDate ? 
-                        new Date(user.profilOlusturmaTarihi.toDate()).toLocaleDateString('tr-TR') : '') : '';
+                const formattedDate = user.createdAt instanceof Date ? 
+                    user.createdAt.toLocaleDateString('tr-TR') : 
+                    new Date().toLocaleDateString('tr-TR');
                 
                 row.innerHTML = `
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-gray-900">${user.ad} ${user.soyad}</div>
+                        <div class="text-sm font-medium text-gray-900">${user.ad || ''} ${user.soyad || ''}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-500">${user.email}</div>
+                        <div class="text-sm text-gray-500">${user.email || ''}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-500">${user.cinsiyet}</div>
+                        <div class="text-sm text-gray-500">${user.cinsiyet || ''}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-500">${user.yas}</div>
+                        <div class="text-sm text-gray-500">${user.yas || ''}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${user.role === 'admin' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}">
-                            ${user.role}
+                            ${user.role || 'user'}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -1388,18 +1612,19 @@
                 adminUsersTable.appendChild(row);
             });
             
-            // Render comments table
+            // Yorumlar tablosunu doldur
+            const adminCommentsTable = document.getElementById('admin-comments-table');
             adminCommentsTable.innerHTML = '';
+            
             comments.forEach(comment => {
                 const row = document.createElement('tr');
                 
-                const contentId = comment.icerikId.replace(/^(film|kitap)_/, '');
-                const content = contents.find(c => c.id.includes(contentId));
+                const content = contents.find(c => c.id === comment.icerikId);
                 const contentName = content ? content.name : 'Bilinmeyen İçerik';
                 
-                const formattedDate = comment.timestamp ? 
-                    (comment.timestamp.toDate ? 
-                        new Date(comment.timestamp.toDate()).toLocaleDateString('tr-TR') : '') : '';
+                const formattedDate = comment.timestamp instanceof Date ? 
+                    comment.timestamp.toLocaleDateString('tr-TR') : 
+                    new Date(comment.timestamp).toLocaleDateString('tr-TR');
                 
                 row.innerHTML = `
                     <td class="px-6 py-4 whitespace-nowrap">
@@ -1429,41 +1654,325 @@
                 
                 adminCommentsTable.appendChild(row);
             });
-
-            // Populate user dropdown for admin comment form
-            adminCommentUserSelect.innerHTML = '<option value="">Kullanıcı Seçin</option>';
-            users.forEach(user => {
-                const option = document.createElement('option');
-                option.value = user.id;
-                option.textContent = `${user.ad} ${user.soyad} (${user.email})`;
-                adminCommentUserSelect.appendChild(option);
+            
+            // Admin butonlarına event listener'lar ekle
+            document.querySelectorAll('.make-admin-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const userId = e.target.dataset.userId;
+                    makeUserAdmin(userId);
+                });
             });
-
-            // Populate content dropdown for admin comment form
-            adminCommentContentSelect.innerHTML = '<option value="">İçerik Seçin</option>';
-            contents.forEach(content => {
-                const option = document.createElement('option');
-                option.value = content.id;
-                option.textContent = `${content.name} (${content.tur === 'film' ? 'Film' : 'Kitap'})`;
-                adminCommentContentSelect.appendChild(option);
+            
+            document.querySelectorAll('.delete-user-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const userId = e.target.dataset.userId;
+                    deleteUser(userId);
+                });
+            });
+            
+            document.querySelectorAll('.toggle-verified-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const commentId = e.target.dataset.commentId;
+                    toggleCommentVerification(commentId, e.target.checked);
+                });
+            });
+            
+            document.querySelectorAll('.delete-comment-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const commentId = e.target.dataset.commentId;
+                    deleteComment(commentId);
+                });
             });
         }
 
-        // Toggle film details
-        function toggleContentDetails(contentId) {
-            const detailsSection = document.getElementById(`details-${contentId}`);
-            const toggleButton = document.querySelector(`.toggle-details[data-id="${contentId}"]`);
+        // Kullanıcıyı admin yap
+        function makeUserAdmin(userId) {
+            if (!confirm("Bu kullanıcıyı admin yapmak istediğinize emin misiniz?")) {
+                return;
+            }
             
-            if (detailsSection.classList.contains('active')) {
-                detailsSection.classList.remove('active');
-                toggleButton.textContent = 'Yorumları Göster';
-            } else {
-                detailsSection.classList.add('active');
-                toggleButton.textContent = 'Yorumları Gizle';
+            showLoading();
+            
+            db.collection('users').doc(userId).update({
+                role: 'admin'
+            })
+            .then(() => {
+                // Kullanıcı listesini güncelle
+                const userIndex = users.findIndex(u => u.id === userId);
+                if (userIndex !== -1) {
+                    users[userIndex].role = 'admin';
+                }
+                
+                renderAdminPanel();
+                hideLoading();
+            })
+            .catch(error => {
+                console.error("Admin yapma hatası:", error);
+                hideLoading();
+            });
+        }
+
+        // Kullanıcıyı sil
+        function deleteUser(userId) {
+            if (!confirm("Bu kullanıcıyı silmek istediğinize emin misiniz?")) {
+                return;
+            }
+            
+            showLoading();
+            
+            // Kullanıcının yorumlarını sil
+            db.collection('yorumlar').where('userId', '==', userId).get()
+                .then(snapshot => {
+                    const batch = db.batch();
+                    
+                    snapshot.forEach(doc => {
+                        batch.delete(doc.ref);
+                    });
+                    
+                    return batch.commit();
+                })
+                .then(() => {
+                    // Kullanıcıyı sil
+                    return db.collection('users').doc(userId).delete();
+                })
+                .then(() => {
+                    // Kullanıcı listesini güncelle
+                    users = users.filter(u => u.id !== userId);
+                    
+                    // Yorum listesini güncelle
+                    comments = comments.filter(c => c.userId !== userId);
+                    
+                    renderAdminPanel();
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error("Kullanıcı silme hatası:", error);
+                    hideLoading();
+                });
+        }
+
+        // Yorum doğrulamasını değiştir
+        function toggleCommentVerification(commentId, isVerified) {
+            showLoading();
+            
+            db.collection('yorumlar').doc(commentId).update({
+                verified: isVerified
+            })
+            .then(() => {
+                // Yorum listesini güncelle
+                const commentIndex = comments.findIndex(c => c.id === commentId);
+                if (commentIndex !== -1) {
+                    comments[commentIndex].verified = isVerified;
+                }
+                
+                renderAdminPanel();
+                hideLoading();
+            })
+            .catch(error => {
+                console.error("Yorum doğrulama hatası:", error);
+                hideLoading();
+            });
+        }
+
+        // Yorumu sil
+        function deleteComment(commentId) {
+            if (!confirm("Bu yorumu silmek istediğinize emin misiniz?")) {
+                return;
+            }
+            
+            showLoading();
+            
+            db.collection('yorumlar').doc(commentId).delete()
+                .then(() => {
+                    // Yorum listesini güncelle
+                    comments = comments.filter(c => c.id !== commentId);
+                    
+                    renderAdminPanel();
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error("Yorum silme hatası:", error);
+                    hideLoading();
+                });
+        }
+
+        // Yorum modalını göster
+        function showCommentModal(contentId, contentTitle, contentType) {
+            document.getElementById('comment-content-id').value = contentId;
+            document.getElementById('comment-content-title').value = contentTitle;
+            document.getElementById('comment-content-type').value = contentType;
+            document.getElementById('comment-modal-title').textContent = `${contentTitle} için Yorum Ekle`;
+            
+            // Yıldız derecelendirmesini sıfırla
+            updateStarRating(5);
+            
+            showModal('comment-modal');
+        }
+
+        // Yıldız derecelendirmesini güncelle
+        function updateStarRating(rating) {
+            document.querySelectorAll('.rating-input label svg').forEach(star => {
+                star.classList.remove('filled');
+                star.classList.add('empty');
+            });
+            
+            for (let i = 1; i <= rating; i++) {
+                const star = document.querySelector(`label[for="rating-${i}"] svg`);
+                if (star) {
+                    star.classList.remove('empty');
+                    star.classList.add('filled');
+                }
             }
         }
 
-        // Switch between sections
+        // Yorum ekle
+        function addComment(contentId, contentTitle, contentType, rating, comment, watched) {
+            if (!currentUser) {
+                alert("Yorum yapmak için giriş yapmalısınız.");
+                return;
+            }
+            
+            showLoading();
+            
+            // Yeni yorum oluştur
+            const newComment = {
+                icerikId: contentId,
+                icerikBasligi: contentTitle,
+                icerikTuru: contentType,
+                puan: parseInt(rating),
+                yorum: comment,
+                watched: watched,
+                userId: auth.currentUser.uid,
+                userEmail: currentUser.email,
+                userName: currentUser.name,
+                verified: false,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            db.collection('yorumlar').add(newComment)
+                .then(docRef => {
+                    // Yeni yorumu listeye ekle
+                    comments.push({
+                        id: docRef.id,
+                        ...newComment,
+                        timestamp: new Date()
+                    });
+                    
+                    // Modalı kapat
+                    hideModal('comment-modal');
+                    
+                    // İçeriği yeniden render et
+                    if (contentType === 'film') {
+                        renderFilms();
+                    } else {
+                        renderBooks();
+                    }
+                    
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error("Yorum ekleme hatası:", error);
+                    document.getElementById('comment-error').textContent = error.message;
+                    document.getElementById('comment-error').classList.remove('hidden');
+                    hideLoading();
+                });
+        }
+
+        // Film ekle
+        function addFilm(name, year, image, dateRange) {
+            if (!isAdmin) {
+                alert("Film eklemek için admin yetkisine sahip olmalısınız.");
+                return;
+            }
+            
+            showLoading();
+            
+            // Film ID'sini oluştur
+            const filmId = `film_${name.replace(/\s+/g, '')}`;
+            
+            // Yeni film oluştur
+            const newFilm = {
+                name: name,
+                tur: "film",
+                year: year,
+                image: image,
+                tarih_araligi: dateRange,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            db.collection('icerikler').doc(filmId).set(newFilm)
+                .then(() => {
+                    // Yeni filmi listeye ekle
+                    contents.push({
+                        id: filmId,
+                        ...newFilm
+                    });
+                    
+                    // Modalı kapat
+                    hideModal('add-film-modal');
+                    
+                    // Filmleri yeniden render et
+                    renderFilmTabs();
+                    renderFilms();
+                    
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error("Film ekleme hatası:", error);
+                    document.getElementById('add-film-error').textContent = error.message;
+                    document.getElementById('add-film-error').classList.remove('hidden');
+                    hideLoading();
+                });
+        }
+
+        // Kitap ekle
+        function addBook(name, author, image, dateRange, pdfUrl) {
+            if (!isAdmin) {
+                alert("Kitap eklemek için admin yetkisine sahip olmalısınız.");
+                return;
+            }
+            
+            showLoading();
+            
+            // Kitap ID'sini oluştur
+            const bookId = `kitap_${name.replace(/\s+/g, '')}`;
+            
+            // Yeni kitap oluştur
+            const newBook = {
+                name: name,
+                tur: "kitap",
+                author: author,
+                image: image,
+                pdfUrl: pdfUrl,
+                tarih_araligi: dateRange,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            db.collection('icerikler').doc(bookId).set(newBook)
+                .then(() => {
+                    // Yeni kitabı listeye ekle
+                    contents.push({
+                        id: bookId,
+                        ...newBook
+                    });
+                    
+                    // Modalı kapat
+                    hideModal('add-book-modal');
+                    
+                    // Kitapları yeniden render et
+                    renderBooks();
+                    
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error("Kitap ekleme hatası:", error);
+                    document.getElementById('add-book-error').textContent = error.message;
+                    document.getElementById('add-book-error').classList.remove('hidden');
+                    hideLoading();
+                });
+        }
+
+        // Bölüm değiştir
         function switchSection(section) {
             filmsSection.classList.add('hidden');
             booksSection.classList.add('hidden');
@@ -1484,9 +1993,9 @@
             }
         }
 
-        // Filter films by tab
+        // Film sekmelerini filtrele
         function filterFilms(tab) {
-            // Update active tab
+            // Aktif sekmeyi güncelle
             document.querySelectorAll('.film-tab').forEach(t => {
                 t.classList.remove('tab-active');
             });
@@ -1495,646 +2004,44 @@
             if (tab.dataset.tab === 'all') {
                 renderFilms();
             } else {
-                renderFilms(tab.dataset.film);
+                renderFilms(tab.dataset.tab);
             }
         }
 
-        // Show modal
+        // Modalı göster
         function showModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('opacity-0', 'pointer-events-none');
             document.body.classList.add('modal-active');
         }
 
-        // Hide modal
+        // Modalı gizle
         function hideModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.add('opacity-0', 'pointer-events-none');
             document.body.classList.remove('modal-active');
             
-            // Clear form errors
+            // Form hatalarını temizle
             const errorElement = modal.querySelector('[id$="-error"]');
             if (errorElement) {
                 errorElement.classList.add('hidden');
                 errorElement.textContent = '';
             }
             
-            // Reset forms
+            // Formu sıfırla
             const form = modal.querySelector('form');
             if (form) form.reset();
         }
 
-        // Show loading indicator
+        // Loading göster
         function showLoading() {
             loadingIndicator.classList.remove('hidden');
         }
 
-        // Hide loading indicator
+        // Loading gizle
         function hideLoading() {
             loadingIndicator.classList.add('hidden');
         }
-
-        // Show error message
-        function showError(elementId, message) {
-            const errorElement = document.getElementById(elementId);
-            errorElement.textContent = message;
-            errorElement.classList.remove('hidden');
-        }
-
-        // Register a new user
-        async function registerUser(email, password, firstName, lastName, age, gender) {
-            try {
-                showLoading();
-                
-                // Create user in Firebase Auth
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                
-                // Add user data to Firestore
-                await setDoc(doc(db, "users", user.uid), {
-                    ad: firstName,
-                    soyad: lastName,
-                    email: email,
-                    yas: parseInt(age),
-                    cinsiyet: gender,
-                    role: "user",
-                    profilOlusturmaTarihi: serverTimestamp()
-                });
-                
-                hideModal('register-modal');
-                return user;
-            } catch (error) {
-                console.error("Error registering user:", error);
-                let errorMessage = "Kayıt olurken bir hata oluştu.";
-                
-                if (error.code === 'auth/email-already-in-use') {
-                    errorMessage = "Bu email adresi zaten kullanılıyor.";
-                } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = "Geçersiz email adresi.";
-                } else if (error.code === 'auth/weak-password') {
-                    errorMessage = "Şifre çok zayıf. En az 6 karakter olmalıdır.";
-                }
-                
-                showError('register-error', errorMessage);
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Login user
-        async function loginUser(email, password) {
-            try {
-                showLoading();
-                
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                hideModal('login-modal');
-                return userCredential.user;
-            } catch (error) {
-                console.error("Error logging in:", error);
-                let errorMessage = "Giriş yaparken bir hata oluştu.";
-                
-                if (error.code === 'auth/user-not-found') {
-                    errorMessage = "Bu email adresi ile kayıtlı kullanıcı bulunamadı.";
-                } else if (error.code === 'auth/wrong-password') {
-                    errorMessage = "Hatalı şifre.";
-                } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = "Geçersiz email adresi.";
-                } else if (error.code === 'auth/invalid-credential') {
-                    errorMessage = "Geçersiz kimlik bilgileri. Email ve şifrenizi kontrol edin.";
-                }
-                
-                showError('login-error', errorMessage);
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Send password reset email
-        async function sendPasswordReset(email) {
-            try {
-                showLoading();
-                
-                await sendPasswordResetEmail(auth, email);
-                alert("Şifre sıfırlama bağlantısı email adresinize gönderildi.");
-                hideModal('login-modal');
-            } catch (error) {
-                console.error("Error sending password reset:", error);
-                let errorMessage = "Şifre sıfırlama bağlantısı gönderilirken bir hata oluştu.";
-                
-                if (error.code === 'auth/user-not-found') {
-                    errorMessage = "Bu email adresi ile kayıtlı kullanıcı bulunamadı.";
-                } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = "Geçersiz email adresi.";
-                }
-                
-                showError('login-error', errorMessage);
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Logout user
-        async function logoutUser() {
-            try {
-                await signOut(auth);
-                switchSection('films');
-            } catch (error) {
-                console.error("Error signing out:", error);
-                alert("Çıkış yaparken bir hata oluştu.");
-            }
-        }
-
-        // Add content (film or book)
-        async function addContent(name, id, year, dateRange, image, type) {
-            try {
-                showLoading();
-                
-                await setDoc(doc(db, "icerikler", `${type}_${id}`), {
-                    name: name,
-                    id: id,
-                    year: year,
-                    tarih_araligi: dateRange,
-                    image: image,
-                    tur: type,
-                    createdAt: serverTimestamp()
-                });
-                
-                hideModal('add-content-modal');
-                await fetchData();
-            } catch (error) {
-                console.error("Error adding content:", error);
-                showError('add-content-error', "İçerik eklenirken bir hata oluştu.");
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Add comment
-        async function addComment(contentId, contentTitle, contentType, rating, comment, watched) {
-            if (!currentUser) {
-                alert("Yorum yapmak için giriş yapmalısınız.");
-                return;
-            }
-            
-            try {
-                showLoading();
-                
-                // Get user data
-                const userDoc = await getDoc(doc(db, "users", currentUser.uid));
-                if (!userDoc.exists()) {
-                    throw new Error("Kullanıcı bilgileri bulunamadı.");
-                }
-                
-                const userData = userDoc.data();
-                const userName = `${userData.ad} ${userData.soyad}`;
-                
-                // Add comment to Firestore
-                await addDoc(collection(db, "yorumlar"), {
-                    icerikId: contentId,
-                    icerikBasligi: contentTitle,
-                    icerikTuru: contentType,
-                    puan: parseInt(rating),
-                    yorum: comment,
-                    watched: watched,
-                    userId: currentUser.uid,
-                    userEmail: currentUser.email,
-                    userName: userName,
-                    timestamp: serverTimestamp(),
-                    verified: false
-                });
-                
-                hideModal('comment-modal');
-                await fetchData();
-            } catch (error) {
-                console.error("Error adding comment:", error);
-                showError('comment-error', "Yorum eklenirken bir hata oluştu.");
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Add comment as admin for a user
-        async function addCommentAsAdmin(userId, contentId, rating, comment, verified) {
-            try {
-                showLoading();
-                
-                // Get user data
-                const userDoc = await getDoc(doc(db, "users", userId));
-                if (!userDoc.exists()) {
-                    throw new Error("Kullanıcı bilgileri bulunamadı.");
-                }
-                
-                const userData = userDoc.data();
-                const userName = `${userData.ad} ${userData.soyad}`;
-                
-                // Get content data
-                const contentDoc = await getDoc(doc(db, "icerikler", contentId));
-                if (!contentDoc.exists()) {
-                    throw new Error("İçerik bilgileri bulunamadı.");
-                }
-                
-                const contentData = contentDoc.data();
-                const contentType = contentData.tur;
-                const contentTitle = contentData.name;
-                
-                // Add comment to Firestore
-                await addDoc(collection(db, "yorumlar"), {
-                    icerikId: contentId,
-                    icerikBasligi: contentTitle,
-                    icerikTuru: contentType,
-                    puan: parseInt(rating),
-                    yorum: comment,
-                    watched: true,
-                    userId: userId,
-                    userEmail: userData.email,
-                    userName: userName,
-                    timestamp: serverTimestamp(),
-                    verified: verified
-                });
-                
-                alert("Yorum başarıyla eklendi.");
-                await fetchData();
-            } catch (error) {
-                console.error("Error adding comment as admin:", error);
-                alert("Yorum eklenirken bir hata oluştu: " + error.message);
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Delete comment
-        async function deleteComment(commentId) {
-            if (!confirm("Bu yorumu silmek istediğinize emin misiniz?")) {
-                return;
-            }
-            
-            try {
-                showLoading();
-                
-                await deleteDoc(doc(db, "yorumlar", commentId));
-                await fetchData();
-            } catch (error) {
-                console.error("Error deleting comment:", error);
-                alert("Yorum silinirken bir hata oluştu.");
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Toggle verified status of comment
-        async function toggleVerifiedComment(commentId, verified) {
-            try {
-                showLoading();
-                
-                await updateDoc(doc(db, "yorumlar", commentId), {
-                    verified: verified
-                });
-                
-                await fetchData();
-            } catch (error) {
-                console.error("Error updating comment:", error);
-                alert("Yorum güncellenirken bir hata oluştu.");
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Make user admin
-        async function makeUserAdmin(userId) {
-            if (!confirm("Bu kullanıcıyı admin yapmak istediğinize emin misiniz?")) {
-                return;
-            }
-            
-            try {
-                showLoading();
-                
-                await updateDoc(doc(db, "users", userId), {
-                    role: "admin"
-                });
-                
-                await fetchData();
-            } catch (error) {
-                console.error("Error updating user:", error);
-                alert("Kullanıcı güncellenirken bir hata oluştu.");
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Delete user
-        async function deleteUser(userId) {
-            if (!confirm("Bu kullanıcıyı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.")) {
-                return;
-            }
-            
-            try {
-                showLoading();
-                
-                // Delete user from Firestore
-                await deleteDoc(doc(db, "users", userId));
-                
-                // Note: This doesn't delete the user from Firebase Auth
-                // For security reasons, deleting users from Auth requires admin SDK or custom auth tokens
-                
-                await fetchData();
-            } catch (error) {
-                console.error("Error deleting user:", error);
-                alert("Kullanıcı silinirken bir hata oluştu.");
-                throw error;
-            } finally {
-                hideLoading();
-            }
-        }
-
-        // Update star rating display
-        function updateStarRating() {
-            const ratingInputs = document.querySelectorAll('.rating-input input');
-            const ratingLabels = document.querySelectorAll('.rating-input label svg');
-            
-            // Reset all stars to empty
-            ratingLabels.forEach(star => {
-                star.classList.add('empty');
-                star.classList.remove('filled');
-            });
-            
-            // Find the checked rating
-            const checkedRating = document.querySelector('.rating-input input:checked');
-            if (checkedRating) {
-                const rating = parseInt(checkedRating.value);
-                
-                // Fill stars up to the selected rating
-                for (let i = 0; i < rating; i++) {
-                    const star = document.querySelector(`.rating-input label[for="rating-${i+1}"] svg`);
-                    if (star) {
-                        star.classList.remove('empty');
-                        star.classList.add('filled');
-                        star.style.fill = '#fbbf24';
-                    }
-                }
-            }
-        }
-
-        // Setup all event listeners
-        function setupEventListeners() {
-            // Navigation buttons
-            btnFilms.addEventListener('click', () => switchSection('films'));
-            btnBooks.addEventListener('click', () => switchSection('books'));
-            btnMusic.addEventListener('click', () => switchSection('music'));
-            btnProfile.addEventListener('click', () => {
-                switchSection('profile');
-                renderUserProfile();
-            });
-            btnAdminPanel.addEventListener('click', () => {
-                switchSection('admin');
-                renderAdminPanel();
-            });
-            
-            // User menu dropdown
-            document.getElementById('user-menu-button').addEventListener('click', () => {
-                userDropdown.classList.toggle('hidden');
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('#user-menu-button') && !e.target.closest('#user-dropdown')) {
-                    userDropdown.classList.add('hidden');
-                }
-            });
-            
-            // Auth buttons
-            btnLogin.addEventListener('click', () => showModal('login-modal'));
-            btnRegister.addEventListener('click', () => showModal('register-modal'));
-            btnLogout.addEventListener('click', logoutUser);
-            
-            // Forgot password
-            forgotPasswordLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                const email = document.getElementById('login-email').value;
-                if (!email) {
-                    showError('login-error', "Lütfen şifresini sıfırlamak istediğiniz hesabın email adresini girin.");
-                    return;
-                }
-                sendPasswordReset(email);
-            });
-            
-            // Admin buttons
-            addFilmBtn.addEventListener('click', () => {
-                document.getElementById('add-content-title').textContent = 'Film Ekle';
-                document.getElementById('content-type').value = 'film';
-                showModal('add-content-modal');
-            });
-            
-            addBookBtn.addEventListener('click', () => {
-                document.getElementById('add-content-title').textContent = 'Kitap Ekle';
-                document.getElementById('content-type').value = 'kitap';
-                showModal('add-content-modal');
-            });
-            
-            // Film tabs
-            document.addEventListener('click', (e) => {
-                if (e.target.classList.contains('film-tab')) {
-                    filterFilms(e.target);
-                }
-            });
-            
-            // Modal close buttons
-            document.querySelectorAll('.modal-close').forEach(button => {
-                button.addEventListener('click', () => {
-                    const modal = button.closest('.modal');
-                    hideModal(modal.id);
-                });
-            });
-            
-            // Modal overlay close
-            document.querySelectorAll('.modal-overlay').forEach(overlay => {
-                overlay.addEventListener('click', () => {
-                    const modal = overlay.closest('.modal');
-                    hideModal(modal.id);
-                });
-            });
-            
-            // Rating stars
-            document.querySelectorAll('.rating-input input').forEach(input => {
-                input.addEventListener('change', updateStarRating);
-            });
-            
-            // Form submissions
-            loginForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('login-email').value;
-                const password = document.getElementById('login-password').value;
-                
-                try {
-                    await loginUser(email, password);
-                } catch (error) {
-                    // Error is handled in loginUser function
-                }
-            });
-            
-            registerForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('register-email').value;
-                const password = document.getElementById('register-password').value;
-                const firstName = document.getElementById('register-firstname').value;
-                const lastName = document.getElementById('register-lastname').value;
-                const age = document.getElementById('register-age').value;
-                const gender = document.getElementById('register-gender').value;
-                
-                try {
-                    await registerUser(email, password, firstName, lastName, age, gender);
-                } catch (error) {
-                    // Error is handled in registerUser function
-                }
-            });
-            
-            addContentForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const name = document.getElementById('content-name').value;
-                const id = document.getElementById('content-id').value;
-                const year = document.getElementById('content-year').value;
-                const dateRange = document.getElementById('content-date-range').value;
-                const image = document.getElementById('content-image').value;
-                const type = document.getElementById('content-type').value;
-                
-                try {
-                    await addContent(name, id, year, dateRange, image, type);
-                } catch (error) {
-                    // Error is handled in addContent function
-                }
-            });
-            
-            commentForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const contentId = document.getElementById('comment-content-id').value;
-                const contentTitle = document.getElementById('comment-content-title').value;
-                const contentType = document.getElementById('comment-content-type').value;
-                const watched = document.getElementById('comment-watched').checked;
-                const rating = document.querySelector('input[name="rating"]:checked')?.value || 5;
-                const comment = document.getElementById('comment-text').value;
-                
-                try {
-                    await addComment(contentId, contentTitle, contentType, rating, comment, watched);
-                } catch (error) {
-                    // Error is handled in addComment function
-                }
-            });
-            
-            adminCommentForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const userId = document.getElementById('admin-comment-user').value;
-                const contentId = document.getElementById('admin-comment-content').value;
-                const rating = document.getElementById('admin-comment-rating').value;
-                const comment = document.getElementById('admin-comment-text').value;
-                const verified = document.getElementById('admin-comment-verified').checked;
-                
-                if (!userId || !contentId) {
-                    alert("Lütfen kullanıcı ve içerik seçin.");
-                    return;
-                }
-                
-                try {
-                    await addCommentAsAdmin(userId, contentId, rating, comment, verified);
-                    adminCommentForm.reset();
-                } catch (error) {
-                    // Error is handled in addCommentAsAdmin function
-                }
-            });
-            
-            // Dynamic event listeners
-            document.addEventListener('click', async (e) => {
-                // Toggle content details
-                if (e.target.closest('.toggle-details')) {
-                    const contentId = e.target.closest('.toggle-details').dataset.id;
-                    toggleContentDetails(contentId);
-                }
-                
-                // Add comment button
-                if (e.target.closest('.add-comment-btn')) {
-                    const btn = e.target.closest('.add-comment-btn');
-                    const contentId = btn.dataset.id;
-                    const contentTitle = btn.dataset.title;
-                    const contentType = btn.dataset.type;
-                    
-                    document.getElementById('comment-modal-title').textContent = `${contentTitle} için Yorum Ekle`;
-                    document.getElementById('comment-content-id').value = `${contentType}_${contentId}`;
-                    document.getElementById('comment-content-title').value = contentTitle;
-                    document.getElementById('comment-content-type').value = contentType;
-                    
-                    // Reset rating stars
-                    document.querySelectorAll('.rating-input input').forEach(input => {
-                        input.checked = input.id === 'rating-5';
-                    });
-                    updateStarRating();
-                    
-                    showModal('comment-modal');
-                }
-                
-                // Delete comment button
-                if (e.target.closest('.delete-comment-btn') || e.target.closest('.delete-my-comment-btn')) {
-                    const commentId = e.target.closest('[data-comment-id]').dataset.commentId;
-                    await deleteComment(commentId);
-                }
-                
-                // Verify comment button
-                if (e.target.closest('.verify-comment-btn')) {
-                    const commentId = e.target.closest('[data-comment-id]').dataset.commentId;
-                    await toggleVerifiedComment(commentId, true);
-                }
-                
-                // Unverify comment button
-                if (e.target.closest('.unverify-comment-btn')) {
-                    const commentId = e.target.closest('[data-comment-id]').dataset.commentId;
-                    await toggleVerifiedComment(commentId, false);
-                }
-                
-                // Make admin button
-                if (e.target.closest('.make-admin-btn')) {
-                    const userId = e.target.closest('[data-user-id]').dataset.userId;
-                    await makeUserAdmin(userId);
-                }
-                
-                // Delete user button
-                if (e.target.closest('.delete-user-btn')) {
-                    const userId = e.target.closest('[data-user-id]').dataset.userId;
-                    await deleteUser(userId);
-                }
-                
-                // Rating stars in comment modal
-                if (e.target.closest('.rating-input label')) {
-                    const label = e.target.closest('.rating-input label');
-                    const input = document.getElementById(label.getAttribute('for'));
-                    if (input) {
-                        input.checked = true;
-                        updateStarRating();
-                    }
-                }
-            });
-            
-            // Verified checkbox in admin panel
-            document.addEventListener('change', async (e) => {
-                if (e.target.classList.contains('toggle-verified-checkbox')) {
-                    const commentId = e.target.dataset.commentId;
-                    const isChecked = e.target.checked;
-                    await toggleVerifiedComment(commentId, isChecked);
-                }
-            });
-            
-            // Initialize star rating display
-            document.addEventListener('DOMContentLoaded', () => {
-                updateStarRating();
-            });
-        }
-
-        // Initialize the app
-        init();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965e7d8271dfe343',t:'MTc1MzY0Mzk4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965f1db9f068db87',t:'MTc1MzY1MDU0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
