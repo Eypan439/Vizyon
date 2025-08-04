@@ -284,6 +284,9 @@
                             <button id="btn-music" class="px-4 py-2 rounded-lg bg-white text-purple-700 font-medium hover:bg-purple-100 transition">
                                 Müzik
                             </button>
+                            <button id="btn-suggest-film" class="hidden px-4 py-2 rounded-lg bg-yellow-500 text-white font-medium hover:bg-yellow-600 transition">
+                                🎬 Film Öner
+                            </button>
                         </div>
                         <div id="user-logged-out" class="flex space-x-2">
                             <button id="btn-login" class="px-4 py-2 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition">
@@ -328,7 +331,7 @@
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                     </svg>
-                    <span>Misafir olarak geziniyorsunuz. Yorum yapmak için giriş yapmanız gerekiyor.</span>
+                    <span>Misafir olarak geziniyorsunuz. İçerikleri görüntüleyebilirsiniz ancak yorum yapmak için giriş yapmanız gerekiyor.</span>
                 </div>
             </div>
 
@@ -419,6 +422,9 @@
                         <button id="admin-tab-logs" class="admin-tab px-6 py-3 text-gray-700 whitespace-nowrap">
                             Log Kayıtları
                         </button>
+                        <button id="admin-tab-suggestions" class="admin-tab px-6 py-3 text-gray-700 whitespace-nowrap">
+                            Film Önerileri
+                        </button>
                     </div>
                 </div>
 
@@ -486,6 +492,46 @@
                         <div class="p-6">
                             <div class="space-y-4" id="admin-logs-list">
                                 <!-- Logs will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Film Suggestions Management -->
+                <div id="admin-suggestions" class="admin-content hidden">
+                    <div class="space-y-6">
+                        <!-- Control Panel -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Film Önerisi Kontrol Paneli</h3>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-gray-700">Durum: </span>
+                                    <span id="suggestions-status" class="font-semibold">Öneriler kapalı</span>
+                                </div>
+                                <button id="toggle-suggestions-btn" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                                    Önerileri Aktif Et
+                                </button>
+                            </div>
+                            <div class="flex space-x-4">
+                                <button id="select-random-film-btn" class="hidden px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                                    Rastgele Film Seç
+                                </button>
+                                <button id="clear-suggestions-btn" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                                    Tüm Önerileri Temizle
+                                </button>
+                            </div>
+                            <div class="mt-4">
+                                <p id="selected-film-info" class="text-sm text-gray-600">Henüz öneri yok.</p>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Current Suggestions -->
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Tüm Öneriler</h3>
+                            <div class="space-y-4" id="current-suggestions-list">
+                                <!-- Current suggestions will be loaded here -->
                             </div>
                         </div>
                     </div>
@@ -771,6 +817,38 @@
         </div>
     </div>
 
+    <!-- Film Suggestion Modal -->
+    <div id="film-suggestion-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Film Önerisi</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <form id="film-suggestion-form">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="film-name">
+                            Film Adı
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="film-name" type="text" placeholder="Film adını yazın..." required>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            Öneriyi Gönder
+                        </button>
+                    </div>
+                    <div id="film-suggestion-error" class="text-red-500 text-sm mt-4 hidden"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Global variables
         let currentUser = null;
@@ -781,6 +859,11 @@
         let currentContentId = null;
         let currentContentTitle = null;
         let currentContentType = null;
+        
+        // Film suggestion system variables
+        let suggestionsActive = false;
+        let currentWeekSuggestions = [];
+        let users = [];
 
         // DOM elements
         const welcomeScreen = document.getElementById('welcome-screen');
@@ -801,6 +884,7 @@
         const btnLogin = document.getElementById('btn-login');
         const btnRegister = document.getElementById('btn-register');
         const btnLogout = document.getElementById('btn-logout');
+        const btnSuggestFilm = document.getElementById('btn-suggest-film');
 
         const welcomeLoginBtn = document.getElementById('welcome-login-btn');
         const welcomeRegisterBtn = document.getElementById('welcome-register-btn');
@@ -818,11 +902,13 @@
         const registerModal = document.getElementById('register-modal');
         const commentModal = document.getElementById('comment-modal');
         const addContentModal = document.getElementById('add-content-modal');
+        const filmSuggestionModal = document.getElementById('film-suggestion-modal');
 
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
         const commentForm = document.getElementById('comment-form');
         const addContentForm = document.getElementById('add-content-form');
+        const filmSuggestionForm = document.getElementById('film-suggestion-form');
 
         const addFilmBtn = document.getElementById('add-film-btn');
         const addBookBtn = document.getElementById('add-book-btn');
@@ -831,9 +917,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
             setupAuthStateListener();
-            // Show welcome screen initially
-            welcomeScreen.classList.remove('hidden');
-            mainApp.classList.add('hidden');
+            // Check if user is already logged in
+            checkExistingAuth();
         });
 
         function setupAuthStateListener() {
@@ -866,9 +951,7 @@
                         
                         // Clear guest mode when user logs in
                         isGuest = false;
-                        updateUIForLoggedInUser();
-                        // Reload data to update UI elements
-                        await loadData();
+                        showMainApp();
                     } catch (error) {
                         console.error('Error fetching user data:', error);
                         currentUser = {
@@ -879,11 +962,31 @@
                         };
                         isAdmin = false;
                         isGuest = false;
-                        updateUIForLoggedInUser();
-                        await loadData();
+                        showMainApp();
                     }
+                } else if (!user && !isGuest) {
+                    // User is not logged in and not a guest
+                    currentUser = null;
+                    isAdmin = false;
+                    welcomeScreen.classList.remove('hidden');
+                    mainApp.classList.add('hidden');
                 }
             });
+        }
+
+        function checkExistingAuth() {
+            // Show loading while checking auth state
+            showLoading();
+            
+            // Firebase will automatically trigger onAuthStateChanged
+            // We'll hide loading in the auth state change handler or after a timeout
+            setTimeout(() => {
+                if (welcomeScreen.classList.contains('hidden') && mainApp.classList.contains('hidden')) {
+                    // If neither screen is shown, show welcome screen
+                    welcomeScreen.classList.remove('hidden');
+                    hideLoading();
+                }
+            }, 3000); // 3 second timeout
         }
 
         function setupEventListeners() {
@@ -940,6 +1043,15 @@
 
             btnLogout.addEventListener('click', () => {
                 logout();
+            });
+
+            // Film suggestion button
+            btnSuggestFilm.addEventListener('click', () => {
+                if (isGuest) {
+                    showModal('login-modal');
+                    return;
+                }
+                showModal('film-suggestion-modal');
             });
 
             // User menu dropdown
@@ -999,6 +1111,11 @@
                 handleAddContent();
             });
 
+            filmSuggestionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleFilmSuggestion();
+            });
+
             // Film tabs
             filmTabsContainer.addEventListener('click', (e) => {
                 if (e.target.classList.contains('film-tab')) {
@@ -1024,6 +1141,10 @@
 
             document.getElementById('admin-tab-logs').addEventListener('click', () => {
                 switchAdminTab('logs');
+            });
+
+            document.getElementById('admin-tab-suggestions').addEventListener('click', () => {
+                switchAdminTab('suggestions');
             });
         }
 
@@ -1083,39 +1204,24 @@
                 showLoading();
                 const userCredential = await window.firebaseAuth.signInWithEmailAndPassword(window.auth, email, password);
                 
-                // Get user data from Firestore to check role
+                // Get user data for logging
                 const userDoc = await window.firestore.getDoc(window.firestore.doc(window.db, 'users', userCredential.user.uid));
+                let userName = userCredential.user.displayName || userCredential.user.email.split('@')[0];
                 
                 if (userDoc.exists()) {
                     const userData = userDoc.data();
-                    currentUser = {
-                        id: userCredential.user.uid,
-                        name: userData.ad + ' ' + userData.soyad,
-                        email: userCredential.user.email,
-                        role: userData.role || 'user'
-                    };
-                    
-                    // Check if admin
-                    isAdmin = userData.role === 'admin';
-                } else {
-                    currentUser = {
-                        id: userCredential.user.uid,
-                        name: userCredential.user.displayName || userCredential.user.email.split('@')[0],
-                        email: userCredential.user.email,
-                        role: 'user'
-                    };
-                    isAdmin = false;
+                    userName = `${userData.ad} ${userData.soyad}`;
                 }
-
-                // Clear guest mode
-                isGuest = false;
-
-                // Create log entry for login
-                await createLog('Kullanıcı Girişi', `${currentUser.name} sisteme giriş yaptı.`);
-
+                
+                // Create login log entry
+                await createLog('Kullanıcı Girişi', `${userName} sisteme giriş yaptı.`);
+                
                 hideModal('login-modal');
-                showMainApp();
-                hideLoading();
+                
+                // Clear form
+                document.getElementById('login-form').reset();
+                errorDiv.classList.add('hidden');
+                
             } catch (error) {
                 hideLoading();
                 errorDiv.textContent = getFirebaseErrorMessage(error.code);
@@ -1152,19 +1258,15 @@
                     profilOlusturmaTarihi: new Date()
                 });
 
-                currentUser = {
-                    id: userCredential.user.uid,
-                    name: `${firstName} ${lastName}`,
-                    email: email,
-                    role: 'user'
-                };
-
-                // Create log entry
-                await createLog('Kullanıcı Kaydı', `${firstName} ${lastName} adlı kullanıcı sisteme kayıt oldu.`);
+                // Create registration log entry
+                await createLog('Kullanıcı Kaydı', `${firstName} ${lastName} sisteme kayıt oldu.`);
 
                 hideModal('register-modal');
-                showMainApp();
-                hideLoading();
+                
+                // Clear form
+                document.getElementById('register-form').reset();
+                errorDiv.classList.add('hidden');
+                
             } catch (error) {
                 hideLoading();
                 errorDiv.textContent = getFirebaseErrorMessage(error.code);
@@ -1316,7 +1418,20 @@
 
         function openCommentModal(contentId, contentTitle, contentType) {
             if (isGuest) {
-                showModal('login-modal');
+                // Log out guest user and redirect to welcome screen
+                currentUser = null;
+                isAdmin = false;
+                isGuest = false;
+                
+                // Hide main app and show welcome screen
+                mainApp.classList.add('hidden');
+                welcomeScreen.classList.remove('hidden');
+                
+                // Update UI
+                userLoggedIn.classList.add('hidden');
+                userLoggedOut.classList.remove('hidden');
+                guestNotice.classList.add('hidden');
+                
                 return;
             }
 
@@ -1348,6 +1463,8 @@
                 isAdmin = false;
                 isGuest = false;
                 
+                // Firebase auth state change will handle UI updates
+                // But we can also manually update for immediate feedback
                 welcomeScreen.classList.remove('hidden');
                 mainApp.classList.add('hidden');
                 userLoggedIn.classList.add('hidden');
@@ -1388,6 +1505,7 @@
         function showMainApp() {
             welcomeScreen.classList.add('hidden');
             mainApp.classList.remove('hidden');
+            hideLoading(); // Hide loading when showing main app
 
             if (currentUser) {
                 updateUIForLoggedInUser();
@@ -1404,14 +1522,14 @@
             showLoading();
 
             try {
-                // Load contents from Firebase
+                // Load contents from Firebase - this should work for all users including guests
                 const contentsSnapshot = await window.firestore.getDocs(window.firestore.collection(window.db, 'icerikler'));
                 contents = [];
                 contentsSnapshot.forEach((doc) => {
                     contents.push({ id: doc.id, ...doc.data() });
                 });
 
-                // Load comments from Firebase
+                // Load comments from Firebase - this should work for all users including guests
                 const commentsSnapshot = await window.firestore.getDocs(window.firestore.collection(window.db, 'yorumlar'));
                 comments = [];
                 commentsSnapshot.forEach((doc) => {
@@ -1423,17 +1541,184 @@
                     comments.push({ id: doc.id, ...data });
                 });
 
+                // Only load users and suggestions for logged-in users (not guests)
+                if (!isGuest && currentUser) {
+                    try {
+                        const usersSnapshot = await window.firestore.getDocs(window.firestore.collection(window.db, 'users'));
+                        users = [];
+                        usersSnapshot.forEach((doc) => {
+                            users.push({ id: doc.id, ...doc.data() });
+                        });
+
+                        // Load suggestion settings and current suggestions
+                        await loadSuggestionSettings();
+                    } catch (userError) {
+                        console.log('Kullanıcı verileri yüklenemedi (misafir kullanıcı için normal):', userError);
+                        users = [];
+                    }
+                } else {
+                    users = [];
+                }
+
+                updateSuggestionButton();
+
             } catch (error) {
                 console.error('Firebase veri yükleme hatası:', error);
-                // If Firebase fails, keep arrays empty
-                contents = [];
-                comments = [];
+                
+                // For guests, show sample data if Firebase fails
+                if (isGuest) {
+                    console.log('Misafir kullanıcı için veri yüklenemedi, örnek veri gösteriliyor');
+                    // Provide sample data for guests
+                    contents = [
+                        {
+                            id: 'sample-film-1',
+                            name: 'Örnek Film 1',
+                            tur: 'film',
+                            year: '2023',
+                            image: 'https://via.placeholder.com/300x450?text=Örnek+Film',
+                            tarih_araligi: 'Örnek Tarih'
+                        },
+                        {
+                            id: 'sample-book-1',
+                            name: 'Örnek Kitap 1',
+                            tur: 'kitap',
+                            author: 'Örnek Yazar',
+                            image: 'https://via.placeholder.com/300x450?text=Örnek+Kitap',
+                            tarih_araligi: 'Örnek Tarih'
+                        }
+                    ];
+                    comments = [
+                        {
+                            id: 'sample-comment-1',
+                            icerikId: 'sample-film-1',
+                            userName: 'Örnek Kullanıcı',
+                            puan: 8,
+                            yorum: 'Bu bir örnek yorumdur. Giriş yaparak gerçek yorumları görebilirsiniz.',
+                            timestamp: new Date(),
+                            verified: true
+                        }
+                    ];
+                    users = [];
+                } else {
+                    // For logged-in users, keep arrays empty
+                    contents = [];
+                    comments = [];
+                    users = [];
+                }
             }
 
             renderFilmTabs();
             renderFilms();
             renderBooks();
             hideLoading();
+        }
+
+        // Film suggestion system functions
+
+        async function loadSuggestionSettings() {
+            try {
+                // Load suggestion settings
+                const settingsDoc = await window.firestore.getDoc(window.firestore.doc(window.db, 'settings', 'suggestions'));
+                if (settingsDoc.exists()) {
+                    const settings = settingsDoc.data();
+                    suggestionsActive = settings.active || false;
+                } else {
+                    // Create default settings if not exists
+                    await window.firestore.setDoc(window.firestore.doc(window.db, 'settings', 'suggestions'), {
+                        active: false,
+                        lastUpdated: new Date()
+                    });
+                    suggestionsActive = false;
+                }
+
+                // Load all suggestions
+                const suggestionsSnapshot = await window.firestore.getDocs(window.firestore.collection(window.db, 'filmSuggestions'));
+                
+                currentWeekSuggestions = [];
+                suggestionsSnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if (data.timestamp && data.timestamp.toDate) {
+                        data.timestamp = data.timestamp.toDate();
+                    }
+                    currentWeekSuggestions.push({ id: doc.id, ...data });
+                });
+
+            } catch (error) {
+                console.error('Öneri ayarları yüklenirken hata:', error);
+                suggestionsActive = false;
+                currentWeekSuggestions = [];
+            }
+        }
+
+        function updateSuggestionButton() {
+            // Hide for guest users
+            if (!currentUser || isGuest) {
+                btnSuggestFilm.classList.add('hidden');
+                return;
+            }
+
+            // Check if suggestions are active
+            if (!suggestionsActive) {
+                btnSuggestFilm.classList.add('hidden');
+                return;
+            }
+
+            // Check if user already made a suggestion
+            const userSuggestion = currentWeekSuggestions.find(s => s.userId === currentUser.id);
+            if (userSuggestion) {
+                btnSuggestFilm.classList.add('hidden');
+                return;
+            }
+
+            btnSuggestFilm.classList.remove('hidden');
+        }
+
+        async function handleFilmSuggestion() {
+            const filmName = document.getElementById('film-name').value;
+            const errorDiv = document.getElementById('film-suggestion-error');
+
+            // Check if user already made a suggestion
+            const userSuggestion = currentWeekSuggestions.find(s => s.userId === currentUser.id);
+            if (userSuggestion) {
+                errorDiv.textContent = 'Bu hafta zaten bir film önerisi yaptınız.';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                showLoading();
+                
+                const suggestionData = {
+                    filmName: filmName,
+                    userId: currentUser.id,
+                    userName: currentUser.name,
+                    userEmail: currentUser.email,
+                    timestamp: new Date()
+                };
+
+                await window.firestore.addDoc(window.firestore.collection(window.db, 'filmSuggestions'), suggestionData);
+                
+                // Create log entry
+                await createLog('Film Önerisi', `${currentUser.name} kullanıcısı "${filmName}" filmini önerdi.`);
+                
+                hideModal('film-suggestion-modal');
+                
+                // Reset form
+                document.getElementById('film-suggestion-form').reset();
+                errorDiv.classList.add('hidden');
+                
+                // Reload suggestion data
+                await loadSuggestionSettings();
+                updateSuggestionButton();
+                
+                hideLoading();
+                alert('Film öneriniz başarıyla gönderildi!');
+                
+            } catch (error) {
+                hideLoading();
+                errorDiv.textContent = 'Öneri gönderilirken hata oluştu: ' + error.message;
+                errorDiv.classList.remove('hidden');
+            }
         }
 
         function renderFilmTabs() {
@@ -1816,6 +2101,8 @@
                 loadContentData();
             } else if (tab === 'logs') {
                 loadLogsData();
+            } else if (tab === 'suggestions') {
+                loadSuggestionsData();
             }
         }
 
@@ -1827,6 +2114,283 @@
                 return;
             }
             switchAdminTab('users');
+        }
+
+        async function loadSuggestionsData() {
+            try {
+                showLoading();
+                
+                // Load suggestion settings and current suggestions
+                await loadSuggestionSettings();
+                
+                // Update UI
+                updateSuggestionsUI();
+                
+                // Load users for blocking
+                await loadUsersForBlocking();
+                
+                // Load current suggestions
+                loadCurrentSuggestions();
+                
+                // Setup admin suggestion event listeners
+                setupSuggestionEventListeners();
+                
+                hideLoading();
+            } catch (error) {
+                hideLoading();
+                console.error('Öneri verileri yüklenirken hata:', error);
+            }
+        }
+
+
+
+        async function loadUsersForBlocking() {
+            try {
+                const usersSnapshot = await window.firestore.getDocs(window.firestore.collection(window.db, 'users'));
+                const users = [];
+                usersSnapshot.forEach((doc) => {
+                    const userData = doc.data();
+                    if (userData.role !== 'admin') { // Don't show admin users
+                        users.push({ id: doc.id, ...userData });
+                    }
+                });
+
+                const blockedUsersList = document.getElementById('blocked-users-list');
+                blockedUsersList.innerHTML = '';
+
+                users.forEach(user => {
+                    const isBlocked = blockedUsers.includes(user.id);
+                    const checkboxDiv = document.createElement('div');
+                    checkboxDiv.className = 'flex items-center';
+                    checkboxDiv.innerHTML = `
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="mr-2 blocked-user-checkbox" data-user-id="${user.id}" ${isBlocked ? 'checked' : ''}>
+                            <span class="text-sm text-gray-700">${user.ad} ${user.soyad}</span>
+                        </label>
+                    `;
+                    blockedUsersList.appendChild(checkboxDiv);
+                });
+            } catch (error) {
+                console.error('Kullanıcılar yüklenirken hata:', error);
+            }
+        }
+
+        function loadCurrentSuggestions() {
+            const suggestionsList = document.getElementById('current-suggestions-list');
+            suggestionsList.innerHTML = '';
+
+            if (currentWeekSuggestions.length === 0) {
+                suggestionsList.innerHTML = '<p class="text-gray-500 text-center py-4">Henüz öneri yapılmamış.</p>';
+                return;
+            }
+
+            currentWeekSuggestions.forEach(suggestion => {
+                const suggestionDiv = document.createElement('div');
+                const isSelected = suggestion.selected === true;
+                suggestionDiv.className = `border rounded-lg p-4 ${isSelected ? 'bg-green-50 border-green-300' : 'bg-white border-gray-200'}`;
+                
+                const formattedDate = suggestion.timestamp instanceof Date ? 
+                    suggestion.timestamp.toLocaleDateString('tr-TR') : 
+                    new Date(suggestion.timestamp).toLocaleDateString('tr-TR');
+
+                suggestionDiv.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center mb-2">
+                                <h4 class="font-semibold text-gray-800">${suggestion.filmName}</h4>
+                                ${isSelected ? `
+                                    <span class="ml-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        Seçildi
+                                    </span>
+                                ` : ''}
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">Öneren: ${suggestion.userName}</p>
+                            <p class="text-xs text-gray-500">${formattedDate}</p>
+                            ${isSelected && suggestion.selectedAt ? `
+                                <p class="text-xs text-green-600 mt-1">
+                                    Seçilme Tarihi: ${suggestion.selectedAt.toDate ? suggestion.selectedAt.toDate().toLocaleDateString('tr-TR') : new Date(suggestion.selectedAt).toLocaleDateString('tr-TR')}
+                                </p>
+                            ` : ''}
+                        </div>
+                        <button class="delete-suggestion-btn px-3 py-1 text-sm bg-red-500 hover:bg-red-600 text-white rounded" data-suggestion-id="${suggestion.id}">
+                            Sil
+                        </button>
+                    </div>
+                `;
+
+                // Add delete event listener
+                const deleteBtn = suggestionDiv.querySelector('.delete-suggestion-btn');
+                deleteBtn.addEventListener('click', async () => {
+                    if (confirm('Bu öneriyi silmek istediğinizden emin misiniz?')) {
+                        await deleteSuggestion(suggestion.id);
+                    }
+                });
+
+                suggestionsList.appendChild(suggestionDiv);
+            });
+        }
+
+        function setupSuggestionEventListeners() {
+            // Toggle suggestions button
+            document.getElementById('toggle-suggestions-btn').addEventListener('click', async () => {
+                await toggleSuggestions();
+            });
+
+            // Select random film button
+            document.getElementById('select-random-film-btn').addEventListener('click', async () => {
+                await selectRandomFilm();
+            });
+
+            // Clear suggestions button
+            document.getElementById('clear-suggestions-btn').addEventListener('click', async () => {
+                if (confirm('Bu haftanın tüm önerilerini silmek istediğinizden emin misiniz?')) {
+                    await clearWeekSuggestions();
+                }
+            });
+
+            // Blocked users checkboxes
+            document.addEventListener('change', async (e) => {
+                if (e.target.classList.contains('blocked-user-checkbox')) {
+                    await updateBlockedUsers();
+                }
+            });
+        }
+
+        async function toggleSuggestions() {
+            try {
+                showLoading();
+                
+                suggestionsActive = !suggestionsActive;
+                
+                await window.firestore.setDoc(window.firestore.doc(window.db, 'settings', 'suggestions'), {
+                    active: suggestionsActive,
+                    blockedUsers: blockedUsers,
+                    lastUpdated: new Date()
+                });
+
+                // Create log entry
+                await createLog('Öneri Sistemi', `Film önerileri ${suggestionsActive ? 'aktif edildi' : 'kapatıldı'}.`);
+                
+                updateSuggestionsUI();
+                updateSuggestionButton();
+                hideLoading();
+            } catch (error) {
+                hideLoading();
+                alert('Öneri durumu güncellenirken hata oluştu: ' + error.message);
+            }
+        }
+
+        async function selectRandomFilm() {
+            try {
+                if (currentWeekSuggestions.length === 0) {
+                    alert('Seçilecek öneri bulunmuyor.');
+                    return;
+                }
+
+                showLoading();
+                
+                // Select random suggestion
+                const randomIndex = Math.floor(Math.random() * currentWeekSuggestions.length);
+                const selectedSuggestion = currentWeekSuggestions[randomIndex];
+
+                // Create log entry
+                await createLog('Film Seçimi', `"${selectedSuggestion.filmName}" filmi seçildi. (Öneren: ${selectedSuggestion.userName})`);
+                
+                hideLoading();
+                alert(`"${selectedSuggestion.filmName}" filmi seçildi! (Öneren: ${selectedSuggestion.userName})`);
+            } catch (error) {
+                hideLoading();
+                alert('Film seçilirken hata oluştu: ' + error.message);
+            }
+        }
+
+        async function clearAllSuggestions() {
+            try {
+                showLoading();
+                
+                // Delete all suggestions
+                const deletePromises = currentWeekSuggestions.map(suggestion => 
+                    window.firestore.deleteDoc(window.firestore.doc(window.db, 'filmSuggestions', suggestion.id))
+                );
+                
+                await Promise.all(deletePromises);
+
+                // Create log entry
+                await createLog('Öneriler Temizlendi', `Tüm film önerileri temizlendi. (${currentWeekSuggestions.length} öneri)`);
+                
+                // Reload data
+                await loadSuggestionSettings();
+                updateSuggestionsUI();
+                loadCurrentSuggestions();
+                updateSuggestionButton();
+                
+                hideLoading();
+                alert('Tüm öneriler başarıyla temizlendi.');
+            } catch (error) {
+                hideLoading();
+                console.error('Clear suggestions error:', error);
+                alert('Öneriler temizlenirken hata oluştu: ' + error.message);
+            }
+        }
+
+        async function deleteSuggestion(suggestionId) {
+            try {
+                showLoading();
+                
+                // Get suggestion data for logging
+                const suggestionDoc = await window.firestore.getDoc(window.firestore.doc(window.db, 'filmSuggestions', suggestionId));
+                const suggestionData = suggestionDoc.data();
+                
+                await window.firestore.deleteDoc(window.firestore.doc(window.db, 'filmSuggestions', suggestionId));
+                
+                // Create log entry
+                if (suggestionData) {
+                    await createLog('Öneri Silindi', `"${suggestionData.filmName}" önerisi silindi. (Öneren: ${suggestionData.userName})`);
+                }
+                
+                // Reload data
+                await loadSuggestionSettings();
+                updateSuggestionsUI();
+                loadCurrentSuggestions();
+                updateSuggestionButton();
+                
+                hideLoading();
+            } catch (error) {
+                hideLoading();
+                console.error('Delete suggestion error:', error);
+                alert('Öneri silinirken hata oluştu: ' + error.message);
+            }
+        }
+
+        async function updateBlockedUsers() {
+            try {
+                const checkboxes = document.querySelectorAll('.blocked-user-checkbox');
+                const newBlockedUsers = [];
+                
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        newBlockedUsers.push(checkbox.dataset.userId);
+                    }
+                });
+                
+                blockedUsers = newBlockedUsers;
+                
+                await window.firestore.setDoc(window.firestore.doc(window.db, 'settings', 'suggestions'), {
+                    active: suggestionsActive,
+                    blockedUsers: blockedUsers,
+                    lastUpdated: new Date()
+                });
+
+                // Create log entry
+                await createLog('Engellenen Kullanıcılar', `Film önerisi engellenenleri güncellendi. Engellenen sayısı: ${blockedUsers.length}`);
+                
+                updateSuggestionButton();
+            } catch (error) {
+                console.error('Engellenen kullanıcılar güncellenirken hata:', error);
+            }
         }
 
         async function loadUsersData() {
@@ -2268,6 +2832,308 @@
             showModal('user-profile-modal');
         }
 
+        async function loadSuggestionsData() {
+            try {
+                showLoading();
+                
+                // Load suggestion settings and current suggestions
+                await loadSuggestionSettings();
+                
+                // Update UI
+                updateSuggestionsUI();
+                
+                // Load current suggestions
+                loadCurrentSuggestions();
+                
+                // Setup admin suggestion event listeners
+                setupSuggestionEventListeners();
+                
+                hideLoading();
+            } catch (error) {
+                hideLoading();
+                console.error('Öneri verileri yüklenirken hata:', error);
+            }
+        }
+
+
+
+
+
+        function loadCurrentSuggestionsAdmin() {
+            const suggestionsList = document.getElementById('current-suggestions-list');
+            suggestionsList.innerHTML = '';
+
+            if (currentWeekSuggestions.length === 0) {
+                suggestionsList.innerHTML = '<p class="text-gray-500 text-center py-4">Bu hafta henüz öneri yapılmamış.</p>';
+                return;
+            }
+
+            currentWeekSuggestions.forEach(suggestion => {
+                const suggestionDiv = document.createElement('div');
+                suggestionDiv.className = `border rounded-lg p-4 ${suggestion.selected ? 'bg-green-50 border-green-200' : 'bg-white border-gray-200'}`;
+                
+                const formattedDate = suggestion.timestamp instanceof Date ? 
+                    suggestion.timestamp.toLocaleDateString('tr-TR') : 
+                    new Date(suggestion.timestamp).toLocaleDateString('tr-TR');
+
+                suggestionDiv.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center mb-2">
+                                <h4 class="font-semibold text-gray-800">${suggestion.filmName}</h4>
+                                ${suggestion.selected ? '<span class="ml-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Seçildi</span>' : ''}
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">Öneren: ${suggestion.userName}</p>
+                            ${suggestion.reason ? `<p class="text-gray-700 mb-2">${suggestion.reason}</p>` : ''}
+                            <p class="text-xs text-gray-500">${formattedDate}</p>
+                        </div>
+                        <button class="delete-suggestion-btn px-3 py-1 text-sm bg-red-500 hover:bg-red-600 text-white rounded" data-suggestion-id="${suggestion.id}">
+                            Sil
+                        </button>
+                    </div>
+                `;
+
+                // Add delete event listener
+                const deleteBtn = suggestionDiv.querySelector('.delete-suggestion-btn');
+                deleteBtn.addEventListener('click', async () => {
+                    if (confirm('Bu öneriyi silmek istediğinizden emin misiniz?')) {
+                        await deleteSuggestion(suggestion.id);
+                    }
+                });
+
+                suggestionsList.appendChild(suggestionDiv);
+            });
+        }
+
+        function setupSuggestionEventListeners() {
+            // Remove existing listeners to prevent duplicates
+            const toggleBtn = document.getElementById('toggle-suggestions-btn');
+            const selectBtn = document.getElementById('select-random-film-btn');
+            const clearBtn = document.getElementById('clear-suggestions-btn');
+            
+            // Clone buttons to remove all event listeners
+            const newToggleBtn = toggleBtn.cloneNode(true);
+            const newSelectBtn = selectBtn.cloneNode(true);
+            const newClearBtn = clearBtn.cloneNode(true);
+            
+            toggleBtn.parentNode.replaceChild(newToggleBtn, toggleBtn);
+            selectBtn.parentNode.replaceChild(newSelectBtn, selectBtn);
+            clearBtn.parentNode.replaceChild(newClearBtn, clearBtn);
+
+            // Add new event listeners
+            newToggleBtn.addEventListener('click', async () => {
+                await toggleSuggestions();
+            });
+
+            newSelectBtn.addEventListener('click', async () => {
+                await selectRandomFilm();
+            });
+
+            newClearBtn.addEventListener('click', async () => {
+                if (confirm('Tüm önerileri silmek istediğinizden emin misiniz?')) {
+                    await clearAllSuggestions();
+                }
+            });
+        }
+
+        function updateSuggestionsUI() {
+            const statusElement = document.getElementById('suggestions-status');
+            const toggleButton = document.getElementById('toggle-suggestions-btn');
+            const selectButton = document.getElementById('select-random-film-btn');
+            const selectedFilmInfo = document.getElementById('selected-film-info');
+
+            if (suggestionsActive) {
+                statusElement.textContent = 'Öneriler aktif';
+                statusElement.className = 'font-semibold text-green-600';
+                toggleButton.textContent = 'Önerileri Kapat';
+                toggleButton.className = 'px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition';
+                selectButton.classList.remove('hidden');
+            } else {
+                statusElement.textContent = 'Öneriler kapalı';
+                statusElement.className = 'font-semibold text-red-600';
+                toggleButton.textContent = 'Önerileri Aktif Et';
+                toggleButton.className = 'px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition';
+                selectButton.classList.add('hidden');
+            }
+
+            // Check if there's a selected film
+            const selectedSuggestion = currentWeekSuggestions.find(s => s.selected);
+            
+            if (selectedSuggestion) {
+                // Show selected film info
+                const selectedDate = selectedSuggestion.selectedAt ? 
+                    (selectedSuggestion.selectedAt.toDate ? selectedSuggestion.selectedAt.toDate() : new Date(selectedSuggestion.selectedAt)) : 
+                    new Date();
+                
+                selectedFilmInfo.innerHTML = `
+                    <div class="bg-green-100 border border-green-400 rounded-lg p-4 mt-4">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-green-800">Bu Haftanın Seçilen Filmi:</h4>
+                                <p class="text-green-700 font-medium">"${selectedSuggestion.filmName}"</p>
+                                <p class="text-green-600 text-sm">Öneren: ${selectedSuggestion.userName}</p>
+                                <p class="text-green-600 text-xs">Seçilme Tarihi: ${selectedDate.toLocaleDateString('tr-TR')}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                selectedFilmInfo.className = 'text-sm';
+                
+                // Hide select button if film already selected
+                selectButton.classList.add('hidden');
+            } else {
+                // Update selected film info for no selection
+                if (currentWeekSuggestions.length > 0) {
+                    selectedFilmInfo.innerHTML = `
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
+                            <p class="text-blue-700 font-medium">${currentWeekSuggestions.length} öneri var</p>
+                            <p class="text-blue-600 text-sm">Rastgele film seçmek için yukarıdaki butona tıklayın.</p>
+                        </div>
+                    `;
+                    selectedFilmInfo.className = 'text-sm';
+                    
+                    // Show select button if suggestions exist and none selected
+                    if (suggestionsActive) {
+                        selectButton.classList.remove('hidden');
+                    }
+                } else {
+                    selectedFilmInfo.innerHTML = `
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 mt-4">
+                            <p class="text-gray-600">Henüz öneri yok.</p>
+                        </div>
+                    `;
+                    selectedFilmInfo.className = 'text-sm';
+                    selectButton.classList.add('hidden');
+                }
+            }
+        }
+
+        async function toggleSuggestions() {
+            try {
+                showLoading();
+                
+                suggestionsActive = !suggestionsActive;
+                
+                await window.firestore.setDoc(window.firestore.doc(window.db, 'settings', 'suggestions'), {
+                    active: suggestionsActive,
+                    lastUpdated: new Date()
+                });
+
+                // Create log entry
+                await createLog('Öneri Sistemi', `Film önerileri ${suggestionsActive ? 'aktif edildi' : 'kapatıldı'}.`);
+                
+                updateSuggestionsUI();
+                updateSuggestionButton();
+                hideLoading();
+                
+                // Show success message
+                alert(`Film önerileri ${suggestionsActive ? 'aktif edildi' : 'kapatıldı'}!`);
+                
+            } catch (error) {
+                hideLoading();
+                console.error('Toggle suggestions error:', error);
+                alert('Öneri durumu güncellenirken hata oluştu: ' + error.message);
+            }
+        }
+
+        async function selectRandomFilm() {
+            try {
+                // Filter out already selected suggestions
+                const availableSuggestions = currentWeekSuggestions.filter(s => !s.selected);
+                
+                if (availableSuggestions.length === 0) {
+                    alert('Seçilecek öneri bulunmuyor veya tüm öneriler zaten seçilmiş.');
+                    return;
+                }
+
+                showLoading();
+                
+                // Select random suggestion from available ones
+                const randomIndex = Math.floor(Math.random() * availableSuggestions.length);
+                const selectedSuggestion = availableSuggestions[randomIndex];
+                
+                // Update the selected suggestion in Firestore
+                await window.firestore.updateDoc(window.firestore.doc(window.db, 'filmSuggestions', selectedSuggestion.id), {
+                    selected: true,
+                    selectedAt: new Date()
+                });
+
+                // Create log entry
+                await createLog('Film Seçimi', `"${selectedSuggestion.filmName}" filmi bu haftanın filmi olarak seçildi. (Öneren: ${selectedSuggestion.userName})`);
+                
+                // Reload data to get updated suggestions
+                await loadSuggestionSettings();
+                updateSuggestionsUI();
+                loadCurrentSuggestions();
+                
+                hideLoading();
+                alert(`🎬 "${selectedSuggestion.filmName}" filmi bu haftanın filmi olarak seçildi!\n\nÖneren: ${selectedSuggestion.userName}`);
+                
+            } catch (error) {
+                hideLoading();
+                console.error('Select random film error:', error);
+                alert('Film seçilirken hata oluştu: ' + error.message);
+            }
+        }
+
+        async function clearAllSuggestions() {
+            try {
+                showLoading();
+                
+                // Delete all suggestions
+                for (const suggestion of currentWeekSuggestions) {
+                    await window.firestore.deleteDoc(window.firestore.doc(window.db, 'filmSuggestions', suggestion.id));
+                }
+
+                // Create log entry
+                await createLog('Öneriler Temizlendi', `Tüm film önerileri temizlendi. (${currentWeekSuggestions.length} öneri)`);
+                
+                // Reload data
+                await loadSuggestionSettings();
+                updateSuggestionsUI();
+                loadCurrentSuggestions();
+                
+                hideLoading();
+                alert('Tüm öneriler başarıyla temizlendi.');
+            } catch (error) {
+                hideLoading();
+                console.error('Clear suggestions error:', error);
+                alert('Öneriler temizlenirken hata oluştu: ' + error.message);
+            }
+        }
+
+        async function deleteSuggestion(suggestionId) {
+            try {
+                showLoading();
+                
+                // Get suggestion data for logging
+                const suggestionDoc = await window.firestore.getDoc(window.firestore.doc(window.db, 'filmSuggestions', suggestionId));
+                const suggestionData = suggestionDoc.data();
+                
+                await window.firestore.deleteDoc(window.firestore.doc(window.db, 'filmSuggestions', suggestionId));
+                
+                // Create log entry
+                if (suggestionData) {
+                    await createLog('Öneri Silindi', `"${suggestionData.filmName}" önerisi silindi. (Öneren: ${suggestionData.userName})`);
+                }
+                
+                // Reload data
+                await loadSuggestionSettings();
+                updateSuggestionsUI();
+                loadCurrentSuggestionsAdmin();
+                
+                hideLoading();
+            } catch (error) {
+                hideLoading();
+                alert('Öneri silinirken hata oluştu: ' + error.message);
+            }
+        }
+
+
+
         async function loadLogsData() {
             try {
                 showLoading();
@@ -2483,5 +3349,5 @@
             return errorMessages[errorCode] || 'Bir hata oluştu: ' + errorCode;
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'969db5d3e00c8b2e',t:'MTc1NDMwNjg5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a05e28c33fdfdf',t:'MTc1NDMzNDc2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
