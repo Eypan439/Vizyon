@@ -624,7 +624,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="md:col-span-1">
-                        <img id="contentImage" src="" alt="" class="w-full rounded-lg shadow-lg">
+                        <img id="contentDetailImage" src="" alt="" class="w-full rounded-lg shadow-lg">
                         <div id="contentPdf" class="hidden mt-4">
                             <button onclick="downloadPdf()" class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition">
                                 <i class="fas fa-download mr-2"></i>PDF İndir
@@ -1960,8 +1960,8 @@ async function loadSuggestions() {
                 document.getElementById('contentTitle').textContent = currentContent.name || 'İsimsiz İçerik';
                 
                 const imageUrl = currentContent.image || 'https://raw.githubusercontent.com/eyyuphan-vizyon/Vizyon/refs/heads/main/placeholder.png';
-                document.getElementById('contentImage').src = imageUrl;
-                document.getElementById('contentImage').alt = currentContent.name || 'İçerik Görseli';
+                document.getElementById('contentDetailImage').src = imageUrl;
+                document.getElementById('contentDetailImage').alt = currentContent.name || 'İçerik Görseli';
                 
                 console.log('Loading ratings and comments...');
                 const avgRating = await getAverageRating(currentContent.id);
@@ -3304,6 +3304,7 @@ async function deleteComment(commentId, contentName) {
         }
 
         async function addContent(event) {
+            
             event.preventDefault();
             
             if (!currentUser || currentUser.role !== 'admin') {
