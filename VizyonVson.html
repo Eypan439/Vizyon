@@ -60,39 +60,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js';
-        import { getFirestore, collection, addDoc, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, query, where, orderBy, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js';
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js';
-        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js';
+    <!-- Firebase SDKs -->
+<script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js';
+    // 1. writeBatch fonksiyonunu buraya import ediyoruz
+    import { getFirestore, collection, addDoc, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, query, where, orderBy, onSnapshot, serverTimestamp, writeBatch } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js';
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js';
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js';
 
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyD3i3UYYvAiGiEpM14SXbVTd9U9jk1BO58",
-            authDomain: "vizyon-da2dd.firebaseapp.com",
-            projectId: "vizyon-da2dd",
-            storageBucket: "vizyon-da2dd.firebasestorage.app",
-            messagingSenderId: "801926636810",
-            appId: "1:801926636810:web:f0789b9ef104c7338e86f3",
-            measurementId: "G-M97R718RT1"
-        };
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyD3i3UYYvAiGiEpM14SXbVTd9U9jk1BO58",
+        authDomain: "vizyon-da2dd.firebaseapp.com",
+        projectId: "vizyon-da2dd",
+        storageBucket: "vizyon-da2dd.firebasestorage.app",
+        messagingSenderId: "801926636810",
+        appId: "1:801926636810:web:f0789b9ef104c7338e86f3",
+        measurementId: "G-M97R718RT1"
+    };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-        const analytics = getAnalytics(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const analytics = getAnalytics(app);
 
-        // Make Firebase available globally
-        window.db = db;
-        window.auth = auth;
-        window.analytics = analytics;
-        window.firebaseModules = {
-            collection, addDoc, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, query, where, orderBy, onSnapshot, serverTimestamp,
-            createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged
-        };
-    </script>
+    // Make Firebase available globally
+    window.db = db;
+    window.auth = auth;
+    window.analytics = analytics;
+    window.firebaseModules = {
+        collection, addDoc, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, query, where, orderBy, onSnapshot, serverTimestamp,
+        // 2. writeBatch fonksiyonunu diğer fonksiyonların erişebilmesi için buraya ekliyoruz
+        writeBatch, 
+        createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged
+    };
+</script>
     
     <style>
         * {
@@ -435,13 +438,18 @@
 
         <!-- Suggestions Section -->
         <div id="suggestionsSection" class="content-section">
-            <div class="container mx-auto px-4 py-8">
-                <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-800">Film Önerileri 💡</h2>
-                    <button id="exportSuggestionsBtn" onclick="copySuggestionsAsJSON()" class="hidden bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
-                        <i class="fas fa-copy mr-2"></i>JSON Kopyala
-                    </button>
-                </div>
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800">Film Önerileri 💡</h2>
+            <div id="suggestionButtons" class="hidden flex items-center space-x-2">
+                <button id="exportSuggestionsBtn" onclick="copySuggestionsAsJSON()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
+                    <i class="fas fa-copy mr-2"></i>JSON Kopyala
+                </button>
+                <button id="deleteAllSuggestionsBtn" onclick="deleteAllSuggestions()" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition">
+                    <i class="fas fa-trash-alt mr-2"></i>Tümünü Sil
+                </button>
+            </div>
+        </div>
                 
                 <div id="suggestionForm" class="bg-white rounded-2xl shadow-lg p-6 mb-8">
                     <h3 class="text-xl font-bold text-gray-800 mb-4">Yeni Film Öner</h3>
@@ -1473,10 +1481,11 @@ function showSection(section, event) {
         // Öneriler bölümüne geçildiğinde form görünürlüğünü güncelle
         updateSuggestionFormVisibility();
         // Show/hide JSON export button for admin
+        // Show/hide suggestion admin buttons
         if (currentUser && currentUser.role === 'admin') {
-            document.getElementById('exportSuggestionsBtn').classList.remove('hidden');
+            document.getElementById('suggestionButtons').classList.remove('hidden');
         } else {
-            document.getElementById('exportSuggestionsBtn').classList.add('hidden');
+            document.getElementById('suggestionButtons').classList.add('hidden');
         }
     } else if (section === 'admin') {
         updateAdminStats();
@@ -4109,6 +4118,75 @@ async function deleteSuggestion(suggestionId, filmName) {
     } catch (error) {
         console.error('Error deleting suggestion:', error);
         showNotification('Öneri silinirken hata oluştu!', 'error');
+    }
+}
+
+// YENİ: Tüm önerileri silme fonksiyonu
+async function deleteAllSuggestions() {
+    // 1. Yetki Kontrolü: Sadece adminlerin bu işlemi yapabildiğinden emin ol.
+    if (!currentUser || currentUser.role !== 'admin') {
+        showNotification('Bu işlem için admin yetkisi gerekli!', 'error');
+        return;
+    }
+
+    // 2. Onaylama: Bu tehlikeli bir işlem olduğu için kullanıcıdan onay al.
+    if (!confirm('Tüm film önerilerini kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz ve tüm kullanıcıların "öneri yaptı" durumu sıfırlanacaktır.')) {
+        return;
+    }
+
+    try {
+        const { collection, getDocs, doc, deleteDoc, writeBatch } = window.firebaseModules;
+        
+        // 3. Tüm Önerileri Çekme
+        const suggestionsRef = collection(window.db, 'filmSuggestions');
+        const querySnapshot = await getDocs(suggestionsRef);
+
+        if (querySnapshot.empty) {
+            showNotification('Silinecek öneri bulunmuyor.', 'info');
+            return;
+        }
+
+        // 4. Toplu Silme İşlemi (Batch Write)
+        // Performansı artırmak için tüm silme işlemlerini tek bir pakette gönderiyoruz.
+        const batch = writeBatch(window.db);
+        querySnapshot.forEach(suggestionDoc => {
+            batch.delete(doc(window.db, 'filmSuggestions', suggestionDoc.id));
+        });
+        await batch.commit();
+
+        // 5. Kullanıcıların Öneri Durumunu Sıfırlama
+        // Tüm öneriler silindiği için, daha önce öneri yapmış kullanıcıların
+        // "onerdi" durumunu false'a çekerek tekrar öneri yapmalarını sağlıyoruz.
+        const usersRef = collection(window.db, 'users');
+        const usersSnapshot = await getDocs(usersRef);
+        const userBatch = writeBatch(window.db);
+        usersSnapshot.forEach(userDoc => {
+            if (userDoc.data().onerdi === true) {
+                const userRef = doc(window.db, 'users', userDoc.id);
+                userBatch.update(userRef, { onerdi: false });
+            }
+        });
+        await userBatch.commit();
+
+        // 6. Kullanıcıya Geri Bildirim ve Arayüzü Güncelleme
+        showNotification('Tüm öneriler başarıyla silindi ve kullanıcıların öneri hakları sıfırlandı.', 'success');
+        
+        // Öneri listesini yeniden yükleyerek arayüzü güncelle.
+        await loadSuggestions(); 
+        
+        // Eğer bir kullanıcı (admin) kendi profilinden bu işlemi yaparsa,
+        // currentUser nesnesini de güncelleyelim.
+        if (currentUser.onerdi === true) {
+            currentUser.onerdi = false;
+        }
+        updateSuggestionFormVisibility();
+
+        // 7. Log Kaydı
+        await logAction('Tüm Öneriler Silindi', `${querySnapshot.size} adet film önerisi silindi ve kullanıcı durumları sıfırlandı.`);
+
+    } catch (error) {
+        console.error('Error deleting all suggestions:', error);
+        showNotification('Öneriler silinirken bir hata oluştu!', 'error');
     }
 }
 
