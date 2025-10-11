@@ -364,6 +364,10 @@
         <div id="booksGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             <!-- Kitap kartları buraya gelecek -->
         </div>
+
+        <div id="booksPagination" class="flex justify-center items-center mt-8 mb-8 px-4">
+            </div>
+
     </div>
 </div>
 
@@ -1232,6 +1236,11 @@
         let currentFilmPage = 1; // Başlangıç sayfası
         const filmsPerPage = 12; // Sayfa başına gösterilecek film sayısı
 
+        // YENİ: Kitaplar için sayfalama değişkenleri
+        let allKitaplar = [];
+        let currentKitapPage = 1;
+        const kitaplarPerPage = 12; // Sayfa başına kitap sayısı
+
         
         // Initialize app
         document.addEventListener('DOMContentLoaded', function() {
@@ -1721,114 +1730,155 @@ function changeFilmPage(pageNumber) {
     window.scrollTo(0, 0);
 }
 
-        async function loadBooks() {
-            try {
-                // Check if Firebase is ready
-                if (!window.db || !window.firebaseModules) {
-                    setTimeout(loadBooks, 1000);
-                    return;
-                }
+        // MEVCUT loadBooks FONKSİYONUNU BU BLOKLA DEĞİŞTİRİN
 
-                const { collection, query, where, getDocs } = window.firebaseModules;
-                
-                // First try to get all content and filter client-side
-                let q;
-                try {
-                    q = query(collection(window.db, 'icerikler'), where('tur', '==', 'kitap'));
-                } catch (indexError) {
-                    // If compound query fails, get all documents and filter
-                    q = collection(window.db, 'icerikler');
-                }
-                
-                const querySnapshot = await getDocs(q);
-                const booksGrid = document.getElementById('booksGrid');
-                
-                let books = [];
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    if (data.tur === 'kitap') {
-                        books.push({ id: doc.id, ...data });
-                    }
-                });
-                
-                if (books.length === 0) {
-                    booksGrid.innerHTML = `
-                        <div class="col-span-full text-center py-12">
-                            <div class="bg-white rounded-xl shadow-lg p-8">
-                                <i class="fas fa-book text-6xl text-gray-300 mb-4"></i>
-                                <h3 class="text-xl font-bold text-gray-600 mb-2">Henüz Kitap Eklenmemiş</h3>
-                                <p class="text-gray-500">İlk kitabı eklemek için admin panelini kullanın.</p>
-                                ${currentUser && currentUser.role === 'admin' ? `
-                                    <button onclick="document.getElementById('addBookBtn').click()" class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
-                                        <i class="fas fa-plus mr-2"></i>İlk Kitabı Ekle
-                                    </button>
-                                ` : ''}
-                            </div>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                // Sort books by creation date (newest first)
-                books.sort((a, b) => {
-                    if (!a.createdAt || !b.createdAt) return 0;
-                    if (a.createdAt.toDate && b.createdAt.toDate) {
-                        return b.createdAt.toDate() - a.createdAt.toDate();
-                    }
-                    return 0;
-                });
-                
-                // Create book cards - GÜNCELLENMİŞ
-        const bookCards = await Promise.all(books.map(async (book) => {
-            const avgRating = await getAverageRating(book.id);
-            const commentCount = await getCommentCount(book.id);
-            
-            return `
-                <div class="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg overflow-hidden card-hover cursor-pointer" onclick="showContentDetail('${book.id}')">
-                    <div class="relative">
-                        <img src="${book.image || 'https://raw.githubusercontent.com/eyyuphan-vizyon/Vizyon/refs/heads/main/placeholder.png'}" 
-                             alt="${book.name}" 
-                             class="w-full h-32 sm:h-48 md:h-64 object-cover"
-                             onerror="this.src='https://raw.githubusercontent.com/eyyuphan-vizyon/Vizyon/refs/heads/main/placeholder.png'">
-                        <div class="absolute top-1 right-1 sm:top-2 sm:right-2 bg-black bg-opacity-50 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm">
-                            <i class="fas fa-book mr-0.5 sm:mr-1"></i>Kitap
-                        </div>
-                        ${book.pdfUrl ? '<div class="absolute top-1 left-1 sm:top-2 sm:left-2 bg-red-500 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm"><i class="fas fa-file-pdf mr-0.5 sm:mr-1"></i>PDF</div>' : ''}
+async function loadBooks() {
+    try {
+        if (allKitaplar.length > 0) {
+            renderKitapPage();
+            return;
+        }
+
+        const { collection, query, where, getDocs } = window.firebaseModules;
+        const q = query(collection(window.db, 'icerikler'), where('tur', '==', 'kitap'));
+
+        const querySnapshot = await getDocs(q);
+
+        let kitaplar = [];
+        querySnapshot.forEach((doc) => {
+            kitaplar.push({ id: doc.id, ...doc.data() });
+        });
+
+        kitaplar.sort((a, b) => {
+            if (!a.createdAt || !b.createdAt) return 0;
+            if (a.createdAt.toDate && b.createdAt.toDate) {
+                return b.createdAt.toDate() - a.createdAt.toDate();
+            }
+            return 0;
+        });
+
+        allKitaplar = kitaplar;
+        currentKitapPage = 1;
+
+        renderKitapPage();
+
+    } catch (error) {
+        console.error('Error loading books:', error);
+        document.getElementById('booksGrid').innerHTML = `
+            <div class="col-span-full text-center py-12">
+                <p class="text-red-500">Kitaplar yüklenirken bir hata oluştu.</p>
+            </div>
+        `;
+    }
+}
+
+async function renderKitapPage() {
+    const booksGrid = document.getElementById('booksGrid');
+    booksGrid.innerHTML = '<div class="col-span-full text-center py-12"><div class="loading"></div></div>';
+
+    if (allKitaplar.length === 0) {
+        booksGrid.innerHTML = `<div class="col-span-full text-center py-12"><p>Henüz Kitap Eklenmemiş.</p></div>`;
+        renderKitapPaginationControls();
+        return;
+    }
+
+    const startIndex = (currentKitapPage - 1) * kitaplarPerPage;
+    const endIndex = startIndex + kitaplarPerPage;
+    const paginatedKitaplar = allKitaplar.slice(startIndex, endIndex);
+
+    const bookCards = await Promise.all(paginatedKitaplar.map(async (book) => {
+        const avgRating = await getAverageRating(book.id);
+        const commentCount = await getCommentCount(book.id);
+        // Orijinal kitap kartı HTML'i
+        return `
+            <div class="bg-white rounded-lg sm:rounded-xl shadow-md sm:shadow-lg overflow-hidden card-hover cursor-pointer" onclick="showContentDetail('${book.id}')">
+                <div class="relative">
+                    <img src="${book.image || 'https://raw.githubusercontent.com/eyyuphan-vizyon/Vizyon/refs/heads/main/placeholder.png'}" 
+                         alt="${book.name}" 
+                         class="w-full h-32 sm:h-48 md:h-64 object-cover"
+                         onerror="this.src='https://raw.githubusercontent.com/eyyuphan-vizyon/Vizyon/refs/heads/main/placeholder.png'">
+                    <div class="absolute top-1 right-1 sm:top-2 sm:right-2 bg-black bg-opacity-50 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm">
+                        <i class="fas fa-book mr-0.5 sm:mr-1"></i>Kitap
                     </div>
-                    <div class="p-2 sm:p-3 md:p-4 lg:p-6">
-                        <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-800 mb-1 sm:mb-2 line-clamp-2 leading-tight">${book.name}</h3>
-                        ${book.author ? `<p class="text-xs sm:text-sm text-gray-600 mb-1">✍️ ${book.author}</p>` : ''}
-                        <p class="text-xs sm:text-sm text-gray-600 mb-1">📅 ${book.tarih_araligi || 'Tarih belirtilmemiş'}</p>
-                        <div class="mt-2 sm:mt-3 md:mt-4 flex items-center justify-between">
-                            <div class="flex items-center">
-                                <i class="fas fa-star text-yellow-400 mr-0.5 sm:mr-1 text-xs sm:text-sm"></i>
-                                <span class="text-xs sm:text-sm text-gray-600 font-medium">${avgRating}/10</span>
-                            </div>
-                            <span class="text-xs text-gray-500">💬 ${commentCount}</span>
+                    ${book.pdfUrl ? '<div class="absolute top-1 left-1 sm:top-2 sm:left-2 bg-red-500 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm"><i class="fas fa-file-pdf mr-0.5 sm:mr-1"></i>PDF</div>' : ''}
+                </div>
+                <div class="p-2 sm:p-3 md:p-4 lg:p-6">
+                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-800 mb-1 sm:mb-2 line-clamp-2 leading-tight">${book.name}</h3>
+                    ${book.author ? `<p class="text-xs sm:text-sm text-gray-600 mb-1">✍️ ${book.author}</p>` : ''}
+                    <p class="text-xs sm:text-sm text-gray-600 mb-1">📅 ${book.tarih_araligi || 'Tarih belirtilmemiş'}</p>
+                    <div class="mt-2 sm:mt-3 md:mt-4 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-0.5 sm:mr-1 text-xs sm:text-sm"></i>
+                            <span class="text-xs sm:text-sm text-gray-600 font-medium">${avgRating}/10</span>
                         </div>
+                        <span class="text-xs text-gray-500">💬 ${commentCount}</span>
                     </div>
                 </div>
-            `;
-        }));
-        
-        booksGrid.innerHTML = bookCards.join('');
-                
-            } catch (error) {
-                console.error('Error loading books:', error);
-                document.getElementById('booksGrid').innerHTML = `
-                    <div class="col-span-full text-center py-12">
-                        <div class="bg-red-50 border border-red-200 rounded-xl p-8">
-                            <i class="fas fa-exclamation-triangle text-4xl text-red-400 mb-4"></i>
-                            <h3 class="text-xl font-bold text-red-600 mb-2">Kitaplar Yüklenemedi</h3>
-                            <p class="text-red-500 mb-4">Bağlantı sorunu yaşanıyor. Lütfen sayfayı yenileyin.</p>
-                            <button onclick="loadBooks()" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition">
-                                <i class="fas fa-refresh mr-2"></i>Tekrar Dene
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }
+            </div>
+        `;
+    }));
+
+    booksGrid.innerHTML = bookCards.join('');
+    renderKitapPaginationControls();
+}
+
+function renderKitapPaginationControls() {
+    const paginationContainer = document.getElementById('booksPagination');
+    const totalPages = Math.ceil(allKitaplar.length / kitaplarPerPage);
+    paginationContainer.innerHTML = '';
+
+    if (totalPages <= 1) return;
+
+    const prevButton = document.createElement('button');
+    prevButton.innerHTML = `<i class="fas fa-chevron-left"></i>`;
+    prevButton.className = "text-sm px-3 py-1 sm:text-base sm:px-4 sm:py-2 bg-gray-200 rounded-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed";
+    prevButton.disabled = currentKitapPage === 1;
+    prevButton.onclick = () => changeKitapPage(currentKitapPage - 1);
+    paginationContainer.appendChild(prevButton);
+
+    const pagesToShow = new Set();
+    pagesToShow.add(1);
+    pagesToShow.add(totalPages);
+    pagesToShow.add(currentKitapPage);
+    if (currentKitapPage > 2) pagesToShow.add(currentKitapPage - 1);
+    if (currentKitapPage > 3) pagesToShow.add(currentKitapPage - 2);
+    if (currentKitapPage < totalPages - 1) pagesToShow.add(currentKitapPage + 1);
+    if (currentKitapPage < totalPages - 2) pagesToShow.add(currentKitapPage + 2);
+
+    const sortedPages = Array.from(pagesToShow).sort((a, b) => a - b);
+    
+    let lastPage = 0;
+    for (const page of sortedPages) {
+        if (page - lastPage > 1) {
+            const ellipsis = document.createElement('span');
+            ellipsis.innerText = '...';
+            ellipsis.className = 'text-sm px-3 py-1 sm:text-base sm:px-4 sm:py-2 text-gray-500 flex items-center sm:mx-1'; 
+            paginationContainer.appendChild(ellipsis);
         }
+        const pageButton = document.createElement('button');
+        pageButton.innerText = page;
+        pageButton.className = `sm:ml-2 text-sm px-3 py-1 sm:text-base sm:px-4 sm:py-2 rounded-lg ${page === currentKitapPage ? 'bg-blue-600 text-white' : 'bg-gray-200 hover:bg-gray-300'}`;
+        if (page === 1) {
+             pageButton.classList.remove('sm:ml-2');
+        }
+        pageButton.onclick = () => changeKitapPage(page);
+        paginationContainer.appendChild(pageButton);
+        lastPage = page;
+    }
+
+    const nextButton = document.createElement('button');
+    nextButton.innerHTML = `<i class="fas fa-chevron-right"></i>`;
+    nextButton.className = "sm:ml-2 text-sm px-3 py-1 sm:text-base sm:px-4 sm:py-2 bg-gray-200 rounded-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed";
+    nextButton.disabled = currentKitapPage === totalPages;
+    nextButton.onclick = () => changeKitapPage(currentKitapPage + 1);
+    paginationContainer.appendChild(nextButton);
+}
+
+function changeKitapPage(pageNumber) {
+    currentKitapPage = pageNumber;
+    renderKitapPage();
+    window.scrollTo(0, 0);
+}
 
         async function loadMusic() {
             try {
