@@ -442,13 +442,13 @@
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-3xl font-bold text-gray-800">Film Önerileri 💡</h2>
             <div id="suggestionButtons" class="hidden flex items-center space-x-2">
-                <button id="exportSuggestionsBtn" onclick="copySuggestionsAsJSON()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
-                    <i class="fas fa-copy mr-2"></i>JSON Kopyala
-                </button>
-                <button id="deleteAllSuggestionsBtn" onclick="deleteAllSuggestions()" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition">
-                    <i class="fas fa-trash-alt mr-2"></i>Tümünü Sil
-                </button>
-            </div>
+    <button id="sendToWheelBtn" onclick="sendToWheel()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+        <i class="fas fa-bullseye mr-2"></i>Çarkta Seç
+    </button>
+    <button id="deleteAllSuggestionsBtn" onclick="deleteAllSuggestions()" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition">
+        <i class="fas fa-trash-alt mr-2"></i>Tümünü Sil
+    </button>
+</div>
         </div>
                 
                 <div id="suggestionForm" class="bg-white rounded-2xl shadow-lg p-6 mb-8">
@@ -4874,106 +4874,100 @@ async function deleteAllSuggestions() {
             }
         }
 
-        // Show suggestions as JSON
-        async function copySuggestionsAsJSON() {
-            if (!currentUser || currentUser.role !== 'admin') {
-                showNotification('Bu işlem için admin yetkisi gerekli!', 'error');
-                return;
-            }
-            
-            try {
-                const { collection, getDocs, orderBy, query } = window.firebaseModules;
-                const q = query(collection(window.db, 'filmSuggestions'), orderBy('timestamp', 'desc'));
-                const querySnapshot = await getDocs(q);
-                
-                if (querySnapshot.empty) {
-                    showNotification('Henüz öneri bulunmuyor!', 'warning');
-                    return;
-                }
-                
-                const suggestions = [];
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    suggestions.push({
-                        film: data.filmName,
-                        oneren: data.userName
-                    });
-                });
-                
-                // Create JSON string
-                const jsonData = JSON.stringify(suggestions, null, 2);
-                
-                // Show JSON in a modal
-                showJSONModal(jsonData, suggestions.length);
-                
-                await logAction('JSON Görüntülendi', `${suggestions.length} film önerisi JSON olarak görüntülendi`);
-                
-            } catch (error) {
-                console.error('Error showing suggestions JSON:', error);
-                showNotification('JSON görüntülenirken hata oluştu!', 'error');
-            }
+        // YENİ: Film önerilerini çark sayfasına gönderen fonksiyon
+async function sendToWheel() {
+    // Sadece adminlerin kullanabildiğinden emin ol
+    if (!currentUser || currentUser.role !== 'admin') {// YENİ: Film önerilerini çark sayfasına gönderen fonksiyon
+async function sendToWheel() {
+    // Sadece adminlerin kullanabildiğinden emin ol
+    if (!currentUser || currentUser.role !== 'admin') {
+        showNotification('Bu işlem için admin yetkisi gerekli!', 'error');
+        return;
+    }
+
+    try {
+        const { collection, getDocs, orderBy, query } = window.firebaseModules;
+        const q = query(collection(window.db, 'filmSuggestions'), orderBy('timestamp', 'desc'));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            showNotification('Çarka gönderilecek öneri bulunmuyor!', 'warning');
+            return;
         }
 
-        // Show JSON in a modal
-        function showJSONModal(jsonData, count) {
-            // Create modal if it doesn't exist
-            let jsonModal = document.getElementById('jsonModal');
-            if (!jsonModal) {
-                jsonModal = document.createElement('div');
-                jsonModal.id = 'jsonModal';
-                jsonModal.className = 'modal';
-                jsonModal.innerHTML = `
-                    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-screen overflow-y-auto">
-                        <div class="p-8">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="text-2xl font-bold text-gray-800">Film Önerileri JSON</h3>
-                                <button onclick="closeModal('jsonModal')" class="text-gray-500 hover:text-gray-700">
-                                    <i class="fas fa-times text-xl"></i>
-                                </button>
-                            </div>
-                            <div class="mb-4">
-                                <p class="text-gray-600">
-                                    <i class="fas fa-info-circle mr-2"></i>
-                                    Toplam <strong id="jsonCount">0</strong> öneri. Metni seçip Ctrl+C ile kopyalayabilirsiniz.
-                                </p>
-                            </div>
-                            <div class="bg-gray-50 rounded-lg p-4 border">
-                                <textarea id="jsonTextArea" readonly class="w-full h-96 bg-transparent border-none resize-none focus:outline-none font-mono text-sm text-gray-800" style="font-family: 'Courier New', monospace;"></textarea>
-                            </div>
-                            <div class="mt-4 flex justify-end">
-                                <button onclick="selectAllJSON()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition mr-3">
-                                    <i class="fas fa-mouse-pointer mr-2"></i>Tümünü Seç
-                                </button>
-                                <button onclick="closeModal('jsonModal')" class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition">
-                                    Kapat
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(jsonModal);
-            }
-            
-            // Update content
-            document.getElementById('jsonCount').textContent = count;
-            document.getElementById('jsonTextArea').value = jsonData;
-            
-            // Show modal and select text
-            jsonModal.classList.add('show');
-            setTimeout(() => {
-                const textArea = document.getElementById('jsonTextArea');
-                textArea.focus();
-                textArea.select();
-            }, 100);
+        // Önerileri istenen formatta bir diziye aktar
+        const suggestions = [];
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            suggestions.push({
+                film: data.filmName,
+                oneren: data.userName
+            });
+        });
+
+        // JSON verisini string formatına çevir
+        const jsonData = JSON.stringify(suggestions);
+
+        // Veriyi URL'de güvenli bir şekilde taşımak için kodla (encode)
+        const encodedData = encodeURIComponent(jsonData);
+
+        // --- DEĞİŞTİRİLEN SATIR ---
+        // cark.html'yi yeni URL'niz ile aç ve veriyi URL parametresi olarak ekle
+        const targetUrl = `https://vizyonkitapfilm.com.tr/cark/?data=${encodedData}`;
+        
+        window.open(targetUrl, '_blank');
+
+        await logAction('Öneriler Çarka Gönderildi', `${suggestions.length} film önerisi çarka gönderildi`);
+
+    } catch (error) {
+        console.error('Error sending suggestions to wheel:', error);
+        showNotification('Öneriler çarka gönderilirken hata oluştu!', 'error');
+    }
+}
+        showNotification('Bu işlem için admin yetkisi gerekli!', 'error');
+        return;
+    }
+
+    try {
+        const { collection, getDocs, orderBy, query } = window.firebaseModules;
+        const q = query(collection(window.db, 'filmSuggestions'), orderBy('timestamp', 'desc'));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            showNotification('Çarka gönderilecek öneri bulunmuyor!', 'warning');
+            return;
         }
 
-        // Select all JSON text
-        function selectAllJSON() {
-            const textArea = document.getElementById('jsonTextArea');
-            textArea.focus();
-            textArea.select();
-            showNotification('JSON metni seçildi! Ctrl+C ile kopyalayabilirsiniz.', 'info');
-        }
+        // Önerileri istenen formatta bir diziye aktar
+        const suggestions = [];
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            suggestions.push({
+                film: data.filmName,
+                oneren: data.userName
+            });
+        });
+
+        // JSON verisini string formatına çevir
+        const jsonData = JSON.stringify(suggestions);
+
+        // Veriyi URL'de güvenli bir şekilde taşımak için kodla (encode)
+        const encodedData = encodeURIComponent(jsonData);
+
+        // cark.html'yi yeni bir sekmede aç ve veriyi URL parametresi olarak ekle
+        // NOT: Eğer cark.html dosyası farklı bir klasördeyse, yolu ona göre düzenleyin.
+        // Örneğin: const targetUrl = '/cark/index.html?data=${encodedData}';
+        const targetUrl = `cark?data=${encodedData}`;
+        
+        window.open(targetUrl, '_blank');
+
+        await logAction('Öneriler Çarka Gönderildi', `${suggestions.length} film önerisi çarka gönderildi`);
+
+    } catch (error) {
+        console.error('Error sending suggestions to wheel:', error);
+        showNotification('Öneriler çarka gönderilirken hata oluştu!', 'error');
+    }
+}
 
         // Event listeners
         document.getElementById('profileBtn').addEventListener('click', showProfile);
