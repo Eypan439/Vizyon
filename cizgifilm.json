@@ -1,0 +1,6641 @@
+{
+  "config": {
+    "adminPass": "admin123456",
+    "cartoonDataURL": "https://raw.githubusercontent.com/Eypan439/Vizyon/refs/heads/main/cizgifilmler.json",
+    "tournamentTitle": "Nostaljik Çizgi Film Turnuvası"
+  },
+  "global_state": {
+    "activeMatchId": "match_r8_0",
+    "currentRound": 8,
+    "winner": "Samuray Jack",
+    "winnerImg": "https://upload.wikimedia.org/wikipedia/tr/thumb/1/16/SJack.jpg/250px-SJack.jpg",
+    "winnerPlatform": "Belirtilmemiş"
+  },
+  "live_feed": {
+    "last_vote": {
+      "cartoon": "Samuray Jack",
+      "isChange": false,
+      "nick": "Nisanur",
+      "timestamp": 1778348713494,
+      "userId": "user_y869fdwd0"
+    }
+  },
+  "matches": {
+    "match_0": {
+      "cartoon_a": "Hero8",
+      "cartoon_b": "Yeşil Ekip",
+      "match_id": "match_0",
+      "match_index": 0,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_0lhrgoc8o",
+        "user_2masjv0xn",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_rfkshpym8",
+        "user_82elty7ug",
+        "user_l1sfblxrl"
+      ],
+      "votes_a": 9,
+      "votes_b": 0,
+      "winner": "Hero8"
+    },
+    "match_1": {
+      "cartoon_a": "Art Attack ",
+      "cartoon_b": "Chowder",
+      "match_id": "match_1",
+      "match_index": 1,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_2masjv0xn",
+        "user_a6pfxxp1c",
+        "user_uaqi9lzlm",
+        "user_giwoa7cui",
+        "user_82elty7ug",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 8,
+      "votes_b": 0,
+      "winner": "Art Attack "
+    },
+    "match_10": {
+      "cartoon_a": "Star Wars: The Clone Wars",
+      "cartoon_b": "Power Rangers",
+      "match_id": "match_10",
+      "match_index": 10,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_l1sfblxrl",
+        "user_0lhrgoc8o",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_82elty7ug",
+        "user_5o930l43y",
+        "user_2masjv0xn",
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 4,
+      "votes_b": 6,
+      "winner": "Power Rangers"
+    },
+    "match_100": {
+      "cartoon_a": "Korkak Sincap",
+      "cartoon_b": "Zeke and Luther",
+      "match_id": "match_100",
+      "match_index": 100,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_0lhrgoc8o",
+        "user_l1sfblxrl",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_82elty7ug",
+        "user_rfkshpym8",
+        "user_2masjv0xn",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 3,
+      "votes_b": 6,
+      "winner": "Zeke and Luther"
+    },
+    "match_101": {
+      "cartoon_a": "POKO",
+      "cartoon_b": "9.Sınıf Ninja: Randy Cunnigham",
+      "match_id": "match_101",
+      "match_index": 101,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_2masjv0xn",
+        "user_0lhrgoc8o"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_82elty7ug",
+        "user_5o930l43y",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 2,
+      "votes_b": 5,
+      "winner": "9.Sınıf Ninja: Randy Cunnigham"
+    },
+    "match_102": {
+      "cartoon_a": "Jumanji",
+      "cartoon_b": "7C",
+      "match_id": "match_102",
+      "match_index": 102,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_2masjv0xn",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_5o930l43y"
+      ],
+      "voters_b": [
+        "user_0lhrgoc8o",
+        "user_a6pfxxp1c",
+        "user_82elty7ug"
+      ],
+      "votes_a": 5,
+      "votes_b": 3,
+      "winner": "Jumanji"
+    },
+    "match_103": {
+      "cartoon_a": "Haydi Sofraya ",
+      "cartoon_b": "402 No'lu Sınıf ",
+      "match_id": "match_103",
+      "match_index": 103,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_l1sfblxrl",
+        "user_a6pfxxp1c",
+        "user_uaqi9lzlm",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_0lhrgoc8o",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_82elty7ug",
+        "user_2masjv0xn"
+      ],
+      "votes_a": 4,
+      "votes_b": 5,
+      "winner": "402 No'lu Sınıf "
+    },
+    "match_104": {
+      "cartoon_a": "Teletabiler",
+      "cartoon_b": "Tad: Hazine Avcısının Maceraları",
+      "match_id": "match_104",
+      "match_index": 104,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_2masjv0xn",
+        "user_9jb6bpx6j",
+        "user_0lhrgoc8o",
+        "user_a6pfxxp1c",
+        "user_82elty7ug",
+        "user_giwoa7cui",
+        "user_no8ynud2w"
+      ],
+      "voters_b": [
+        "user_l1sfblxrl",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 7,
+      "votes_b": 4,
+      "winner": "Teletabiler"
+    },
+    "match_105": {
+      "cartoon_a": "Sally Bollywood: Super Detective ",
+      "cartoon_b": "WİNX",
+      "match_id": "match_105",
+      "match_index": 105,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_0lhrgoc8o",
+        "user_5o930l43y",
+        "user_82elty7ug",
+        "user_no8ynud2w",
+        "user_firco6361",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui",
+        "user_io6c2gphy",
+        "user_l1sfblxrl"
+      ],
+      "votes_a": 0,
+      "votes_b": 11,
+      "winner": "WİNX"
+    },
+    "match_106": {
+      "cartoon_a": "Afacan Dennis",
+      "cartoon_b": "Arka Bahçede Bilim ",
+      "match_id": "match_106",
+      "match_index": 106,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_0lhrgoc8o",
+        "user_5o930l43y"
+      ],
+      "voters_b": [
+        "user_2masjv0xn",
+        "user_uaqi9lzlm",
+        "user_82elty7ug",
+        "user_giwoa7cui",
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 2,
+      "votes_b": 7,
+      "winner": "Arka Bahçede Bilim "
+    },
+    "match_107": {
+      "cartoon_a": "Kratt Kardeşler",
+      "cartoon_b": "Mickey Mouse",
+      "match_id": "match_107",
+      "match_index": 107,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_no8ynud2w",
+        "user_l1sfblxrl"
+      ],
+      "voters_b": [
+        "user_82elty7ug",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_io6c2gphy",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui",
+        "user_firco6361",
+        "user_2masjv0xn",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 2,
+      "votes_b": 10,
+      "winner": "Mickey Mouse"
+    },
+    "match_108": {
+      "cartoon_a": "Kareteci Fareler",
+      "cartoon_b": "Neden Neden Ailesi",
+      "match_id": "match_108",
+      "match_index": 108,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_l1sfblxrl",
+        "user_no8ynud2w",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_82elty7ug"
+      ],
+      "voters_b": [
+        "user_0lhrgoc8o",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 7,
+      "votes_b": 2,
+      "winner": "Kareteci Fareler"
+    },
+    "match_109": {
+      "cartoon_a": "Shaman King",
+      "cartoon_b": "Tutenstein ",
+      "match_id": "match_109",
+      "match_index": 109,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_3gkzod2ox",
+        "user_firco6361",
+        "user_82elty7ug",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_2masjv0xn",
+        "user_giwoa7cui"
+      ],
+      "votes_a": 0,
+      "votes_b": 8,
+      "winner": "Tutenstein "
+    },
+    "match_11": {
+      "cartoon_a": "Bakugan ",
+      "cartoon_b": "Winnie the Pooh ",
+      "match_id": "match_11",
+      "match_index": 11,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_3gkzod2ox",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_82elty7ug"
+      ],
+      "voters_b": [
+        "user_0lhrgoc8o",
+        "user_firco6361",
+        "user_io6c2gphy",
+        "user_9jb6bpx6j",
+        "user_2masjv0xn"
+      ],
+      "votes_a": 6,
+      "votes_b": 5,
+      "winner": "Bakugan "
+    },
+    "match_110": {
+      "cartoon_a": "Cesur Korkak Köpek ",
+      "cartoon_b": "Little Einstein",
+      "match_id": "match_110",
+      "match_index": 110,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_0lhrgoc8o",
+        "user_82elty7ug",
+        "user_9jb6bpx6j",
+        "user_giwoa7cui",
+        "user_io6c2gphy",
+        "user_3gkzod2ox",
+        "user_2masjv0xn",
+        "user_uaqi9lzlm",
+        "user_firco6361"
+      ],
+      "votes_a": 12,
+      "votes_b": 0,
+      "winner": "Cesur Korkak Köpek "
+    },
+    "match_111": {
+      "cartoon_a": "Kaplan Tigger",
+      "cartoon_b": "Mike, Lu ve Og ",
+      "match_id": "match_111",
+      "match_index": 111,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_0lhrgoc8o",
+        "user_no8ynud2w",
+        "user_io6c2gphy",
+        "user_firco6361",
+        "user_uaqi9lzlm",
+        "user_2masjv0xn",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_82elty7ug"
+      ],
+      "votes_a": 10,
+      "votes_b": 1,
+      "winner": "Kaplan Tigger"
+    },
+    "match_112": {
+      "cartoon_a": "Foster'ın Hayali Dostlar Mekanı",
+      "cartoon_b": "Snoopy",
+      "match_id": "match_112",
+      "match_index": 112,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_llghyu07z",
+        "user_giwoa7cui",
+        "user_io6c2gphy",
+        "user_no8ynud2w",
+        "user_3gkzod2ox",
+        "user_a6pfxxp1c",
+        "user_rfkshpym8",
+        "user_firco6361",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_l1sfblxrl",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_0lhrgoc8o",
+        "user_82elty7ug",
+        "user_2masjv0xn",
+        "user_gcpegq766",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 12,
+      "votes_b": 5,
+      "winner": "Foster'ın Hayali Dostlar Mekanı"
+    },
+    "match_113": {
+      "cartoon_a": "Monsuno ",
+      "cartoon_b": "Generator Rex",
+      "match_id": "match_113",
+      "match_index": 113,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_l1sfblxrl",
+        "user_0lhrgoc8o",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_82elty7ug",
+        "user_no8ynud2w",
+        "user_rfkshpym8",
+        "user_gcpegq766",
+        "user_3gkzod2ox",
+        "user_uaqi9lzlm",
+        "user_2masjv0xn",
+        "user_firco6361",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 3,
+      "votes_b": 11,
+      "winner": "Generator Rex"
+    },
+    "match_114": {
+      "cartoon_a": "Calimero",
+      "cartoon_b": "Hayalet Avcıları",
+      "match_id": "match_114",
+      "match_index": 114,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_2masjv0xn",
+        "user_0lhrgoc8o",
+        "user_gcpegq766",
+        "user_l1sfblxrl",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_firco6361",
+        "user_io6c2gphy",
+        "user_3gkzod2ox",
+        "user_no8ynud2w",
+        "user_llghyu07z"
+      ],
+      "votes_a": 3,
+      "votes_b": 12,
+      "winner": "Hayalet Avcıları"
+    },
+    "match_115": {
+      "cartoon_a": "Küçük Deniz Kızı ",
+      "cartoon_b": "Clarence ",
+      "match_id": "match_115",
+      "match_index": 115,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_0lhrgoc8o",
+        "user_io6c2gphy",
+        "user_rfkshpym8",
+        "user_2masjv0xn"
+      ],
+      "voters_b": [
+        "user_gcpegq766",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_uaqi9lzlm",
+        "user_no8ynud2w",
+        "user_giwoa7cui",
+        "user_3gkzod2ox",
+        "user_llghyu07z"
+      ],
+      "votes_a": 5,
+      "votes_b": 8,
+      "winner": "Clarence "
+    },
+    "match_116": {
+      "cartoon_a": "Jim Button ",
+      "cartoon_b": "What About Mimi? (Mimi)",
+      "match_id": "match_116",
+      "match_index": 116,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_0lhrgoc8o",
+        "user_no8ynud2w",
+        "user_gcpegq766",
+        "user_firco6361",
+        "user_3gkzod2ox",
+        "user_5o930l43y"
+      ],
+      "voters_b": [
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_vey6n3qxu"
+      ],
+      "votes_a": 6,
+      "votes_b": 3,
+      "winner": "Jim Button "
+    },
+    "match_12": {
+      "cartoon_a": "Hannah Montana",
+      "cartoon_b": "Gumball",
+      "match_id": "match_12",
+      "match_index": 12,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_llghyu07z",
+        "user_82elty7ug",
+        "user_9jb6bpx6j",
+        "user_2masjv0xn",
+        "user_rfkshpym8"
+      ],
+      "voters_b": [
+        "user_0lhrgoc8o",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_no8ynud2w",
+        "user_a6pfxxp1c",
+        "user_3gkzod2ox",
+        "user_firco6361",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 5,
+      "votes_b": 10,
+      "winner": "Gumball"
+    },
+    "match_13": {
+      "cartoon_a": "Duck Tales",
+      "cartoon_b": "Cille",
+      "match_id": "match_13",
+      "match_index": 13,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_0lhrgoc8o",
+        "user_2masjv0xn",
+        "user_firco6361",
+        "user_5o930l43y",
+        "user_no8ynud2w",
+        "user_82elty7ug",
+        "user_9jb6bpx6j",
+        "user_3gkzod2ox",
+        "user_2sbliuhc7",
+        "user_al4li1xfh"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm",
+        "user_vey6n3qxu",
+        "user_io6c2gphy",
+        "user_l1sfblxrl",
+        "user_llghyu07z",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 10,
+      "votes_b": 8,
+      "winner": "Duck Tales"
+    },
+    "match_14": {
+      "cartoon_a": "Speedy Gonzales",
+      "cartoon_b": "Transformers",
+      "match_id": "match_14",
+      "match_index": 14,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_82elty7ug",
+        "user_rfkshpym8",
+        "user_firco6361",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_2masjv0xn",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_3gkzod2ox",
+        "user_0lhrgoc8o",
+        "user_l1sfblxrl",
+        "user_llghyu07z",
+        "user_no8ynud2w"
+      ],
+      "votes_a": 10,
+      "votes_b": 5,
+      "winner": "Speedy Gonzales"
+    },
+    "match_15": {
+      "cartoon_a": "Bayan Mallard'ın Maceraları",
+      "cartoon_b": "Keloğlan",
+      "match_id": "match_15",
+      "match_index": 15,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_2masjv0xn",
+        "user_uaqi9lzlm",
+        "user_vey6n3qxu",
+        "user_9jb6bpx6j",
+        "user_llghyu07z"
+      ],
+      "voters_b": [
+        "user_3gkzod2ox",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_82elty7ug",
+        "user_no8ynud2w",
+        "user_a6pfxxp1c",
+        "user_l1sfblxrl",
+        "user_al4li1xfh"
+      ],
+      "votes_a": 5,
+      "votes_b": 9,
+      "winner": "Keloğlan"
+    },
+    "match_16": {
+      "cartoon_a": "Loop Dido",
+      "cartoon_b": "Pokemon ",
+      "match_id": "match_16",
+      "match_index": 16,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_2masjv0xn"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_al4li1xfh",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_82elty7ug",
+        "user_vey6n3qxu",
+        "user_a6pfxxp1c",
+        "user_3gkzod2ox",
+        "user_llghyu07z",
+        "user_io6c2gphy",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 1,
+      "votes_b": 12,
+      "winner": "Pokemon "
+    },
+    "match_17": {
+      "cartoon_a": "Temel Reis (Popeye)",
+      "cartoon_b": "Kurtarma Timi",
+      "match_id": "match_17",
+      "match_index": 17,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_3gkzod2ox",
+        "user_l1sfblxrl",
+        "user_vey6n3qxu",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui",
+        "user_io6c2gphy",
+        "user_2masjv0xn",
+        "user_llghyu07z",
+        "user_al4li1xfh"
+      ],
+      "votes_a": 10,
+      "votes_b": 0,
+      "winner": "Temel Reis (Popeye)"
+    },
+    "match_18": {
+      "cartoon_a": "Juniper Lee'nin Maceraları",
+      "cartoon_b": "Tarçın ve Arkadaşları",
+      "match_id": "match_18",
+      "match_index": 18,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_no8ynud2w",
+        "user_5o930l43y",
+        "user_io6c2gphy"
+      ],
+      "voters_b": [
+        "user_l1sfblxrl",
+        "user_al4li1xfh",
+        "user_rfkshpym8",
+        "user_3gkzod2ox",
+        "user_llghyu07z",
+        "user_2masjv0xn",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_a6pfxxp1c",
+        "user_82elty7ug"
+      ],
+      "votes_a": 3,
+      "votes_b": 11,
+      "winner": "Tarçın ve Arkadaşları"
+    },
+    "match_19": {
+      "cartoon_a": "LOUIE",
+      "cartoon_b": "Stellina ",
+      "match_id": "match_19",
+      "match_index": 19,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_2masjv0xn",
+        "user_llghyu07z",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_0lhrgoc8o",
+        "user_l1sfblxrl",
+        "user_io6c2gphy",
+        "user_82elty7ug",
+        "user_3gkzod2ox",
+        "user_uaqi9lzlm"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_vey6n3qxu"
+      ],
+      "votes_a": 11,
+      "votes_b": 2,
+      "winner": "LOUIE"
+    },
+    "match_2": {
+      "cartoon_a": "Kramp İkizleri",
+      "cartoon_b": "Tamamen Drama Adası (Total Drama Island)",
+      "match_id": "match_2",
+      "match_index": 2,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_0lhrgoc8o",
+        "user_llghyu07z",
+        "user_3gkzod2ox",
+        "user_82elty7ug",
+        "user_l1sfblxrl",
+        "user_io6c2gphy",
+        "user_no8ynud2w"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_rfkshpym8",
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 8,
+      "votes_b": 5,
+      "winner": "Kramp İkizleri"
+    },
+    "match_20": {
+      "cartoon_a": "Angelo Kuralları",
+      "cartoon_b": "Lolirock",
+      "match_id": "match_20",
+      "match_index": 20,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_no8ynud2w",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_llghyu07z",
+        "user_giwoa7cui",
+        "user_rhjze2tuu",
+        "user_3gkzod2ox",
+        "user_4hrhmm57b",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 14,
+      "votes_b": 0,
+      "winner": "Angelo Kuralları"
+    },
+    "match_21": {
+      "cartoon_a": "Scooby Doo",
+      "cartoon_b": "Road Runner",
+      "match_id": "match_21",
+      "match_index": 21,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_3gkzod2ox",
+        "user_4hrhmm57b",
+        "user_al4li1xfh",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_rhjze2tuu",
+        "user_9jb6bpx6j",
+        "user_io6c2gphy",
+        "user_2masjv0xn",
+        "user_uaqi9lzlm",
+        "user_fnins8wwj",
+        "user_a6pfxxp1c",
+        "user_no8ynud2w",
+        "user_llghyu07z"
+      ],
+      "voters_b": [
+        "user_82elty7ug",
+        "user_rfkshpym8",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 15,
+      "votes_b": 3,
+      "winner": "Scooby Doo"
+    },
+    "match_22": {
+      "cartoon_a": "Galactic Football  ",
+      "cartoon_b": "Regular Show (Sürekli Dizi)",
+      "match_id": "match_22",
+      "match_index": 22,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_habbs8ot1"
+      ],
+      "voters_b": [
+        "user_no8ynud2w",
+        "user_rfkshpym8",
+        "user_fnins8wwj",
+        "user_vey6n3qxu",
+        "user_llghyu07z",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_3gkzod2ox",
+        "user_0lhrgoc8o",
+        "user_rhjze2tuu",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 1,
+      "votes_b": 14,
+      "winner": "Regular Show (Sürekli Dizi)"
+    },
+    "match_23": {
+      "cartoon_a": "Heathcliff (Kedi)",
+      "cartoon_b": "Carl² (Carl2)",
+      "match_id": "match_23",
+      "match_index": 23,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_habbs8ot1",
+        "user_no8ynud2w",
+        "user_rfkshpym8",
+        "user_llghyu07z",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_fnins8wwj",
+        "user_io6c2gphy",
+        "user_0lhrgoc8o",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 8,
+      "votes_b": 6,
+      "winner": "Heathcliff (Kedi)"
+    },
+    "match_24": {
+      "cartoon_a": "Dinazor Tom",
+      "cartoon_b": "Genç Cadı Sabrina ",
+      "match_id": "match_24",
+      "match_index": 24,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_llghyu07z",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_no8ynud2w",
+        "user_fnins8wwj",
+        "user_3gkzod2ox",
+        "user_a6pfxxp1c",
+        "user_uaqi9lzlm"
+      ],
+      "voters_b": [
+        "user_2masjv0xn",
+        "user_0lhrgoc8o",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 12,
+      "votes_b": 3,
+      "winner": "Dinazor Tom"
+    },
+    "match_25": {
+      "cartoon_a": "Köstebekgiller",
+      "cartoon_b": "Flapjack",
+      "match_id": "match_25",
+      "match_index": 25,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_2masjv0xn",
+        "user_0lhrgoc8o"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c",
+        "user_llghyu07z",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_io6c2gphy",
+        "user_giwoa7cui",
+        "user_fnins8wwj",
+        "user_3gkzod2ox",
+        "user_no8ynud2w",
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 2,
+      "votes_b": 13,
+      "winner": "Flapjack"
+    },
+    "match_26": {
+      "cartoon_a": "DogStar",
+      "cartoon_b": "İyi Şanslar Charlie",
+      "match_id": "match_26",
+      "match_index": 26,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_no8ynud2w",
+        "user_0lhrgoc8o",
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_io6c2gphy",
+        "user_rhjze2tuu",
+        "user_9jb6bpx6j",
+        "user_habbs8ot1"
+      ],
+      "votes_a": 6,
+      "votes_b": 9,
+      "winner": "İyi Şanslar Charlie"
+    },
+    "match_27": {
+      "cartoon_a": "Penguin Pingu",
+      "cartoon_b": "Lemonade Mouth",
+      "match_id": "match_27",
+      "match_index": 27,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_tm4t9zvgs",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_0lhrgoc8o",
+        "user_rfkshpym8",
+        "user_4hrhmm57b"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_no8ynud2w",
+        "user_io6c2gphy",
+        "user_fnins8wwj",
+        "user_llghyu07z"
+      ],
+      "votes_a": 10,
+      "votes_b": 6,
+      "winner": "Penguin Pingu"
+    },
+    "match_28": {
+      "cartoon_a": "Caillou",
+      "cartoon_b": "Victory Kickoff",
+      "match_id": "match_28",
+      "match_index": 28,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_no8ynud2w",
+        "user_f8e7kjg8i",
+        "user_fnins8wwj",
+        "user_io6c2gphy",
+        "user_5o930l43y",
+        "user_llghyu07z",
+        "user_2masjv0xn"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 12,
+      "votes_b": 2,
+      "winner": "Caillou"
+    },
+    "match_29": {
+      "cartoon_a": "Tamirci Manny",
+      "cartoon_b": "Orman Kitabı",
+      "match_id": "match_29",
+      "match_index": 29,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_io6c2gphy",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_fnins8wwj",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_f8e7kjg8i",
+        "user_a6pfxxp1c",
+        "user_uaqi9lzlm",
+        "user_habbs8ot1"
+      ],
+      "votes_a": 2,
+      "votes_b": 12,
+      "winner": "Orman Kitabı"
+    },
+    "match_3": {
+      "cartoon_a": "Quack Pack ",
+      "cartoon_b": "Otel Transilvanya Sakinleri",
+      "match_id": "match_3",
+      "match_index": 3,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_rhjze2tuu",
+        "user_llghyu07z",
+        "user_9jb6bpx6j",
+        "user_habbs8ot1"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_llghyu07z",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 9,
+      "votes_b": 7,
+      "winner": "Quack Pack "
+    },
+    "match_30": {
+      "cartoon_a": "Sünger Bob",
+      "cartoon_b": "Daltonlar",
+      "match_id": "match_30",
+      "match_index": 30,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_uaqi9lzlm",
+        "user_aphuasbdv",
+        "user_rhjze2tuu",
+        "user_f8e7kjg8i",
+        "user_io6c2gphy",
+        "user_9jb6bpx6j",
+        "user_mi5bv838a"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_fnins8wwj",
+        "user_habbs8ot1",
+        "user_a6pfxxp1c",
+        "user_no8ynud2w",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 8,
+      "votes_b": 9,
+      "winner": "Daltonlar"
+    },
+    "match_31": {
+      "cartoon_a": "Max Steel",
+      "cartoon_b": "Jack ve Var Olmayan Ülkenin Korsanları",
+      "match_id": "match_31",
+      "match_index": 31,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_f8e7kjg8i",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_fnins8wwj",
+        "user_no8ynud2w",
+        "user_vey6n3qxu",
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_aphuasbdv",
+        "user_5o930l43y"
+      ],
+      "votes_a": 3,
+      "votes_b": 10,
+      "winner": "Jack ve Var Olmayan Ülkenin Korsanları"
+    },
+    "match_32": {
+      "cartoon_a": "Haydi Çalkala",
+      "cartoon_b": "Star Kötü Güçlere Karşı",
+      "match_id": "match_32",
+      "match_index": 32,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_io6c2gphy",
+        "user_5o930l43y",
+        "user_tm4t9zvgs",
+        "user_rhjze2tuu",
+        "user_llghyu07z",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c",
+        "user_vey6n3qxu",
+        "user_4hrhmm57b",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_fnins8wwj"
+      ],
+      "votes_a": 7,
+      "votes_b": 8,
+      "winner": "Star Kötü Güçlere Karşı"
+    },
+    "match_33": {
+      "cartoon_a": "Tel Ali (Yarışma TRT Çocuk)",
+      "cartoon_b": "Yıldız ve Kızları",
+      "match_id": "match_33",
+      "match_index": 33,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_habbs8ot1",
+        "user_io6c2gphy",
+        "user_no8ynud2w",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b",
+        "user_vey6n3qxu",
+        "user_tm4t9zvgs",
+        "user_llghyu07z",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_f8e7kjg8i",
+        "user_5o930l43y"
+      ],
+      "votes_a": 14,
+      "votes_b": 0,
+      "winner": "Tel Ali (Yarışma TRT Çocuk)"
+    },
+    "match_34": {
+      "cartoon_a": "Gormiti",
+      "cartoon_b": "Samuray Jack",
+      "match_id": "match_34",
+      "match_index": 34,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_io6c2gphy",
+        "user_giwoa7cui",
+        "user_llghyu07z",
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_no8ynud2w",
+        "user_habbs8ot1",
+        "user_fnins8wwj"
+      ],
+      "votes_a": 0,
+      "votes_b": 12,
+      "winner": "Samuray Jack"
+    },
+    "match_35": {
+      "cartoon_a": "Postacı Pat",
+      "cartoon_b": "Garfield",
+      "match_id": "match_35",
+      "match_index": 35,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_uaqi9lzlm",
+        "user_fnins8wwj",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_llghyu07z",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 0,
+      "votes_b": 10,
+      "winner": "Garfield"
+    },
+    "match_36": {
+      "cartoon_a": "GAZOON",
+      "cartoon_b": "Fillmore!",
+      "match_id": "match_36",
+      "match_index": 36,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_rfkshpym8",
+        "user_fnins8wwj",
+        "user_no8ynud2w",
+        "user_io6c2gphy",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_2masjv0xn",
+        "user_5o930l43y",
+        "user_llghyu07z",
+        "user_tm4t9zvgs",
+        "user_habbs8ot1"
+      ],
+      "voters_b": [
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 12,
+      "votes_b": 4,
+      "winner": "GAZOON"
+    },
+    "match_37": {
+      "cartoon_a": "Tweety and Sylvester",
+      "cartoon_b": "Rolling with the Ronks",
+      "match_id": "match_37",
+      "match_index": 37,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_llghyu07z",
+        "user_9jb6bpx6j",
+        "user_f8e7kjg8i",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_tm4t9zvgs",
+        "user_no8ynud2w",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_io6c2gphy",
+        "user_a6pfxxp1c",
+        "user_2masjv0xn",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 14,
+      "votes_b": 1,
+      "winner": "Tweety and Sylvester"
+    },
+    "match_38": {
+      "cartoon_a": "Bizim Ninniler (TRT)",
+      "cartoon_b": "SHE-RA",
+      "match_id": "match_38",
+      "match_index": 38,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_4hrhmm57b",
+        "user_uaqi9lzlm",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_fnins8wwj",
+        "user_no8ynud2w",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_2masjv0xn",
+        "user_llghyu07z",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_f8e7kjg8i",
+        "user_rfkshpym8",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 4,
+      "votes_b": 13,
+      "winner": "SHE-RA"
+    },
+    "match_39": {
+      "cartoon_a": "Heidi",
+      "cartoon_b": "Brandy ve Bay Bıyık ",
+      "match_id": "match_39",
+      "match_index": 39,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_4hrhmm57b",
+        "user_llghyu07z",
+        "user_rhjze2tuu",
+        "user_f8e7kjg8i",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_io6c2gphy",
+        "user_fnins8wwj",
+        "user_2masjv0xn"
+      ],
+      "votes_a": 12,
+      "votes_b": 0,
+      "winner": "Heidi"
+    },
+    "match_4": {
+      "cartoon_a": "Uzun Çoraplı Kız Pippi",
+      "cartoon_b": "Johnny Bravo",
+      "match_id": "match_4",
+      "match_index": 4,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_llghyu07z",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_5o930l43y",
+        "user_no8ynud2w",
+        "user_9jb6bpx6j",
+        "user_2masjv0xn",
+        "user_fnins8wwj",
+        "user_io6c2gphy",
+        "user_f8e7kjg8i",
+        "user_habbs8ot1"
+      ],
+      "votes_a": 2,
+      "votes_b": 15,
+      "winner": "Johnny Bravo"
+    },
+    "match_40": {
+      "cartoon_a": "Andy'nin Nesi Var (What's with Andy?)",
+      "cartoon_b": "W.I.T.C.H.",
+      "match_id": "match_40",
+      "match_index": 40,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_a6pfxxp1c",
+        "user_no8ynud2w",
+        "user_llghyu07z",
+        "user_fnins8wwj",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_rhjze2tuu",
+        "user_tm4t9zvgs",
+        "user_uaqi9lzlm",
+        "user_9jb6bpx6j",
+        "user_1mxo9b5wz",
+        "user_habbs8ot1",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 7,
+      "votes_b": 8,
+      "winner": "W.I.T.C.H."
+    },
+    "match_41": {
+      "cartoon_a": "Secret Saturdays",
+      "cartoon_b": "Doraemon  ",
+      "match_id": "match_41",
+      "match_index": 41,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_uaqi9lzlm",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_1mxo9b5wz",
+        "user_tm4t9zvgs",
+        "user_2masjv0xn",
+        "user_giwoa7cui",
+        "user_habbs8ot1"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_fnins8wwj",
+        "user_aphuasbdv",
+        "user_io6c2gphy",
+        "user_9jb6bpx6j",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 11,
+      "votes_b": 8,
+      "winner": "Secret Saturdays"
+    },
+    "match_42": {
+      "cartoon_a": "Angels Friends (Melekler Okulu)",
+      "cartoon_b": "Tom and Jerry",
+      "match_id": "match_42",
+      "match_index": 42,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_2masjv0xn",
+        "user_vey6n3qxu",
+        "user_rhjze2tuu",
+        "user_fnins8wwj"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_9jb6bpx6j",
+        "user_tm4t9zvgs",
+        "user_llghyu07z",
+        "user_uaqi9lzlm",
+        "user_no8ynud2w",
+        "user_rfkshpym8",
+        "user_io6c2gphy",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 4,
+      "votes_b": 14,
+      "winner": "Tom and Jerry"
+    },
+    "match_43": {
+      "cartoon_a": "Taş Devri ( The Flintstone )",
+      "cartoon_b": "Fish and Chips",
+      "match_id": "match_43",
+      "match_index": 43,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_llghyu07z"
+      ],
+      "votes_a": 10,
+      "votes_b": 0,
+      "winner": "Taş Devri ( The Flintstone )"
+    },
+    "match_44": {
+      "cartoon_a": "Cow and Chicken",
+      "cartoon_b": "Dexter'ın Laboratuvarı",
+      "match_id": "match_44",
+      "match_index": 44,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_no8ynud2w",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_llghyu07z",
+        "user_tm4t9zvgs",
+        "user_0lhrgoc8o",
+        "user_8i1tbe0is",
+        "user_io6c2gphy",
+        "user_2masjv0xn"
+      ],
+      "votes_a": 1,
+      "votes_b": 13,
+      "winner": "Dexter'ın Laboratuvarı"
+    },
+    "match_45": {
+      "cartoon_a": "Değiştokuş (The Replacements)",
+      "cartoon_b": "Limon ile Zeytin",
+      "match_id": "match_45",
+      "match_index": 45,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_habbs8ot1",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_no8ynud2w",
+        "user_a6pfxxp1c",
+        "user_llghyu07z",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 2,
+      "votes_b": 11,
+      "winner": "Limon ile Zeytin"
+    },
+    "match_46": {
+      "cartoon_a": "Tavşan Peter ve Arkadaşları",
+      "cartoon_b": "Milo ve Hep Ters Giden İşleri",
+      "match_id": "match_46",
+      "match_index": 46,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_0lhrgoc8o",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_no8ynud2w",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_eem2cp0dt",
+        "user_tm4t9zvgs",
+        "user_llghyu07z",
+        "user_a6pfxxp1c",
+        "user_habbs8ot1",
+        "user_fnins8wwj"
+      ],
+      "votes_a": 3,
+      "votes_b": 11,
+      "winner": "Milo ve Hep Ters Giden İşleri"
+    },
+    "match_47": {
+      "cartoon_a": "Zaboomafu",
+      "cartoon_b": "Coop Cat' e Karşı",
+      "match_id": "match_47",
+      "match_index": 47,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_no8ynud2w",
+        "user_f8e7kjg8i",
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_aphuasbdv",
+        "user_tm4t9zvgs",
+        "user_llghyu07z",
+        "user_eem2cp0dt",
+        "user_2masjv0xn",
+        "user_habbs8ot1",
+        "user_0lhrgoc8o"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_fnins8wwj",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 12,
+      "votes_b": 6,
+      "winner": "Zaboomafu"
+    },
+    "match_48": {
+      "cartoon_a": "Red Kit (Lucky Luke)",
+      "cartoon_b": "Pembe Panter",
+      "match_id": "match_48",
+      "match_index": 48,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_fnins8wwj",
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_no8ynud2w",
+        "user_uaqi9lzlm",
+        "user_vey6n3qxu",
+        "user_aphuasbdv",
+        "user_f8e7kjg8i",
+        "user_eem2cp0dt",
+        "user_1mxo9b5wz",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_io6c2gphy",
+        "user_giwoa7cui",
+        "user_2masjv0xn",
+        "user_habbs8ot1",
+        "user_llghyu07z"
+      ],
+      "votes_a": 11,
+      "votes_b": 9,
+      "winner": "Red Kit (Lucky Luke)"
+    },
+    "match_49": {
+      "cartoon_a": "Kick Buttowski",
+      "cartoon_b": "HE-MAN",
+      "match_id": "match_49",
+      "match_index": 49,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_fnins8wwj",
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_eem2cp0dt",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_rhjze2tuu",
+        "user_1mxo9b5wz",
+        "user_habbs8ot1",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_llghyu07z",
+        "user_tm4t9zvgs",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 12,
+      "votes_b": 7,
+      "winner": "Kick Buttowski"
+    },
+    "match_5": {
+      "cartoon_a": "Nanoboy",
+      "cartoon_b": "Kaptan Tsubasa",
+      "match_id": "match_5",
+      "match_index": 5,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_llghyu07z",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_no8ynud2w",
+        "user_f8e7kjg8i",
+        "user_vey6n3qxu",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_eem2cp0dt",
+        "user_aphuasbdv",
+        "user_fnins8wwj",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 2,
+      "votes_b": 10,
+      "winner": "Kaptan Tsubasa"
+    },
+    "match_50": {
+      "cartoon_a": "Kaptan Mağara Adamı",
+      "cartoon_b": "Atom Karınca ",
+      "match_id": "match_50",
+      "match_index": 50,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c",
+        "user_eem2cp0dt",
+        "user_0lhrgoc8o",
+        "user_no8ynud2w",
+        "user_fnins8wwj",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_llghyu07z",
+        "user_2masjv0xn",
+        "user_9jb6bpx6j",
+        "user_habbs8ot1"
+      ],
+      "votes_a": 9,
+      "votes_b": 10,
+      "winner": "Atom Karınca "
+    },
+    "match_51": {
+      "cartoon_a": "Powerpuff Girls",
+      "cartoon_b": "Team Galaxy",
+      "match_id": "match_51",
+      "match_index": 51,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_fnins8wwj",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_eem2cp0dt",
+        "user_0lhrgoc8o",
+        "user_no8ynud2w",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_2masjv0xn",
+        "user_habbs8ot1",
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j",
+        "user_f8e7kjg8i"
+      ],
+      "votes_a": 18,
+      "votes_b": 0,
+      "winner": "Powerpuff Girls"
+    },
+    "match_52": {
+      "cartoon_a": "Boyster",
+      "cartoon_b": "Yeşil Oba",
+      "match_id": "match_52",
+      "match_index": 52,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_no8ynud2w",
+        "user_fnins8wwj",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_giwoa7cui",
+        "user_0lhrgoc8o",
+        "user_rhjze2tuu",
+        "user_eem2cp0dt",
+        "user_9jb6bpx6j",
+        "user_habbs8ot1",
+        "user_f8e7kjg8i",
+        "user_4hrhmm57b",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 5,
+      "votes_b": 12,
+      "winner": "Yeşil Oba"
+    },
+    "match_53": {
+      "cartoon_a": "PUCCA",
+      "cartoon_b": "Camp Rock",
+      "match_id": "match_53",
+      "match_index": 53,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_2masjv0xn",
+        "user_9jb6bpx6j",
+        "user_no8ynud2w",
+        "user_1mxo9b5wz",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_fnins8wwj",
+        "user_tm4t9zvgs",
+        "user_vey6n3qxu",
+        "user_eem2cp0dt",
+        "user_rfkshpym8",
+        "user_giwoa7cui"
+      ],
+      "votes_a": 0,
+      "votes_b": 13,
+      "winner": "Camp Rock"
+    },
+    "match_54": {
+      "cartoon_a": "Hero 108",
+      "cartoon_b": "Richie Rich",
+      "match_id": "match_54",
+      "match_index": 54,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_rhjze2tuu",
+        "user_giwoa7cui",
+        "user_no8ynud2w",
+        "user_eem2cp0dt",
+        "user_uaqi9lzlm",
+        "user_a6pfxxp1c",
+        "user_f8e7kjg8i"
+      ],
+      "voters_b": [
+        "user_habbs8ot1",
+        "user_rfkshpym8",
+        "user_2masjv0xn",
+        "user_1mxo9b5wz",
+        "user_9jb6bpx6j",
+        "user_fnins8wwj",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 11,
+      "votes_b": 7,
+      "winner": "Hero 108"
+    },
+    "match_55": {
+      "cartoon_a": "Megas XLR",
+      "cartoon_b": "Beyblade",
+      "match_id": "match_55",
+      "match_index": 55,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_f8e7kjg8i",
+        "user_habbs8ot1",
+        "user_tvsnkzqo1",
+        "user_5o930l43y",
+        "user_rhjze2tuu",
+        "user_fnins8wwj",
+        "user_eem2cp0dt"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_uaqi9lzlm",
+        "user_1mxo9b5wz",
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_0lhrgoc8o",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 7,
+      "votes_b": 11,
+      "winner": "Beyblade"
+    },
+    "match_56": {
+      "cartoon_a": "Happy Tree Friends",
+      "cartoon_b": "Cedric",
+      "match_id": "match_56",
+      "match_index": 56,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_0lhrgoc8o",
+        "user_habbs8ot1"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_fnins8wwj",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1",
+        "user_rhjze2tuu",
+        "user_uaqi9lzlm",
+        "user_f8e7kjg8i",
+        "user_eem2cp0dt",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 2,
+      "votes_b": 14,
+      "winner": "Cedric"
+    },
+    "match_57": {
+      "cartoon_a": "Ayı Yogi",
+      "cartoon_b": "Bugs Bunny",
+      "match_id": "match_57",
+      "match_index": 57,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_fnins8wwj",
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_f8e7kjg8i",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_a6pfxxp1c",
+        "user_habbs8ot1",
+        "user_tm4t9zvgs",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 3,
+      "votes_b": 12,
+      "winner": "Bugs Bunny"
+    },
+    "match_58": {
+      "cartoon_a": "Spider-Man",
+      "cartoon_b": "101 Dalmaçyalı",
+      "match_id": "match_58",
+      "match_index": 58,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_no8ynud2w",
+        "user_0lhrgoc8o",
+        "user_f8e7kjg8i",
+        "user_uaqi9lzlm",
+        "user_rfkshpym8",
+        "user_eem2cp0dt",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_rhjze2tuu",
+        "user_j10sgggyw",
+        "user_9jb6bpx6j",
+        "user_2masjv0xn"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_fnins8wwj",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 13,
+      "votes_b": 6,
+      "winner": "Spider-Man"
+    },
+    "match_59": {
+      "cartoon_a": "Casus Kızlar ( Totally Spies!)",
+      "cartoon_b": "Uzun Kulak Ailesi",
+      "match_id": "match_59",
+      "match_index": 59,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_j10sgggyw",
+        "user_eem2cp0dt",
+        "user_rfkshpym8",
+        "user_f8e7kjg8i",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_vey6n3qxu",
+        "user_rhjze2tuu",
+        "user_habbs8ot1",
+        "user_2masjv0xn",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 0,
+      "votes_b": 16,
+      "winner": "Uzun Kulak Ailesi"
+    },
+    "match_6": {
+      "cartoon_a": "Skunk Fu!",
+      "cartoon_b": "Prensses Sofia ",
+      "match_id": "match_6",
+      "match_index": 6,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_0lhrgoc8o",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_eem2cp0dt",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_tm4t9zvgs",
+        "user_habbs8ot1",
+        "user_j10sgggyw"
+      ],
+      "voters_b": [
+        "user_fnins8wwj",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c",
+        "user_2masjv0xn",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 11,
+      "votes_b": 7,
+      "winner": "Skunk Fu!"
+    },
+    "match_60": {
+      "cartoon_a": "Cars (Arabalar)",
+      "cartoon_b": "Esrarengiz Kasaba ",
+      "match_id": "match_60",
+      "match_index": 60,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_llghyu07z",
+        "user_j10sgggyw",
+        "user_0lhrgoc8o",
+        "user_9jb6bpx6j",
+        "user_io6c2gphy",
+        "user_tvsnkzqo1",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_habbs8ot1",
+        "user_2masjv0xn"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_a6pfxxp1c",
+        "user_llghyu07z",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 11,
+      "votes_b": 9,
+      "winner": "Cars (Arabalar)"
+    },
+    "match_61": {
+      "cartoon_a": "Rescue Heroes",
+      "cartoon_b": "Ben 10",
+      "match_id": "match_61",
+      "match_index": 61,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b"
+      ],
+      "voters_b": [
+        "user_j10sgggyw",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_llghyu07z",
+        "user_aphuasbdv",
+        "user_0lhrgoc8o",
+        "user_io6c2gphy",
+        "user_2masjv0xn",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 1,
+      "votes_b": 13,
+      "winner": "Ben 10"
+    },
+    "match_62": {
+      "cartoon_a": "Ninja Kaplumbağalar",
+      "cartoon_b": "Donald Duck",
+      "match_id": "match_62",
+      "match_index": 62,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_f8e7kjg8i",
+        "user_tm4t9zvgs",
+        "user_1mxo9b5wz",
+        "user_vey6n3qxu",
+        "user_uaqi9lzlm",
+        "user_0lhrgoc8o",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui",
+        "user_io6c2gphy",
+        "user_habbs8ot1"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_j10sgggyw",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 11,
+      "votes_b": 6,
+      "winner": "Ninja Kaplumbağalar"
+    },
+    "match_63": {
+      "cartoon_a": "Jackie Chan",
+      "cartoon_b": "Sonic",
+      "match_id": "match_63",
+      "match_index": 63,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_9jb6bpx6j",
+        "user_j10sgggyw",
+        "user_vey6n3qxu",
+        "user_2masjv0xn",
+        "user_0lhrgoc8o",
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 1,
+      "votes_b": 13,
+      "winner": "Sonic"
+    },
+    "match_64": {
+      "cartoon_a": "Peter Pan ",
+      "cartoon_b": "Artzooka",
+      "match_id": "match_64",
+      "match_index": 64,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_vey6n3qxu",
+        "user_5o930l43y",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_j10sgggyw",
+        "user_a6pfxxp1c",
+        "user_fnins8wwj",
+        "user_rhjze2tuu",
+        "user_uaqi9lzlm",
+        "user_io6c2gphy",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 5,
+      "votes_b": 12,
+      "winner": "Artzooka"
+    },
+    "match_65": {
+      "cartoon_a": "Lilo&Stitch",
+      "cartoon_b": "Şaşkın İmparator (Kuzco)",
+      "match_id": "match_65",
+      "match_index": 65,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_aphuasbdv",
+        "user_0lhrgoc8o",
+        "user_f8e7kjg8i",
+        "user_tvsnkzqo1",
+        "user_io6c2gphy",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_1mxo9b5wz",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_giwoa7cui",
+        "user_2masjv0xn",
+        "user_j10sgggyw",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 9,
+      "votes_b": 8,
+      "winner": "Lilo&Stitch"
+    },
+    "match_66": {
+      "cartoon_a": "Teen Titans Go",
+      "cartoon_b": "Uzaylı Vander",
+      "match_id": "match_66",
+      "match_index": 66,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_0lhrgoc8o",
+        "user_uaqi9lzlm",
+        "user_vey6n3qxu",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_j10sgggyw",
+        "user_y869fdwd0"
+      ],
+      "votes_a": 8,
+      "votes_b": 2,
+      "winner": "Teen Titans Go"
+    },
+    "match_67": {
+      "cartoon_a": "Avatar: Son Hava Bükücü",
+      "cartoon_b": "Ed, Edd ve Eddy",
+      "match_id": "match_67",
+      "match_index": 67,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_0lhrgoc8o",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_io6c2gphy"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b",
+        "user_fnins8wwj"
+      ],
+      "votes_a": 9,
+      "votes_b": 8,
+      "winner": "Avatar: Son Hava Bükücü"
+    },
+    "match_68": {
+      "cartoon_a": "Pound Puppies",
+      "cartoon_b": "Phineas and Ferb  ",
+      "match_id": "match_68",
+      "match_index": 68,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm",
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_f8e7kjg8i",
+        "user_j10sgggyw",
+        "user_io6c2gphy",
+        "user_0lhrgoc8o",
+        "user_y869fdwd0"
+      ],
+      "votes_a": 0,
+      "votes_b": 15,
+      "winner": "Phineas and Ferb  "
+    },
+    "match_69": {
+      "cartoon_a": "The Fairly OddParents (Ailem Bir Acayip)",
+      "cartoon_b": "Famous 5: On the Case ",
+      "match_id": "match_69",
+      "match_index": 69,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_fnins8wwj",
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1",
+        "user_vey6n3qxu",
+        "user_uaqi9lzlm",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 8,
+      "votes_b": 0,
+      "winner": "The Fairly OddParents (Ailem Bir Acayip)"
+    },
+    "match_7": {
+      "cartoon_a": "Çuf Çuf Diyarı",
+      "cartoon_b": "Koyun SHAUN",
+      "match_id": "match_7",
+      "match_index": 7,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_io6c2gphy"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_4hrhmm57b",
+        "user_tm4t9zvgs",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_fnins8wwj",
+        "user_tvsnkzqo1",
+        "user_j10sgggyw",
+        "user_0lhrgoc8o",
+        "user_y869fdwd0"
+      ],
+      "votes_a": 3,
+      "votes_b": 13,
+      "winner": "Koyun SHAUN"
+    },
+    "match_70": {
+      "cartoon_a": "Johnny Test",
+      "cartoon_b": "Arthur",
+      "match_id": "match_70",
+      "match_index": 70,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_vey6n3qxu",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_f8e7kjg8i",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1",
+        "user_fnins8wwj"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_j10sgggyw",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_0lhrgoc8o",
+        "user_io6c2gphy",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 8,
+      "votes_b": 9,
+      "winner": "Arthur"
+    },
+    "match_71": {
+      "cartoon_a": "Digimon",
+      "cartoon_b": "Mancınık",
+      "match_id": "match_71",
+      "match_index": 71,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_io6c2gphy",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_j10sgggyw",
+        "user_f8e7kjg8i",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 2,
+      "votes_b": 12,
+      "winner": "Mancınık"
+    },
+    "match_72": {
+      "cartoon_a": "Robinson Ailesi",
+      "cartoon_b": "Yu-Gi-Oh",
+      "match_id": "match_72",
+      "match_index": 72,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_fnins8wwj",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_0lhrgoc8o",
+        "user_9jb6bpx6j",
+        "user_j10sgggyw"
+      ],
+      "votes_a": 4,
+      "votes_b": 9,
+      "winner": "Yu-Gi-Oh"
+    },
+    "match_73": {
+      "cartoon_a": "Muhteşem Örümcek Adam (Disney)",
+      "cartoon_b": "Müfettiş Gadget",
+      "match_id": "match_73",
+      "match_index": 73,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_f8e7kjg8i"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_vey6n3qxu",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm",
+        "user_a6pfxxp1c",
+        "user_0lhrgoc8o",
+        "user_fnins8wwj",
+        "user_io6c2gphy",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv",
+        "user_j10sgggyw",
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 1,
+      "votes_b": 16,
+      "winner": "Müfettiş Gadget"
+    },
+    "match_74": {
+      "cartoon_a": "Uçan Balon",
+      "cartoon_b": "Janggeum'ın Rüyası",
+      "match_id": "match_74",
+      "match_index": 74,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_j10sgggyw",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_0lhrgoc8o"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_fnins8wwj",
+        "user_tvsnkzqo1",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 6,
+      "votes_b": 9,
+      "winner": "Janggeum'ın Rüyası"
+    },
+    "match_75": {
+      "cartoon_a": "Şirinler ( The Smurfs ) ",
+      "cartoon_b": "Masha ile Koca Ayı",
+      "match_id": "match_75",
+      "match_index": 75,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_uaqi9lzlm",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_f8e7kjg8i",
+        "user_fnins8wwj",
+        "user_0lhrgoc8o"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_io6c2gphy",
+        "user_tvsnkzqo1",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 12,
+      "votes_b": 4,
+      "winner": "Şirinler ( The Smurfs ) "
+    },
+    "match_76": {
+      "cartoon_a": "Ajan P. Çok Gizli Görev Listesi",
+      "cartoon_b": "Steven Universe",
+      "match_id": "match_76",
+      "match_index": 76,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_y869fdwd0",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_f8e7kjg8i",
+        "user_j10sgggyw",
+        "user_0lhrgoc8o",
+        "user_fnins8wwj",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_1mxo9b5wz",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 13,
+      "votes_b": 3,
+      "winner": "Ajan P. Çok Gizli Görev Listesi"
+    },
+    "match_77": {
+      "cartoon_a": "Göl Kampçıları",
+      "cartoon_b": "Tazmanya Canavarı",
+      "match_id": "match_77",
+      "match_index": 77,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_a6pfxxp1c",
+        "user_j10sgggyw",
+        "user_fnins8wwj",
+        "user_tm4t9zvgs",
+        "user_aphuasbdv",
+        "user_io6c2gphy",
+        "user_2masjv0xn"
+      ],
+      "votes_a": 1,
+      "votes_b": 14,
+      "winner": "Tazmanya Canavarı"
+    },
+    "match_78": {
+      "cartoon_a": "Gece Bahçesi ",
+      "cartoon_b": "Zıpırlar (Funky Cops)",
+      "match_id": "match_78",
+      "match_index": 78,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_fnins8wwj",
+        "user_4hrhmm57b",
+        "user_2masjv0xn",
+        "user_uaqi9lzlm",
+        "user_9jb6bpx6j",
+        "user_io6c2gphy",
+        "user_a6pfxxp1c",
+        "user_j10sgggyw",
+        "user_1mxo9b5wz",
+        "user_f8e7kjg8i",
+        "user_vey6n3qxu",
+        "user_tvsnkzqo1",
+        "user_0lhrgoc8o",
+        "user_no8ynud2w",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 16,
+      "votes_b": 3,
+      "winner": "Gece Bahçesi "
+    },
+    "match_79": {
+      "cartoon_a": "Laura'nın Yıldızı",
+      "cartoon_b": "The Secret Files of Spy Dogs",
+      "match_id": "match_79",
+      "match_index": 79,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_j10sgggyw",
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_0lhrgoc8o",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui",
+        "user_fnins8wwj",
+        "user_io6c2gphy"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 11,
+      "votes_b": 3,
+      "winner": "Laura'nın Yıldızı"
+    },
+    "match_8": {
+      "cartoon_a": "Balık Oltası",
+      "cartoon_b": "Batman: The Animated Series",
+      "match_id": "match_8",
+      "match_index": 8,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_fnins8wwj",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_5o930l43y",
+        "user_tvsnkzqo1",
+        "user_j10sgggyw",
+        "user_io6c2gphy",
+        "user_0lhrgoc8o",
+        "user_aphuasbdv",
+        "user_f8e7kjg8i"
+      ],
+      "votes_a": 4,
+      "votes_b": 11,
+      "winner": "Batman: The Animated Series"
+    },
+    "match_80": {
+      "cartoon_a": "Sevimli Hayalet Casper",
+      "cartoon_b": "Üçüzler",
+      "match_id": "match_80",
+      "match_index": 80,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_j10sgggyw",
+        "user_uaqi9lzlm",
+        "user_tvsnkzqo1",
+        "user_fnins8wwj"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 11,
+      "votes_b": 2,
+      "winner": "Sevimli Hayalet Casper"
+    },
+    "match_81": {
+      "cartoon_a": "RoboRoach",
+      "cartoon_b": "Küçük Prens",
+      "match_id": "match_81",
+      "match_index": 81,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_y869fdwd0",
+        "user_1mxo9b5wz",
+        "user_rhjze2tuu",
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_fnins8wwj",
+        "user_j10sgggyw"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_0lhrgoc8o",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_vey6n3qxu",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 10,
+      "votes_b": 7,
+      "winner": "RoboRoach"
+    },
+    "match_82": {
+      "cartoon_a": "Where's My Water",
+      "cartoon_b": "Waverly Büyücüleri",
+      "match_id": "match_82",
+      "match_index": 82,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_j10sgggyw",
+        "user_1mxo9b5wz",
+        "user_tm4t9zvgs",
+        "user_rhjze2tuu",
+        "user_5o930l43y",
+        "user_fnins8wwj"
+      ],
+      "votes_a": 4,
+      "votes_b": 10,
+      "winner": "Waverly Büyücüleri"
+    },
+    "match_83": {
+      "cartoon_a": "Dinazor Treni",
+      "cartoon_b": "Oliver'ın Maceraları ",
+      "match_id": "match_83",
+      "match_index": 83,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_0lhrgoc8o",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_vey6n3qxu",
+        "user_tm4t9zvgs",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_tvsnkzqo1",
+        "user_uaqi9lzlm",
+        "user_fnins8wwj",
+        "user_f8e7kjg8i",
+        "user_5o930l43y",
+        "user_j10sgggyw",
+        "user_rhjze2tuu",
+        "user_1mxo9b5wz",
+        "user_y869fdwd0"
+      ],
+      "votes_a": 6,
+      "votes_b": 10,
+      "winner": "Oliver'ın Maceraları "
+    },
+    "match_84": {
+      "cartoon_a": "Genç Ejder",
+      "cartoon_b": "Zack ve Cody Güvertede",
+      "match_id": "match_84",
+      "match_index": 84,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_vey6n3qxu",
+        "user_y869fdwd0",
+        "user_fnins8wwj",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1",
+        "user_0lhrgoc8o",
+        "user_no8ynud2w"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_j10sgggyw"
+      ],
+      "votes_a": 11,
+      "votes_b": 3,
+      "winner": "Genç Ejder"
+    },
+    "match_85": {
+      "cartoon_a": "Tarzan ",
+      "cartoon_b": "Sihirli Aile (A Kind of Magic)",
+      "match_id": "match_85",
+      "match_index": 85,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_no8ynud2w",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_1mxo9b5wz",
+        "user_tvsnkzqo1",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_fnins8wwj",
+        "user_j10sgggyw",
+        "user_f8e7kjg8i",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_vey6n3qxu"
+      ],
+      "votes_a": 15,
+      "votes_b": 2,
+      "winner": "Tarzan "
+    },
+    "match_86": {
+      "cartoon_a": "Uncle Grandpa",
+      "cartoon_b": "Kim Possible",
+      "match_id": "match_86",
+      "match_index": 86,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_y869fdwd0",
+        "user_fnins8wwj",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_no8ynud2w",
+        "user_aphuasbdv",
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 1,
+      "votes_b": 12,
+      "winner": "Kim Possible"
+    },
+    "match_87": {
+      "cartoon_a": "Max Maceraları",
+      "cartoon_b": "Adventure Time",
+      "match_id": "match_87",
+      "match_index": 87,
+      "round": 1,
+      "status": "done",
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv",
+        "user_1mxo9b5wz",
+        "user_fnins8wwj"
+      ],
+      "votes_a": 0,
+      "votes_b": 11,
+      "winner": "Adventure Time"
+    },
+    "match_88": {
+      "cartoon_a": "Flash and Dash ",
+      "cartoon_b": "DEĞERLİ",
+      "match_id": "match_88",
+      "match_index": 88,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_vey6n3qxu",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_no8ynud2w",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_fnins8wwj"
+      ],
+      "votes_a": 3,
+      "votes_b": 9,
+      "winner": "DEĞERLİ"
+    },
+    "match_89": {
+      "cartoon_a": "Teneffüs Zili",
+      "cartoon_b": "Adibo (Adibou)",
+      "match_id": "match_89",
+      "match_index": 89,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_y869fdwd0",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_fnins8wwj",
+        "user_j10sgggyw",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_rfkshpym8"
+      ],
+      "votes_a": 10,
+      "votes_b": 1,
+      "winner": "Teneffüs Zili"
+    },
+    "match_9": {
+      "cartoon_a": "Camp Lazlo",
+      "cartoon_b": "Zou",
+      "match_id": "match_9",
+      "match_index": 9,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_j10sgggyw",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 11,
+      "votes_b": 0,
+      "winner": "Camp Lazlo"
+    },
+    "match_90": {
+      "cartoon_a": "Voltran",
+      "cartoon_b": "Austin ve Ally",
+      "match_id": "match_90",
+      "match_index": 90,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_f8e7kjg8i",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_0lhrgoc8o",
+        "user_tm4t9zvgs",
+        "user_vey6n3qxu",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu",
+        "user_1mxo9b5wz",
+        "user_j10sgggyw",
+        "user_no8ynud2w",
+        "user_a6pfxxp1c",
+        "user_fnins8wwj",
+        "user_y869fdwd0",
+        "user_2masjv0xn"
+      ],
+      "votes_a": 9,
+      "votes_b": 10,
+      "winner": "Austin ve Ally"
+    },
+    "match_91": {
+      "cartoon_a": "Arkadaşım Maymun",
+      "cartoon_b": "Öcük Böcük",
+      "match_id": "match_91",
+      "match_index": 91,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_j10sgggyw",
+        "user_aphuasbdv",
+        "user_1mxo9b5wz",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c",
+        "user_no8ynud2w",
+        "user_uaqi9lzlm",
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_fnins8wwj",
+        "user_f8e7kjg8i",
+        "user_2masjv0xn"
+      ],
+      "votes_a": 5,
+      "votes_b": 11,
+      "winner": "Öcük Böcük"
+    },
+    "match_92": {
+      "cartoon_a": "Kod Adı: Afacanlar",
+      "cartoon_b": "I.N.K.",
+      "match_id": "match_92",
+      "match_index": 92,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_fnins8wwj",
+        "user_uaqi9lzlm",
+        "user_y869fdwd0",
+        "user_f8e7kjg8i",
+        "user_9jb6bpx6j",
+        "user_tm4t9zvgs",
+        "user_vey6n3qxu",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_j10sgggyw"
+      ],
+      "votes_a": 11,
+      "votes_b": 0,
+      "winner": "Kod Adı: Afacanlar"
+    },
+    "match_93": {
+      "cartoon_a": "Mucize: Uğur Böceği ile Kara Kedi",
+      "cartoon_b": "Arı Maya",
+      "match_id": "match_93",
+      "match_index": 93,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_fnins8wwj",
+        "user_no8ynud2w",
+        "user_0lhrgoc8o",
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1",
+        "user_f8e7kjg8i",
+        "user_tm4t9zvgs",
+        "user_2masjv0xn"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_rhjze2tuu",
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_j10sgggyw",
+        "user_uaqi9lzlm",
+        "user_fnins8wwj",
+        "user_giwoa7cui"
+      ],
+      "votes_a": 12,
+      "votes_b": 8,
+      "winner": "Mucize: Uğur Böceği ile Kara Kedi"
+    },
+    "match_94": {
+      "cartoon_a": "Jetgiller ( The Jetsons)",
+      "cartoon_b": "Bay Becerikli ",
+      "match_id": "match_94",
+      "match_index": 94,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_fnins8wwj",
+        "user_2masjv0xn",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_9jb6bpx6j",
+        "user_no8ynud2w",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_f8e7kjg8i",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_0lhrgoc8o",
+        "user_4hrhmm57b",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 12,
+      "votes_b": 7,
+      "winner": "Jetgiller ( The Jetsons)"
+    },
+    "match_95": {
+      "cartoon_a": "Slugterra ",
+      "cartoon_b": "Goof Troop",
+      "match_id": "match_95",
+      "match_index": 95,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_4hrhmm57b"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_fnins8wwj",
+        "user_y869fdwd0",
+        "user_no8ynud2w",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 3,
+      "votes_b": 11,
+      "winner": "Goof Troop"
+    },
+    "match_96": {
+      "cartoon_a": "Canım Kardeşim",
+      "cartoon_b": "LEON The Lion Jungle Showdown (Minika)",
+      "match_id": "match_96",
+      "match_index": 96,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_y869fdwd0",
+        "user_rhjze2tuu",
+        "user_f8e7kjg8i"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 6,
+      "votes_b": 3,
+      "winner": "Canım Kardeşim"
+    },
+    "match_97": {
+      "cartoon_a": "Rahat Koltuk (The Big Comfy Couch )",
+      "cartoon_b": "Yarışçı Arazi (Yarışma- TRT Çocuk)",
+      "match_id": "match_97",
+      "match_index": 97,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_2masjv0xn",
+        "user_a6pfxxp1c",
+        "user_vey6n3qxu",
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_f8e7kjg8i",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv",
+        "user_no8ynud2w",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 9,
+      "votes_b": 7,
+      "winner": "Rahat Koltuk (The Big Comfy Couch )"
+    },
+    "match_98": {
+      "cartoon_a": "Lego Star Wars: Yoda Günlükleri",
+      "cartoon_b": "We Bare Bears (Kafadar Ayılar)",
+      "match_id": "match_98",
+      "match_index": 98,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_no8ynud2w",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j",
+        "user_f8e7kjg8i"
+      ],
+      "votes_a": 2,
+      "votes_b": 11,
+      "winner": "We Bare Bears (Kafadar Ayılar)"
+    },
+    "match_99": {
+      "cartoon_a": "Oscar Çöllerde",
+      "cartoon_b": "Küçük Hezarfen ",
+      "match_id": "match_99",
+      "match_index": 99,
+      "round": 1,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_no8ynud2w",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_f8e7kjg8i",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_vey6n3qxu",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 10,
+      "votes_b": 3,
+      "winner": "Oscar Çöllerde"
+    },
+    "match_r2_0": {
+      "cartoon_a": "Hero8",
+      "cartoon_b": "Art Attack ",
+      "match_id": "match_r2_0",
+      "match_index": 0,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_uaqi9lzlm",
+        "user_vey6n3qxu",
+        "user_tvsnkzqo1",
+        "user_no8ynud2w",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_y869fdwd0",
+        "user_4hrhmm57b",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_1mxo9b5wz"
+      ],
+      "votes_a": 10,
+      "votes_b": 2,
+      "winner": "Hero8"
+    },
+    "match_r2_1": {
+      "cartoon_a": "Power Rangers",
+      "cartoon_b": "Zeke and Luther",
+      "match_id": "match_r2_1",
+      "match_index": 1,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_uaqi9lzlm",
+        "user_llghyu07z",
+        "user_vey6n3qxu",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 8,
+      "votes_b": 3,
+      "winner": "Power Rangers"
+    },
+    "match_r2_10": {
+      "cartoon_a": "Jim Button ",
+      "cartoon_b": "Gumball",
+      "match_id": "match_r2_10",
+      "match_index": 10,
+      "round": 2,
+      "status": "done",
+      "voters_b": [
+        "user_5o930l43y",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_f8e7kjg8i",
+        "user_9jb6bpx6j",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_no8ynud2w",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 0,
+      "votes_b": 12,
+      "winner": "Gumball"
+    },
+    "match_r2_11": {
+      "cartoon_a": "Duck Tales",
+      "cartoon_b": "Speedy Gonzales",
+      "match_id": "match_r2_11",
+      "match_index": 11,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_llghyu07z",
+        "user_y869fdwd0",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_no8ynud2w",
+        "user_vey6n3qxu",
+        "user_tvsnkzqo1",
+        "user_1mxo9b5wz",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 6,
+      "votes_b": 10,
+      "winner": "Speedy Gonzales"
+    },
+    "match_r2_12": {
+      "cartoon_a": "Keloğlan",
+      "cartoon_b": "Pokemon ",
+      "match_id": "match_r2_12",
+      "match_index": 12,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_5o930l43y",
+        "user_rhjze2tuu",
+        "user_llghyu07z"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_no8ynud2w",
+        "user_4hrhmm57b",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_f8e7kjg8i"
+      ],
+      "votes_a": 6,
+      "votes_b": 10,
+      "winner": "Pokemon "
+    },
+    "match_r2_13": {
+      "cartoon_a": "Temel Reis (Popeye)",
+      "cartoon_b": "Tarçın ve Arkadaşları",
+      "match_id": "match_r2_13",
+      "match_index": 13,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_tm4t9zvgs",
+        "user_uaqi9lzlm",
+        "user_f8e7kjg8i",
+        "user_5o930l43y",
+        "user_rfkshpym8"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_no8ynud2w"
+      ],
+      "votes_a": 9,
+      "votes_b": 2,
+      "winner": "Temel Reis (Popeye)"
+    },
+    "match_r2_14": {
+      "cartoon_a": "LOUIE",
+      "cartoon_b": "Kramp İkizleri",
+      "match_id": "match_r2_14",
+      "match_index": 14,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu",
+        "user_uaqi9lzlm",
+        "user_7nx91hm2v"
+      ],
+      "voters_b": [
+        "user_no8ynud2w",
+        "user_y869fdwd0",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 5,
+      "votes_b": 9,
+      "winner": "Kramp İkizleri"
+    },
+    "match_r2_15": {
+      "cartoon_a": "Angelo Kuralları",
+      "cartoon_b": "Scooby Doo",
+      "match_id": "match_r2_15",
+      "match_index": 15,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_uaqi9lzlm",
+        "user_no8ynud2w",
+        "user_y869fdwd0",
+        "user_llghyu07z",
+        "user_rhjze2tuu",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 7,
+      "votes_b": 10,
+      "winner": "Scooby Doo"
+    },
+    "match_r2_16": {
+      "cartoon_a": "Regular Show (Sürekli Dizi)",
+      "cartoon_b": "Heathcliff (Kedi)",
+      "match_id": "match_r2_16",
+      "match_index": 16,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_vey6n3qxu",
+        "user_9jb6bpx6j",
+        "user_f8e7kjg8i",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_5o930l43y"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 9,
+      "votes_b": 1,
+      "winner": "Regular Show (Sürekli Dizi)"
+    },
+    "match_r2_17": {
+      "cartoon_a": "Dinazor Tom",
+      "cartoon_b": "Flapjack",
+      "match_id": "match_r2_17",
+      "match_index": 17,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_f8e7kjg8i",
+        "user_giwoa7cui",
+        "user_uaqi9lzlm",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_tvsnkzqo1",
+        "user_y869fdwd0",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 2,
+      "votes_b": 11,
+      "winner": "Flapjack"
+    },
+    "match_r2_18": {
+      "cartoon_a": "İyi Şanslar Charlie",
+      "cartoon_b": "Penguin Pingu",
+      "match_id": "match_r2_18",
+      "match_index": 18,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_1mxo9b5wz",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_7nx91hm2v"
+      ],
+      "voters_b": [
+        "user_f8e7kjg8i",
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 7,
+      "votes_b": 9,
+      "winner": "Penguin Pingu"
+    },
+    "match_r2_19": {
+      "cartoon_a": "Caillou",
+      "cartoon_b": "Orman Kitabı",
+      "match_id": "match_r2_19",
+      "match_index": 19,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_1mxo9b5wz",
+        "user_llghyu07z",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_7nx91hm2v"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 10,
+      "votes_b": 6,
+      "winner": "Caillou"
+    },
+    "match_r2_2": {
+      "cartoon_a": "9.Sınıf Ninja: Randy Cunnigham",
+      "cartoon_b": "Jumanji",
+      "match_id": "match_r2_2",
+      "match_index": 2,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_rhjze2tuu",
+        "user_giwoa7cui",
+        "user_no8ynud2w",
+        "user_f8e7kjg8i"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_4hrhmm57b",
+        "user_llghyu07z",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 9,
+      "votes_b": 5,
+      "winner": "9.Sınıf Ninja: Randy Cunnigham"
+    },
+    "match_r2_20": {
+      "cartoon_a": "Quack Pack ",
+      "cartoon_b": "Daltonlar",
+      "match_id": "match_r2_20",
+      "match_index": 20,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_no8ynud2w",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_llghyu07z",
+        "user_f8e7kjg8i",
+        "user_vey6n3qxu",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 2,
+      "votes_b": 11,
+      "winner": "Daltonlar"
+    },
+    "match_r2_21": {
+      "cartoon_a": "Jack ve Var Olmayan Ülkenin Korsanları",
+      "cartoon_b": "Star Kötü Güçlere Karşı",
+      "match_id": "match_r2_21",
+      "match_index": 21,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_llghyu07z",
+        "user_1mxo9b5wz",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_no8ynud2w",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 4,
+      "votes_b": 9,
+      "winner": "Star Kötü Güçlere Karşı"
+    },
+    "match_r2_22": {
+      "cartoon_a": "Tel Ali (Yarışma TRT Çocuk)",
+      "cartoon_b": "Samuray Jack",
+      "match_id": "match_r2_22",
+      "match_index": 22,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_llghyu07z"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_y869fdwd0",
+        "user_7nx91hm2v",
+        "user_rhjze2tuu",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 2,
+      "votes_b": 14,
+      "winner": "Samuray Jack"
+    },
+    "match_r2_23": {
+      "cartoon_a": "Garfield",
+      "cartoon_b": "GAZOON",
+      "match_id": "match_r2_23",
+      "match_index": 23,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_vey6n3qxu",
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_llghyu07z",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_1mxo9b5wz"
+      ],
+      "votes_a": 12,
+      "votes_b": 1,
+      "winner": "Garfield"
+    },
+    "match_r2_24": {
+      "cartoon_a": "Tweety and Sylvester",
+      "cartoon_b": "SHE-RA",
+      "match_id": "match_r2_24",
+      "match_index": 24,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 10,
+      "votes_b": 1,
+      "winner": "Tweety and Sylvester"
+    },
+    "match_r2_25": {
+      "cartoon_a": "Heidi",
+      "cartoon_b": "Johnny Bravo",
+      "match_id": "match_r2_25",
+      "match_index": 25,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_uaqi9lzlm"
+      ],
+      "voters_b": [
+        "user_llghyu07z",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_giwoa7cui",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 2,
+      "votes_b": 10,
+      "winner": "Johnny Bravo"
+    },
+    "match_r2_26": {
+      "cartoon_a": "W.I.T.C.H.",
+      "cartoon_b": "Secret Saturdays",
+      "match_id": "match_r2_26",
+      "match_index": 26,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_9jb6bpx6j",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_tm4t9zvgs",
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_y869fdwd0",
+        "user_1mxo9b5wz",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 3,
+      "votes_b": 9,
+      "winner": "Secret Saturdays"
+    },
+    "match_r2_27": {
+      "cartoon_a": "Tom and Jerry",
+      "cartoon_b": "Taş Devri ( The Flintstone )",
+      "match_id": "match_r2_27",
+      "match_index": 27,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 9,
+      "votes_b": 4,
+      "winner": "Tom and Jerry"
+    },
+    "match_r2_28": {
+      "cartoon_a": "Dexter'ın Laboratuvarı",
+      "cartoon_b": "Limon ile Zeytin",
+      "match_id": "match_r2_28",
+      "match_index": 28,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_no8ynud2w",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 10,
+      "votes_b": 1,
+      "winner": "Dexter'ın Laboratuvarı"
+    },
+    "match_r2_29": {
+      "cartoon_a": "Milo ve Hep Ters Giden İşleri",
+      "cartoon_b": "Zaboomafu",
+      "match_id": "match_r2_29",
+      "match_index": 29,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_4hrhmm57b",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_rhjze2tuu",
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv",
+        "user_f8e7kjg8i",
+        "user_9jb6bpx6j",
+        "user_llghyu07z",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_uaqi9lzlm",
+        "user_tvsnkzqo1",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 3,
+      "votes_b": 14,
+      "winner": "Zaboomafu"
+    },
+    "match_r2_3": {
+      "cartoon_a": "402 No'lu Sınıf ",
+      "cartoon_b": "Teletabiler",
+      "match_id": "match_r2_3",
+      "match_index": 3,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_llghyu07z",
+        "user_4hrhmm57b",
+        "user_rfkshpym8",
+        "user_f8e7kjg8i",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 1,
+      "votes_b": 12,
+      "winner": "Teletabiler"
+    },
+    "match_r2_30": {
+      "cartoon_a": "Red Kit (Lucky Luke)",
+      "cartoon_b": "Kick Buttowski",
+      "match_id": "match_r2_30",
+      "match_index": 30,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_tm4t9zvgs",
+        "user_f8e7kjg8i",
+        "user_rhjze2tuu",
+        "user_1mxo9b5wz",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_llghyu07z",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 8,
+      "votes_b": 4,
+      "winner": "Red Kit (Lucky Luke)"
+    },
+    "match_r2_31": {
+      "cartoon_a": "Kaptan Tsubasa",
+      "cartoon_b": "Atom Karınca ",
+      "match_id": "match_r2_31",
+      "match_index": 31,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz",
+        "user_uaqi9lzlm",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j",
+        "user_llghyu07z",
+        "user_a6pfxxp1c",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 6,
+      "votes_b": 10,
+      "winner": "Atom Karınca "
+    },
+    "match_r2_32": {
+      "cartoon_a": "Powerpuff Girls",
+      "cartoon_b": "Yeşil Oba",
+      "match_id": "match_r2_32",
+      "match_index": 32,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_f8e7kjg8i",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui",
+        "user_y869fdwd0",
+        "user_vey6n3qxu",
+        "user_1mxo9b5wz",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_7nx91hm2v",
+        "user_llghyu07z"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 13,
+      "votes_b": 1,
+      "winner": "Powerpuff Girls"
+    },
+    "match_r2_33": {
+      "cartoon_a": "Camp Rock",
+      "cartoon_b": "Hero 108",
+      "match_id": "match_r2_33",
+      "match_index": 33,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_4hrhmm57b",
+        "user_tm4t9zvgs",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_7nx91hm2v",
+        "user_1mxo9b5wz",
+        "user_llghyu07z"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 8,
+      "votes_b": 7,
+      "winner": "Camp Rock"
+    },
+    "match_r2_34": {
+      "cartoon_a": "Beyblade",
+      "cartoon_b": "Cedric",
+      "match_id": "match_r2_34",
+      "match_index": 34,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_rfkshpym8",
+        "user_llghyu07z",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_tm4t9zvgs",
+        "user_f8e7kjg8i",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 3,
+      "votes_b": 10,
+      "winner": "Cedric"
+    },
+    "match_r2_35": {
+      "cartoon_a": "Bugs Bunny",
+      "cartoon_b": "Spider-Man",
+      "match_id": "match_r2_35",
+      "match_index": 35,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_llghyu07z",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz",
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_9jb6bpx6j",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 9,
+      "votes_b": 3,
+      "winner": "Bugs Bunny"
+    },
+    "match_r2_36": {
+      "cartoon_a": "Uzun Kulak Ailesi",
+      "cartoon_b": "Skunk Fu!",
+      "match_id": "match_r2_36",
+      "match_index": 36,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_giwoa7cui",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_uaqi9lzlm",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_f8e7kjg8i",
+        "user_rhjze2tuu",
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 11,
+      "votes_b": 0,
+      "winner": "Uzun Kulak Ailesi"
+    },
+    "match_r2_37": {
+      "cartoon_a": "Cars (Arabalar)",
+      "cartoon_b": "Ben 10",
+      "match_id": "match_r2_37",
+      "match_index": 37,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_y869fdwd0",
+        "user_tm4t9zvgs",
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 3,
+      "votes_b": 11,
+      "winner": "Ben 10"
+    },
+    "match_r2_38": {
+      "cartoon_a": "Ninja Kaplumbağalar",
+      "cartoon_b": "Sonic",
+      "match_id": "match_r2_38",
+      "match_index": 38,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_vey6n3qxu",
+        "user_tm4t9zvgs",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_rfkshpym8",
+        "user_tvsnkzqo1",
+        "user_f8e7kjg8i"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 9,
+      "votes_b": 2,
+      "winner": "Ninja Kaplumbağalar"
+    },
+    "match_r2_39": {
+      "cartoon_a": "Artzooka",
+      "cartoon_b": "Lilo&Stitch",
+      "match_id": "match_r2_39",
+      "match_index": 39,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_f8e7kjg8i",
+        "user_4hrhmm57b",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_y869fdwd0",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 3,
+      "votes_b": 9,
+      "winner": "Lilo&Stitch"
+    },
+    "match_r2_4": {
+      "cartoon_a": "WİNX",
+      "cartoon_b": "Arka Bahçede Bilim ",
+      "match_id": "match_r2_4",
+      "match_index": 4,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv",
+        "user_7nx91hm2v",
+        "user_f8e7kjg8i",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_1mxo9b5wz",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 9,
+      "votes_b": 5,
+      "winner": "WİNX"
+    },
+    "match_r2_40": {
+      "cartoon_a": "Teen Titans Go",
+      "cartoon_b": "Avatar: Son Hava Bükücü",
+      "match_id": "match_r2_40",
+      "match_index": 40,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_f8e7kjg8i",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_f8e7kjg8i",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_7nx91hm2v",
+        "user_1mxo9b5wz"
+      ],
+      "votes_a": 8,
+      "votes_b": 9,
+      "winner": "Avatar: Son Hava Bükücü"
+    },
+    "match_r2_41": {
+      "cartoon_a": "Phineas and Ferb  ",
+      "cartoon_b": "The Fairly OddParents (Ailem Bir Acayip)",
+      "match_id": "match_r2_41",
+      "match_index": 41,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_f8e7kjg8i",
+        "user_1mxo9b5wz",
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_7nx91hm2v",
+        "user_aphuasbdv",
+        "user_llghyu07z"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_rhjze2tuu",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 13,
+      "votes_b": 3,
+      "winner": "Phineas and Ferb  "
+    },
+    "match_r2_42": {
+      "cartoon_a": "Koyun SHAUN",
+      "cartoon_b": "Arthur",
+      "match_id": "match_r2_42",
+      "match_index": 42,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_f8e7kjg8i",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_tm4t9zvgs",
+        "user_1mxo9b5wz",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 2,
+      "votes_b": 9,
+      "winner": "Arthur"
+    },
+    "match_r2_43": {
+      "cartoon_a": "Mancınık",
+      "cartoon_b": "Yu-Gi-Oh",
+      "match_id": "match_r2_43",
+      "match_index": 43,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_f8e7kjg8i",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1",
+        "user_uaqi9lzlm",
+        "user_7nx91hm2v",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_1mxo9b5wz"
+      ],
+      "votes_a": 9,
+      "votes_b": 5,
+      "winner": "Mancınık"
+    },
+    "match_r2_44": {
+      "cartoon_a": "Müfettiş Gadget",
+      "cartoon_b": "Janggeum'ın Rüyası",
+      "match_id": "match_r2_44",
+      "match_index": 44,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_1mxo9b5wz"
+      ],
+      "votes_a": 10,
+      "votes_b": 2,
+      "winner": "Müfettiş Gadget"
+    },
+    "match_r2_45": {
+      "cartoon_a": "Şirinler ( The Smurfs ) ",
+      "cartoon_b": "Ajan P. Çok Gizli Görev Listesi",
+      "match_id": "match_r2_45",
+      "match_index": 45,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_5o930l43y",
+        "user_1mxo9b5wz",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_7nx91hm2v",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_f8e7kjg8i",
+        "user_y869fdwd0",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 8,
+      "votes_b": 5,
+      "winner": "Şirinler ( The Smurfs ) "
+    },
+    "match_r2_46": {
+      "cartoon_a": "Tazmanya Canavarı",
+      "cartoon_b": "Gece Bahçesi ",
+      "match_id": "match_r2_46",
+      "match_index": 46,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_giwoa7cui",
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_rhjze2tuu",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_1mxo9b5wz"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 8,
+      "votes_b": 1,
+      "winner": "Tazmanya Canavarı"
+    },
+    "match_r2_47": {
+      "cartoon_a": "Laura'nın Yıldızı",
+      "cartoon_b": "Batman: The Animated Series",
+      "match_id": "match_r2_47",
+      "match_index": 47,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_1mxo9b5wz",
+        "user_y869fdwd0",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c",
+        "user_uaqi9lzlm",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1",
+        "user_7nx91hm2v",
+        "user_vey6n3qxu"
+      ],
+      "votes_a": 6,
+      "votes_b": 8,
+      "winner": "Laura'nın Yıldızı"
+    },
+    "match_r2_48": {
+      "cartoon_a": "Sevimli Hayalet Casper",
+      "cartoon_b": "RoboRoach",
+      "match_id": "match_r2_48",
+      "match_index": 48,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_vey6n3qxu",
+        "user_y869fdwd0",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 9,
+      "votes_b": 2,
+      "winner": "Sevimli Hayalet Casper"
+    },
+    "match_r2_49": {
+      "cartoon_a": "Waverly Büyücüleri",
+      "cartoon_b": "Oliver'ın Maceraları ",
+      "match_id": "match_r2_49",
+      "match_index": 49,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_tm4t9zvgs",
+        "user_1mxo9b5wz",
+        "user_7nx91hm2v"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_vey6n3qxu",
+        "user_uaqi9lzlm",
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 5,
+      "votes_b": 9,
+      "winner": "Oliver'ın Maceraları "
+    },
+    "match_r2_5": {
+      "cartoon_a": "Mickey Mouse",
+      "cartoon_b": "Kareteci Fareler",
+      "match_id": "match_r2_5",
+      "match_index": 5,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 1,
+      "votes_b": 0,
+      "winner": "Mickey Mouse"
+    },
+    "match_r2_50": {
+      "cartoon_a": "Genç Ejder",
+      "cartoon_b": "Tarzan ",
+      "match_id": "match_r2_50",
+      "match_index": 50,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_rhjze2tuu",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_2kojuh67z",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_5o930l43y"
+      ],
+      "votes_a": 4,
+      "votes_b": 9,
+      "winner": "Tarzan "
+    },
+    "match_r2_51": {
+      "cartoon_a": "Kim Possible",
+      "cartoon_b": "Adventure Time",
+      "match_id": "match_r2_51",
+      "match_index": 51,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_9jb6bpx6j",
+        "user_2kojuh67z",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_uaqi9lzlm",
+        "user_tvsnkzqo1",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui"
+      ],
+      "votes_a": 6,
+      "votes_b": 8,
+      "winner": "Adventure Time"
+    },
+    "match_r2_52": {
+      "cartoon_a": "DEĞERLİ",
+      "cartoon_b": "Teneffüs Zili",
+      "match_id": "match_r2_52",
+      "match_index": 52,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_giwoa7cui",
+        "user_rfkshpym8",
+        "user_1mxo9b5wz",
+        "user_5o930l43y",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 6,
+      "votes_b": 1,
+      "winner": "DEĞERLİ"
+    },
+    "match_r2_53": {
+      "cartoon_a": "Camp Lazlo",
+      "cartoon_b": "Austin ve Ally",
+      "match_id": "match_r2_53",
+      "match_index": 53,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_2kojuh67z"
+      ],
+      "votes_a": 9,
+      "votes_b": 2,
+      "winner": "Camp Lazlo"
+    },
+    "match_r2_54": {
+      "cartoon_a": "Öcük Böcük",
+      "cartoon_b": "Kod Adı: Afacanlar",
+      "match_id": "match_r2_54",
+      "match_index": 54,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_2kojuh67z",
+        "user_vey6n3qxu"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu",
+        "user_1mxo9b5wz",
+        "user_rfkshpym8"
+      ],
+      "votes_a": 4,
+      "votes_b": 8,
+      "winner": "Kod Adı: Afacanlar"
+    },
+    "match_r2_55": {
+      "cartoon_a": "Mucize: Uğur Böceği ile Kara Kedi",
+      "cartoon_b": "Jetgiller ( The Jetsons)",
+      "match_id": "match_r2_55",
+      "match_index": 55,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_2kojuh67z"
+      ],
+      "votes_a": 5,
+      "votes_b": 10,
+      "winner": "Jetgiller ( The Jetsons)"
+    },
+    "match_r2_56": {
+      "cartoon_a": "Goof Troop",
+      "cartoon_b": "Canım Kardeşim",
+      "match_id": "match_r2_56",
+      "match_index": 56,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_1mxo9b5wz",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_y869fdwd0",
+        "user_2kojuh67z",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_io6c2gphy"
+      ],
+      "votes_a": 10,
+      "votes_b": 1,
+      "winner": "Goof Troop"
+    },
+    "match_r2_57": {
+      "cartoon_a": "Rahat Koltuk (The Big Comfy Couch )",
+      "cartoon_b": "We Bare Bears (Kafadar Ayılar)",
+      "match_id": "match_r2_57",
+      "match_index": 57,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_uaqi9lzlm",
+        "user_1mxo9b5wz"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_rhjze2tuu",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_tm4t9zvgs",
+        "user_tvsnkzqo1",
+        "user_vey6n3qxu"
+      ],
+      "votes_a": 3,
+      "votes_b": 7,
+      "winner": "We Bare Bears (Kafadar Ayılar)"
+    },
+    "match_r2_58": {
+      "cartoon_a": "Oscar Çöllerde",
+      "cartoon_b": "--- BAY GEÇTİ ---",
+      "match_id": "match_r2_58",
+      "match_index": 58,
+      "round": 2,
+      "status": "done",
+      "votes_a": 1,
+      "votes_b": 0,
+      "winner": "Oscar Çöllerde"
+    },
+    "match_r2_6": {
+      "cartoon_a": "Tutenstein ",
+      "cartoon_b": "Bakugan ",
+      "match_id": "match_r2_6",
+      "match_index": 6,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu",
+        "user_uaqi9lzlm",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_aphuasbdv",
+        "user_4hrhmm57b",
+        "user_vey6n3qxu",
+        "user_2kojuh67z",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 8,
+      "votes_b": 5,
+      "winner": "Tutenstein "
+    },
+    "match_r2_7": {
+      "cartoon_a": "Cesur Korkak Köpek ",
+      "cartoon_b": "Kaplan Tigger",
+      "match_id": "match_r2_7",
+      "match_index": 7,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_uaqi9lzlm",
+        "user_1mxo9b5wz",
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_2kojuh67z",
+        "user_rfkshpym8",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 9,
+      "votes_b": 3,
+      "winner": "Cesur Korkak Köpek "
+    },
+    "match_r2_8": {
+      "cartoon_a": "Foster'ın Hayali Dostlar Mekanı",
+      "cartoon_b": "Generator Rex",
+      "match_id": "match_r2_8",
+      "match_index": 8,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_1mxo9b5wz",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_4hrhmm57b",
+        "user_a6pfxxp1c",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 9,
+      "votes_b": 3,
+      "winner": "Foster'ın Hayali Dostlar Mekanı"
+    },
+    "match_r2_9": {
+      "cartoon_a": "Hayalet Avcıları",
+      "cartoon_b": "Clarence ",
+      "match_id": "match_r2_9",
+      "match_index": 9,
+      "round": 2,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_2kojuh67z",
+        "user_tm4t9zvgs",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_uaqi9lzlm",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 7,
+      "votes_b": 4,
+      "winner": "Hayalet Avcıları"
+    },
+    "match_r3_0": {
+      "cartoon_a": "Hero8",
+      "cartoon_b": "Power Rangers",
+      "match_id": "match_r3_0",
+      "match_index": 0,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_y869fdwd0",
+        "user_2kojuh67z",
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_5o930l43y",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 7,
+      "votes_b": 4,
+      "winner": "Hero8"
+    },
+    "match_r3_1": {
+      "cartoon_a": "Gumball",
+      "cartoon_b": "Speedy Gonzales",
+      "match_id": "match_r3_1",
+      "match_index": 1,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_2kojuh67z",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1",
+        "user_vey6n3qxu",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_y869fdwd0"
+      ],
+      "votes_a": 9,
+      "votes_b": 1,
+      "winner": "Gumball"
+    },
+    "match_r3_10": {
+      "cartoon_a": "Tom and Jerry",
+      "cartoon_b": "Dexter'ın Laboratuvarı",
+      "match_id": "match_r3_10",
+      "match_index": 10,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_2kojuh67z",
+        "user_9jb6bpx6j",
+        "user_vey6n3qxu",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 7,
+      "votes_b": 4,
+      "winner": "Tom and Jerry"
+    },
+    "match_r3_11": {
+      "cartoon_a": "Zaboomafu",
+      "cartoon_b": "Teletabiler",
+      "match_id": "match_r3_11",
+      "match_index": 11,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_tm4t9zvgs",
+        "user_2kojuh67z",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 7,
+      "votes_b": 3,
+      "winner": "Zaboomafu"
+    },
+    "match_r3_12": {
+      "cartoon_a": "Red Kit (Lucky Luke)",
+      "cartoon_b": "Atom Karınca ",
+      "match_id": "match_r3_12",
+      "match_index": 12,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_vey6n3qxu",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_y869fdwd0",
+        "user_rfkshpym8",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_2kojuh67z"
+      ],
+      "votes_a": 9,
+      "votes_b": 1,
+      "winner": "Red Kit (Lucky Luke)"
+    },
+    "match_r3_13": {
+      "cartoon_a": "Powerpuff Girls",
+      "cartoon_b": "Camp Rock",
+      "match_id": "match_r3_13",
+      "match_index": 13,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_uaqi9lzlm",
+        "user_2kojuh67z",
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 11,
+      "votes_b": 0,
+      "winner": "Powerpuff Girls"
+    },
+    "match_r3_14": {
+      "cartoon_a": "Cedric",
+      "cartoon_b": "Bugs Bunny",
+      "match_id": "match_r3_14",
+      "match_index": 14,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_2kojuh67z",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_aphuasbdv",
+        "user_vey6n3qxu",
+        "user_giwoa7cui"
+      ],
+      "votes_a": 8,
+      "votes_b": 4,
+      "winner": "Cedric"
+    },
+    "match_r3_15": {
+      "cartoon_a": "Uzun Kulak Ailesi",
+      "cartoon_b": "Ben 10",
+      "match_id": "match_r3_15",
+      "match_index": 15,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_2kojuh67z",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_vey6n3qxu",
+        "user_uaqi9lzlm",
+        "user_giwoa7cui",
+        "user_y869fdwd0",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 8,
+      "votes_b": 6,
+      "winner": "Uzun Kulak Ailesi"
+    },
+    "match_r3_16": {
+      "cartoon_a": "Ninja Kaplumbağalar",
+      "cartoon_b": "Lilo&Stitch",
+      "match_id": "match_r3_16",
+      "match_index": 16,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_vey6n3qxu",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_uaqi9lzlm",
+        "user_4hrhmm57b"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_y869fdwd0",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 8,
+      "votes_b": 5,
+      "winner": "Ninja Kaplumbağalar"
+    },
+    "match_r3_17": {
+      "cartoon_a": "WİNX",
+      "cartoon_b": "Avatar: Son Hava Bükücü",
+      "match_id": "match_r3_17",
+      "match_index": 17,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_4hrhmm57b",
+        "user_tm4t9zvgs",
+        "user_y869fdwd0",
+        "user_7nx91hm2v",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_hojjohz9a",
+        "user_a6pfxxp1c",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_uaqi9lzlm",
+        "user_rfkshpym8",
+        "user_rhjze2tuu",
+        "user_vey6n3qxu",
+        "user_aphuasbdv",
+        "user_2kojuh67z",
+        "user_al4li1xfh"
+      ],
+      "votes_a": 10,
+      "votes_b": 8,
+      "winner": "WİNX"
+    },
+    "match_r3_18": {
+      "cartoon_a": "Phineas and Ferb  ",
+      "cartoon_b": "Arthur",
+      "match_id": "match_r3_18",
+      "match_index": 18,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_4hrhmm57b",
+        "user_hojjohz9a",
+        "user_7nx91hm2v",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_llghyu07z",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 7,
+      "votes_b": 8,
+      "winner": "Arthur"
+    },
+    "match_r3_19": {
+      "cartoon_a": "Mancınık",
+      "cartoon_b": "Müfettiş Gadget",
+      "match_id": "match_r3_19",
+      "match_index": 19,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_tvsnkzqo1",
+        "user_y869fdwd0",
+        "user_io6c2gphy",
+        "user_rhjze2tuu",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 1,
+      "votes_b": 11,
+      "winner": "Müfettiş Gadget"
+    },
+    "match_r3_2": {
+      "cartoon_a": "Pokemon ",
+      "cartoon_b": "Temel Reis (Popeye)",
+      "match_id": "match_r3_2",
+      "match_index": 2,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_giwoa7cui",
+        "user_4hrhmm57b",
+        "user_tvsnkzqo1",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 6,
+      "votes_b": 7,
+      "winner": "Temel Reis (Popeye)"
+    },
+    "match_r3_20": {
+      "cartoon_a": "Şirinler ( The Smurfs ) ",
+      "cartoon_b": "Tazmanya Canavarı",
+      "match_id": "match_r3_20",
+      "match_index": 20,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_2kojuh67z",
+        "user_hojjohz9a",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 5,
+      "votes_b": 8,
+      "winner": "Tazmanya Canavarı"
+    },
+    "match_r3_21": {
+      "cartoon_a": "Laura'nın Yıldızı",
+      "cartoon_b": "Sevimli Hayalet Casper",
+      "match_id": "match_r3_21",
+      "match_index": 21,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_hojjohz9a",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1",
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 5,
+      "votes_b": 8,
+      "winner": "Sevimli Hayalet Casper"
+    },
+    "match_r3_22": {
+      "cartoon_a": "Oliver'ın Maceraları ",
+      "cartoon_b": "Mickey Mouse",
+      "match_id": "match_r3_22",
+      "match_index": 22,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_rhjze2tuu",
+        "user_y869fdwd0",
+        "user_io6c2gphy",
+        "user_2kojuh67z",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 6,
+      "votes_b": 7,
+      "winner": "Mickey Mouse"
+    },
+    "match_r3_23": {
+      "cartoon_a": "Tarzan ",
+      "cartoon_b": "Adventure Time",
+      "match_id": "match_r3_23",
+      "match_index": 23,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_giwoa7cui",
+        "user_rhjze2tuu",
+        "user_y869fdwd0",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_uaqi9lzlm",
+        "user_2kojuh67z"
+      ],
+      "votes_a": 4,
+      "votes_b": 10,
+      "winner": "Adventure Time"
+    },
+    "match_r3_24": {
+      "cartoon_a": "DEĞERLİ",
+      "cartoon_b": "Camp Lazlo",
+      "match_id": "match_r3_24",
+      "match_index": 24,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_2kojuh67z"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1",
+        "user_io6c2gphy",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 1,
+      "votes_b": 11,
+      "winner": "Camp Lazlo"
+    },
+    "match_r3_25": {
+      "cartoon_a": "Kod Adı: Afacanlar",
+      "cartoon_b": "Jetgiller ( The Jetsons)",
+      "match_id": "match_r3_25",
+      "match_index": 25,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_hojjohz9a",
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_tvsnkzqo1",
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j",
+        "user_4hrhmm57b",
+        "user_io6c2gphy"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_2kojuh67z",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 10,
+      "votes_b": 7,
+      "winner": "Kod Adı: Afacanlar"
+    },
+    "match_r3_26": {
+      "cartoon_a": "Goof Troop",
+      "cartoon_b": "We Bare Bears (Kafadar Ayılar)",
+      "match_id": "match_r3_26",
+      "match_index": 26,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_hojjohz9a",
+        "user_giwoa7cui"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_rhjze2tuu",
+        "user_io6c2gphy",
+        "user_uaqi9lzlm"
+      ],
+      "votes_a": 5,
+      "votes_b": 8,
+      "winner": "We Bare Bears (Kafadar Ayılar)"
+    },
+    "match_r3_27": {
+      "cartoon_a": "Oscar Çöllerde",
+      "cartoon_b": "Tutenstein ",
+      "match_id": "match_r3_27",
+      "match_index": 27,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_uaqi9lzlm",
+        "user_rhjze2tuu",
+        "user_y869fdwd0",
+        "user_tm4t9zvgs",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_7nx91hm2v",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 5,
+      "votes_b": 10,
+      "winner": "Tutenstein "
+    },
+    "match_r3_28": {
+      "cartoon_a": "Cesur Korkak Köpek ",
+      "cartoon_b": "Foster'ın Hayali Dostlar Mekanı",
+      "match_id": "match_r3_28",
+      "match_index": 28,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_tvsnkzqo1",
+        "user_y869fdwd0",
+        "user_d1rxg1ldn",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_2kojuh67z",
+        "user_aphuasbdv",
+        "user_io6c2gphy",
+        "user_rhjze2tuu",
+        "user_giwoa7cui",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 5,
+      "votes_b": 8,
+      "winner": "Foster'ın Hayali Dostlar Mekanı"
+    },
+    "match_r3_29": {
+      "cartoon_a": "Hayalet Avcıları",
+      "cartoon_b": "--- BAY GEÇTİ ---",
+      "match_id": "match_r3_29",
+      "match_index": 29,
+      "round": 3,
+      "status": "done",
+      "votes_a": 1,
+      "votes_b": 0,
+      "winner": "Hayalet Avcıları"
+    },
+    "match_r3_3": {
+      "cartoon_a": "Kramp İkizleri",
+      "cartoon_b": "Scooby Doo",
+      "match_id": "match_r3_3",
+      "match_index": 3,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_hojjohz9a",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_d1rxg1ldn",
+        "user_giwoa7cui",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 2,
+      "votes_b": 8,
+      "winner": "Scooby Doo"
+    },
+    "match_r3_4": {
+      "cartoon_a": "Regular Show (Sürekli Dizi)",
+      "cartoon_b": "Flapjack",
+      "match_id": "match_r3_4",
+      "match_index": 4,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_d1rxg1ldn",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_giwoa7cui",
+        "user_a6pfxxp1c",
+        "user_io6c2gphy",
+        "user_hojjohz9a",
+        "user_5o930l43y",
+        "user_rfkshpym8"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 10,
+      "votes_b": 2,
+      "winner": "Regular Show (Sürekli Dizi)"
+    },
+    "match_r3_5": {
+      "cartoon_a": "Penguin Pingu",
+      "cartoon_b": "Caillou",
+      "match_id": "match_r3_5",
+      "match_index": 5,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_aphuasbdv",
+        "user_2kojuh67z",
+        "user_9jb6bpx6j",
+        "user_giwoa7cui",
+        "user_hojjohz9a",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_5o930l43y",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_4hrhmm57b",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_d1rxg1ldn",
+        "user_io6c2gphy",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 9,
+      "votes_b": 7,
+      "winner": "Penguin Pingu"
+    },
+    "match_r3_6": {
+      "cartoon_a": "9.Sınıf Ninja: Randy Cunnigham",
+      "cartoon_b": "Daltonlar",
+      "match_id": "match_r3_6",
+      "match_index": 6,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_4hrhmm57b",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_y869fdwd0"
+      ],
+      "votes_a": 1,
+      "votes_b": 6,
+      "winner": "Daltonlar"
+    },
+    "match_r3_7": {
+      "cartoon_a": "Star Kötü Güçlere Karşı",
+      "cartoon_b": "Samuray Jack",
+      "match_id": "match_r3_7",
+      "match_index": 7,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_a6pfxxp1c"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_hojjohz9a",
+        "user_y869fdwd0",
+        "user_tvsnkzqo1",
+        "user_2kojuh67z"
+      ],
+      "votes_a": 2,
+      "votes_b": 9,
+      "winner": "Samuray Jack"
+    },
+    "match_r3_8": {
+      "cartoon_a": "Garfield",
+      "cartoon_b": "Tweety and Sylvester",
+      "match_id": "match_r3_8",
+      "match_index": 8,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_io6c2gphy"
+      ],
+      "votes_a": 5,
+      "votes_b": 6,
+      "winner": "Tweety and Sylvester"
+    },
+    "match_r3_9": {
+      "cartoon_a": "Johnny Bravo",
+      "cartoon_b": "Secret Saturdays",
+      "match_id": "match_r3_9",
+      "match_index": 9,
+      "round": 3,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_io6c2gphy",
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_7nx91hm2v",
+        "user_llghyu07z",
+        "user_2kojuh67z",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_rfkshpym8",
+        "user_5o930l43y",
+        "user_rhjze2tuu",
+        "user_giwoa7cui",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 9,
+      "votes_b": 6,
+      "winner": "Johnny Bravo"
+    },
+    "match_r4_0": {
+      "cartoon_a": "Hero8",
+      "cartoon_b": "Gumball",
+      "match_id": "match_r4_0",
+      "match_index": 0,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_2kojuh67z",
+        "user_tm4t9zvgs",
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_tvsnkzqo1",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c",
+        "user_llghyu07z"
+      ],
+      "votes_a": 2,
+      "votes_b": 10,
+      "winner": "Gumball"
+    },
+    "match_r4_1": {
+      "cartoon_a": "Tom and Jerry",
+      "cartoon_b": "Zaboomafu",
+      "match_id": "match_r4_1",
+      "match_index": 1,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_llghyu07z",
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 7,
+      "votes_b": 4,
+      "winner": "Tom and Jerry"
+    },
+    "match_r4_10": {
+      "cartoon_a": "Tutenstein ",
+      "cartoon_b": "Foster'ın Hayali Dostlar Mekanı",
+      "match_id": "match_r4_10",
+      "match_index": 10,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_2kojuh67z",
+        "user_hojjohz9a",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 8,
+      "votes_b": 4,
+      "winner": "Tutenstein "
+    },
+    "match_r4_11": {
+      "cartoon_a": "Hayalet Avcıları",
+      "cartoon_b": "Scooby Doo",
+      "match_id": "match_r4_11",
+      "match_index": 11,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_tm4t9zvgs",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 1,
+      "votes_b": 8,
+      "winner": "Scooby Doo"
+    },
+    "match_r4_12": {
+      "cartoon_a": "Regular Show (Sürekli Dizi)",
+      "cartoon_b": "Penguin Pingu",
+      "match_id": "match_r4_12",
+      "match_index": 12,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_9jb6bpx6j",
+        "user_aphuasbdv",
+        "user_a6pfxxp1c",
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_2kojuh67z",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 9,
+      "votes_b": 0,
+      "winner": "Regular Show (Sürekli Dizi)"
+    },
+    "match_r4_13": {
+      "cartoon_a": "Daltonlar",
+      "cartoon_b": "Samuray Jack",
+      "match_id": "match_r4_13",
+      "match_index": 13,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_tvsnkzqo1",
+        "user_5o930l43y",
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_rhjze2tuu",
+        "user_4hrhmm57b",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 3,
+      "votes_b": 9,
+      "winner": "Samuray Jack"
+    },
+    "match_r4_14": {
+      "cartoon_a": "Tweety and Sylvester",
+      "cartoon_b": "Johnny Bravo",
+      "match_id": "match_r4_14",
+      "match_index": 14,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_rhjze2tuu",
+        "user_9jb6bpx6j",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_7nx91hm2v"
+      ],
+      "votes_a": 6,
+      "votes_b": 7,
+      "winner": "Johnny Bravo"
+    },
+    "match_r4_2": {
+      "cartoon_a": "Red Kit (Lucky Luke)",
+      "cartoon_b": "Powerpuff Girls",
+      "match_id": "match_r4_2",
+      "match_index": 2,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_aphuasbdv",
+        "user_rhjze2tuu",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_2kojuh67z",
+        "user_7nx91hm2v",
+        "user_tvsnkzqo1"
+      ],
+      "votes_a": 8,
+      "votes_b": 6,
+      "winner": "Red Kit (Lucky Luke)"
+    },
+    "match_r4_3": {
+      "cartoon_a": "Cedric",
+      "cartoon_b": "Uzun Kulak Ailesi",
+      "match_id": "match_r4_3",
+      "match_index": 3,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_4hrhmm57b",
+        "user_tm4t9zvgs",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_hojjohz9a",
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 8,
+      "votes_b": 3,
+      "winner": "Cedric"
+    },
+    "match_r4_4": {
+      "cartoon_a": "Ninja Kaplumbağalar",
+      "cartoon_b": "WİNX",
+      "match_id": "match_r4_4",
+      "match_index": 4,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_tvsnkzqo1",
+        "user_5o930l43y",
+        "user_aphuasbdv",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_7nx91hm2v",
+        "user_2kojuh67z",
+        "user_4hrhmm57b",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 6,
+      "votes_b": 8,
+      "winner": "WİNX"
+    },
+    "match_r4_5": {
+      "cartoon_a": "Arthur",
+      "cartoon_b": "Müfettiş Gadget",
+      "match_id": "match_r4_5",
+      "match_index": 5,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_rhjze2tuu",
+        "user_2kojuh67z"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_aphuasbdv",
+        "user_9jb6bpx6j",
+        "user_y869fdwd0",
+        "user_tvsnkzqo1",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 3,
+      "votes_b": 9,
+      "winner": "Müfettiş Gadget"
+    },
+    "match_r4_6": {
+      "cartoon_a": "Temel Reis (Popeye)",
+      "cartoon_b": "Tazmanya Canavarı",
+      "match_id": "match_r4_6",
+      "match_index": 6,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_tm4t9zvgs",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_y869fdwd0",
+        "user_aphuasbdv",
+        "user_2kojuh67z",
+        "user_rhjze2tuu",
+        "user_hojjohz9a"
+      ],
+      "votes_a": 7,
+      "votes_b": 6,
+      "winner": "Temel Reis (Popeye)"
+    },
+    "match_r4_7": {
+      "cartoon_a": "Sevimli Hayalet Casper",
+      "cartoon_b": "Mickey Mouse",
+      "match_id": "match_r4_7",
+      "match_index": 7,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_2kojuh67z",
+        "user_rhjze2tuu",
+        "user_9jb6bpx6j",
+        "user_y869fdwd0",
+        "user_4hrhmm57b",
+        "user_aphuasbdv"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c",
+        "user_giwoa7cui",
+        "user_hojjohz9a",
+        "user_tvsnkzqo1",
+        "user_0lhrgoc8o"
+      ],
+      "votes_a": 8,
+      "votes_b": 5,
+      "winner": "Sevimli Hayalet Casper"
+    },
+    "match_r4_8": {
+      "cartoon_a": "Adventure Time",
+      "cartoon_b": "Camp Lazlo",
+      "match_id": "match_r4_8",
+      "match_index": 8,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_tm4t9zvgs",
+        "user_rfkshpym8",
+        "user_giwoa7cui",
+        "user_al4li1xfh",
+        "user_2kojuh67z",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 9,
+      "votes_b": 2,
+      "winner": "Adventure Time"
+    },
+    "match_r4_9": {
+      "cartoon_a": "Kod Adı: Afacanlar",
+      "cartoon_b": "We Bare Bears (Kafadar Ayılar)",
+      "match_id": "match_r4_9",
+      "match_index": 9,
+      "round": 4,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_tm4t9zvgs",
+        "user_rfkshpym8",
+        "user_hojjohz9a",
+        "user_y869fdwd0",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_tvsnkzqo1",
+        "user_9jb6bpx6j",
+        "user_0lhrgoc8o",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 7,
+      "votes_b": 5,
+      "winner": "Kod Adı: Afacanlar"
+    },
+    "match_r5_0": {
+      "cartoon_a": "Gumball",
+      "cartoon_b": "Tom and Jerry",
+      "match_id": "match_r5_0",
+      "match_index": 0,
+      "round": 5,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1",
+        "user_2kojuh67z",
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_tm4t9zvgs"
+      ],
+      "voters_b": [
+        "user_giwoa7cui",
+        "user_hojjohz9a",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_5o930l43y",
+        "user_al4li1xfh"
+      ],
+      "votes_a": 7,
+      "votes_b": 6,
+      "winner": "Gumball"
+    },
+    "match_r5_1": {
+      "cartoon_a": "Tutenstein ",
+      "cartoon_b": "Scooby Doo",
+      "match_id": "match_r5_1",
+      "match_index": 1,
+      "round": 5,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_hojjohz9a",
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_rhjze2tuu",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_9jb6bpx6j",
+        "user_al4li1xfh",
+        "user_tm4t9zvgs",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b",
+        "user_2kojuh67z"
+      ],
+      "votes_a": 6,
+      "votes_b": 7,
+      "winner": "Scooby Doo"
+    },
+    "match_r5_2": {
+      "cartoon_a": "Regular Show (Sürekli Dizi)",
+      "cartoon_b": "Samuray Jack",
+      "match_id": "match_r5_2",
+      "match_index": 2,
+      "round": 5,
+      "status": "done",
+      "voters_a": [
+        "user_2kojuh67z",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1",
+        "user_al4li1xfh",
+        "user_9jb6bpx6j",
+        "user_4hrhmm57b"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu",
+        "user_giwoa7cui",
+        "user_hojjohz9a",
+        "user_tm4t9zvgs"
+      ],
+      "votes_a": 6,
+      "votes_b": 8,
+      "winner": "Samuray Jack"
+    },
+    "match_r5_3": {
+      "cartoon_a": "Johnny Bravo",
+      "cartoon_b": "Red Kit (Lucky Luke)",
+      "match_id": "match_r5_3",
+      "match_index": 3,
+      "round": 5,
+      "status": "done",
+      "voters_a": [
+        "user_9jb6bpx6j",
+        "user_al4li1xfh",
+        "user_y869fdwd0",
+        "user_a6pfxxp1c",
+        "user_tvsnkzqo1",
+        "user_7nx91hm2v"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_giwoa7cui",
+        "user_rfkshpym8",
+        "user_tm4t9zvgs",
+        "user_2kojuh67z",
+        "user_rhjze2tuu",
+        "user_hojjohz9a",
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 6,
+      "votes_b": 8,
+      "winner": "Red Kit (Lucky Luke)"
+    },
+    "match_r5_4": {
+      "cartoon_a": "Cedric",
+      "cartoon_b": "WİNX",
+      "match_id": "match_r5_4",
+      "match_index": 4,
+      "round": 5,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_al4li1xfh",
+        "user_giwoa7cui",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_tm4t9zvgs",
+        "user_a6pfxxp1c",
+        "user_hojjohz9a",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_2kojuh67z",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j"
+      ],
+      "votes_a": 9,
+      "votes_b": 3,
+      "winner": "Cedric"
+    },
+    "match_r5_5": {
+      "cartoon_a": "Müfettiş Gadget",
+      "cartoon_b": "Temel Reis (Popeye)",
+      "match_id": "match_r5_5",
+      "match_index": 5,
+      "round": 5,
+      "status": "done",
+      "voters_a": [
+        "user_tm4t9zvgs",
+        "user_giwoa7cui",
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_tvsnkzqo1",
+        "user_2kojuh67z",
+        "user_rfkshpym8"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c",
+        "user_aphuasbdv"
+      ],
+      "votes_a": 9,
+      "votes_b": 2,
+      "winner": "Müfettiş Gadget"
+    },
+    "match_r5_6": {
+      "cartoon_a": "Sevimli Hayalet Casper",
+      "cartoon_b": "Adventure Time",
+      "match_id": "match_r5_6",
+      "match_index": 6,
+      "round": 5,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_9jb6bpx6j",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_al4li1xfh",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui"
+      ],
+      "votes_a": 3,
+      "votes_b": 7,
+      "winner": "Adventure Time"
+    },
+    "match_r5_7": {
+      "cartoon_a": "Kod Adı: Afacanlar",
+      "cartoon_b": "--- BAY GEÇTİ ---",
+      "match_id": "match_r5_7",
+      "match_index": 7,
+      "round": 5,
+      "status": "done",
+      "votes_a": 1,
+      "votes_b": 0,
+      "winner": "Kod Adı: Afacanlar"
+    },
+    "match_r6_0": {
+      "cartoon_a": "Gumball",
+      "cartoon_b": "Scooby Doo",
+      "match_id": "match_r6_0",
+      "match_index": 0,
+      "round": 6,
+      "status": "done",
+      "voters_a": [
+        "user_4hrhmm57b",
+        "user_rhjze2tuu",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_tvsnkzqo1"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_9jb6bpx6j",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_hojjohz9a",
+        "user_giwoa7cui",
+        "user_aphuasbdv",
+        "user_883nbp7nb"
+      ],
+      "votes_a": 5,
+      "votes_b": 8,
+      "winner": "Scooby Doo"
+    },
+    "match_r6_1": {
+      "cartoon_a": "Samuray Jack",
+      "cartoon_b": "Red Kit (Lucky Luke)",
+      "match_id": "match_r6_1",
+      "match_index": 1,
+      "round": 6,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_5o930l43y",
+        "user_2kojuh67z",
+        "user_y869fdwd0",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_giwoa7cui",
+        "user_rhjze2tuu"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_al4li1xfh"
+      ],
+      "votes_a": 9,
+      "votes_b": 3,
+      "winner": "Samuray Jack"
+    },
+    "match_r6_2": {
+      "cartoon_a": "Cedric",
+      "cartoon_b": "Müfettiş Gadget",
+      "match_id": "match_r6_2",
+      "match_index": 2,
+      "round": 6,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_a6pfxxp1c",
+        "user_tm4t9zvgs",
+        "user_9jb6bpx6j",
+        "user_5o930l43y",
+        "user_883nbp7nb"
+      ],
+      "voters_b": [
+        "user_y869fdwd0",
+        "user_2kojuh67z",
+        "user_giwoa7cui",
+        "user_hojjohz9a",
+        "user_al4li1xfh",
+        "user_rhjze2tuu",
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b"
+      ],
+      "votes_a": 6,
+      "votes_b": 8,
+      "winner": "Müfettiş Gadget"
+    },
+    "match_r6_3": {
+      "cartoon_a": "Adventure Time",
+      "cartoon_b": "Kod Adı: Afacanlar",
+      "match_id": "match_r6_3",
+      "match_index": 3,
+      "round": 6,
+      "status": "done",
+      "voters_a": [
+        "user_rfkshpym8",
+        "user_4hrhmm57b",
+        "user_883nbp7nb",
+        "user_9jb6bpx6j",
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_tvsnkzqo1",
+        "user_a6pfxxp1c",
+        "user_al4li1xfh"
+      ],
+      "voters_b": [
+        "user_rhjze2tuu"
+      ],
+      "votes_a": 9,
+      "votes_b": 1,
+      "winner": "Adventure Time"
+    },
+    "match_r7_0": {
+      "cartoon_a": "Scooby Doo",
+      "cartoon_b": "Samuray Jack",
+      "match_id": "match_r7_0",
+      "match_index": 0,
+      "round": 7,
+      "status": "done",
+      "voters_a": [
+        "user_a6pfxxp1c",
+        "user_9jb6bpx6j",
+        "user_al4li1xfh"
+      ],
+      "voters_b": [
+        "user_5o930l43y",
+        "user_tvsnkzqo1",
+        "user_4hrhmm57b",
+        "user_tm4t9zvgs",
+        "user_rfkshpym8",
+        "user_y869fdwd0",
+        "user_rhjze2tuu",
+        "user_giwoa7cui"
+      ],
+      "votes_a": 3,
+      "votes_b": 8,
+      "winner": "Samuray Jack"
+    },
+    "match_r7_1": {
+      "cartoon_a": "Müfettiş Gadget",
+      "cartoon_b": "Adventure Time",
+      "match_id": "match_r7_1",
+      "match_index": 1,
+      "round": 7,
+      "status": "done",
+      "voters_a": [
+        "user_y869fdwd0",
+        "user_giwoa7cui",
+        "user_hojjohz9a"
+      ],
+      "voters_b": [
+        "user_883nbp7nb",
+        "user_a6pfxxp1c",
+        "user_5o930l43y",
+        "user_4hrhmm57b",
+        "user_tvsnkzqo1",
+        "user_tm4t9zvgs",
+        "user_rfkshpym8",
+        "user_al4li1xfh"
+      ],
+      "votes_a": 3,
+      "votes_b": 8,
+      "winner": "Adventure Time"
+    },
+    "match_r8_0": {
+      "cartoon_a": "Samuray Jack",
+      "cartoon_b": "Adventure Time",
+      "match_id": "match_r8_0",
+      "match_index": 0,
+      "round": 8,
+      "status": "done",
+      "voters_a": [
+        "user_5o930l43y",
+        "user_tvsnkzqo1",
+        "user_giwoa7cui",
+        "user_rhjze2tuu",
+        "user_rfkshpym8",
+        "user_883nbp7nb",
+        "user_4hrhmm57b",
+        "user_al4li1xfh",
+        "user_y869fdwd0"
+      ],
+      "voters_b": [
+        "user_a6pfxxp1c"
+      ],
+      "votes_a": 9,
+      "votes_b": 1,
+      "winner": "Samuray Jack"
+    }
+  },
+  "users": {
+    "user_1mxo9b5wz": {
+      "id": "user_1mxo9b5wz",
+      "isActive": true,
+      "isAdmin": false,
+      "lastActive": "2026-05-09T19:27:30.542Z",
+      "nickname": "yesim"
+    },
+    "user_5o930l43y": {
+      "id": "user_5o930l43y",
+      "isActive": true,
+      "isAdmin": false,
+      "lastActive": "2026-05-09T17:18:08.848Z",
+      "nickname": "Arda"
+    },
+    "user_rfkshpym8": {
+      "id": "user_rfkshpym8",
+      "isActive": true,
+      "isAdmin": true,
+      "lastActive": "2026-05-09T18:49:13.078Z",
+      "nickname": "Kral"
+    }
+  }
+}
